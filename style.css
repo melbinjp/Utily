@@ -1,6 +1,10 @@
+:root {
+    --accent-color: #007bff; /* A refined blue, chosen as a starting point */
+}
+
 /* General Body Styles */
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     background-color: #f0f2f5;
     color: #333;
     margin: 0;
@@ -13,11 +17,12 @@ header {
     background-color: #ffffff;
     padding: 20px 0;
     text-align: center;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 2px solid var(--accent-color);
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 header h1 {
+    font-family: 'Montserrat', sans-serif;
     margin: 0;
     font-size: 2em;
     color: #333;
@@ -26,7 +31,7 @@ header h1 {
 /* Featured Tool Section */
 #featured-tool {
     background-color: #ffffff;
-    border: 1px solid #e0e0e0;
+    border: 1px solid var(--accent-color);
     margin: 20px;
     padding: 30px;
     min-height: 150px; /* Noticeable even when empty */
@@ -70,25 +75,47 @@ main {
 }
 
 .tool-card h3 {
+    font-family: 'Montserrat', sans-serif;
     margin-top: 0;
-    color: #333;
+    color: #333; /* Heading text color remains default */
+}
+
+.tool-card h3 .fa {
+    color: var(--accent-color);
 }
 
 .tool-card p {
+    font-family: 'Open Sans', sans-serif; /* Explicitly set, though inherited */
     font-size: 0.9em;
     color: #555;
     flex-grow: 1; /* Allows paragraph to take available space */
+    margin-top: 10px; /* Space between heading and paragraph */
+    margin-bottom: 15px; /* Space between paragraph and link */
+    line-height: 1.5; /* Improved readability */
 }
 
+.tool-card h3 a { /* More specific selector for links within h3 */
+    text-decoration: none;
+    color: var(--accent-color); /* Apply accent color to link text */
+    font-weight: bold;
+    /* display: inline-block; already on .tool-card a, but h3 a might not need it if h3 is block */
+    /* margin-top: 10px; Not needed here as it's part of h3 flow */
+}
+
+.tool-card h3 a:hover {
+    text-decoration: underline; /* Or a slightly darker shade of accent */
+}
+
+/* General link style within tool-card if any outside h3, can be kept or removed if not needed */
 .tool-card a {
     text-decoration: none;
-    color: #007bff;
+    color: #007bff; /* This was the old color, could be var(--accent-color) or another default */
     font-weight: bold;
     display: inline-block; /* Ensures padding and margin are respected */
-    margin-top: 10px; /* Space between text and link */
+    margin-top: 10px; /* Space between text and link - this is for links *not* in h3 */
 }
 
-.tool-card a:hover {
+.tool-card a:hover { /* General hover for links not in h3 */
     text-decoration: underline;
 }
 
