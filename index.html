@@ -8,50 +8,45 @@
     <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/melbinjp/favicon/master/favicon.png">
     <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/melbinjp/favicon/master/favicon.svg">
 
+    <!--
+    MANUAL REDIRECT:
+    To redirect this page (wecanuseai.com) to a specific tool or URL,
+    uncomment the meta refresh tag below and change the 'content' attribute.
+    The '0' means redirect immediately (0 seconds).
+    The 'url=' should be the full URL of the page you want to redirect to.
+    Example: content="0; url=https://your-featured-tool-url.com"
+    -->
+    <!-- <meta http-equiv="refresh" content="0; url=PUT_YOUR_REDIRECT_URL_HERE"> -->
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-            margin: 0;
-            padding: 20px;
-        }
-        h1 {
-            text-align: center;
-        }
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        li {
-            background: #ffffff;
-            margin: 10px 0;
-            padding: 15px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        a {
-            text-decoration: none;
-            color: #007bff;
-            font-weight: bold;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Yes we can => wecanuseai</h1>
-    <ul>
-        <li><a href="https://melbinjp.github.io/3d_modelview/", target="_blank">3D Model Viewer</a></li>
-        <li><a href="https://melbinjp.github.io/Transcribe-Realtime-/", target="_blank">Live Audio Transcription</a></li>
-        <li><a href="https://youtube.com/@video_gen?feature=shared", target="_blank">videogen_ youtube_channel</a></li>
-        <li><a href="https://melbinjp.github.io/AV-Recorder/", target="_blank">Audio/Video-Recorder</a></li>
-
-        
-        <!-- Add more links here as you create new pages -->
-    </ul>
+    <header>
+        <h1>wecanuseai.com</h1>
+    </header>
+    <div id="featured-tool">
+        <p>Our latest and greatest tool will be highlighted here. Stay tuned!</p>
+    </div>
+    <main>
+        <div class="tool-grid">
+            <div class="tool-card">
+                <h3><i class="fa fa-cube" aria-hidden="true"></i> <a href="https://melbinjp.github.io/3d_modelview/" target="_blank">3D Model Viewer</a></h3>
+                <!-- Optional: <p>Short description of the tool.</p> -->
+            </div>
+            <div class="tool-card">
+                <h3><i class="fa fa-microphone" aria-hidden="true"></i> <a href="https://melbinjp.github.io/Transcribe-Realtime-/" target="_blank">Live Audio Transcription</a></h3>
+                <!-- Optional: <p>Short description of the tool.</p> -->
+            </div>
+            <div class="tool-card">
+                <h3><i class="fa fa-youtube-play" aria-hidden="true"></i> <a href="https://youtube.com/@video_gen?feature=shared" target="_blank">VideoGen YouTube Channel</a></h3>
+                <!-- Optional: <p>Short description of the tool.</p> -->
+            </div>
+            <div class="tool-card">
+                <h3><i class="fa fa-video-camera" aria-hidden="true"></i> <a href="https://melbinjp.github.io/AV-Recorder/" target="_blank">AV Recorder</a></h3>
+                <!-- Optional: <p>Short description of the tool.</p> -->
+            </div>
+        </div>
+    </main>
 </body>
 </html>
