@@ -1,0 +1,139 @@
+/* General Body Styles */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Header Styles */
+header {
+    background-color: #ffffff;
+    padding: 20px 0;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+    color: #333;
+}
+
+/* Featured Tool Section */
+#featured-tool {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    margin: 20px;
+    padding: 30px;
+    min-height: 150px; /* Noticeable even when empty */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+#featured-tool p { /* Placeholder style */
+    font-size: 1.2em;
+    color: #777;
+}
+
+/* Main Content Area */
+main {
+    padding: 20px;
+}
+
+/* Tool Grid */
+.tool-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 0; /* Padding is on main or individual cards */
+}
+
+/* Tool Cards */
+.tool-card {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    display: flex; /* For better internal alignment if needed */
+    flex-direction: column;
+    justify-content: space-between; /* Pushes content and link apart if card has fixed height */
+}
+
+.tool-card h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+.tool-card p {
+    font-size: 0.9em;
+    color: #555;
+    flex-grow: 1; /* Allows paragraph to take available space */
+}
+
+.tool-card a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+    display: inline-block; /* Ensures padding and margin are respected */
+    margin-top: 10px; /* Space between text and link */
+}
+
+.tool-card a:hover {
+    text-decoration: underline;
+}
+
+/* Tool Card Hover Effects */
+.tool-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* Responsive Design Considerations */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.8em;
+    }
+
+    #featured-tool {
+        margin: 15px;
+        padding: 20px;
+        min-height: 100px;
+    }
+
+    #featured-tool p {
+        font-size: 1em;
+    }
+
+    main {
+        padding: 15px;
+    }
+
+    .tool-grid {
+        gap: 15px;
+    }
+
+    .tool-card {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.5em;
+    }
+    /* On very small screens, ensure grid items don't get too small if minmax(250px, 1fr) is too wide.
+       The auto-fit with minmax should handle stacking, but we can adjust the min value if needed.
+       For example, change minmax to minmax(200px, 1fr) or ensure single column if necessary.
+       However, grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) is generally robust.
+    */
+}
