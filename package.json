@@ -1,0 +1,27 @@
+{
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "postcss-cli": "^11.0.1",
+    "tailwindcss": "^4.1.11"
+  },
+  "name": "app",
+  "version": "1.0.0",
+  "description": "A comprehensive portal showcasing a collection of AI-powered web tools and utilities. This is the main landing page that provides access to various AI applications and tools.",
+  "main": "index.js",
+  "scripts": {
+    "build:css": "./node_modules/postcss-cli/bin/postcss ./src/input.css -o ./dist/output.css",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/melbinjp/Utily.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/melbinjp/Utily/issues"
+  },
+  "homepage": "https://github.com/melbinjp/Utily#readme"
+}
