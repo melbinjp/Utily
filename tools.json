@@ -1,0 +1,40 @@
+[
+  {
+    "title": "Chat with a Doc",
+    "description": "AI-powered Q&A over your own documents.",
+    "long_description": "Transform how you interact with documents. Upload PDFs, DOCX files, or URLs and have intelligent conversations with their content using AI-powered search.",
+    "url": "https://melbinjp.github.io/chat_with_a_doc/",
+    "icon": "fa-comments",
+    "featured": true
+  },
+  {
+    "title": "Voice Notes",
+    "description": "Record and manage voice notes easily in your browser with a clean interface.",
+    "url": "https://melbinjp.github.io/voice_notes/",
+    "icon": "fa-microphone"
+  },
+  {
+    "title": "3D Model Viewer",
+    "description": "Interactively view and manipulate 3D models directly in your browser.",
+    "url": "https://melbinjp.github.io/3d_modelview/",
+    "icon": "fa-cube"
+  },
+  {
+    "title": "Live Audio Transcription",
+    "description": "Transcribe spoken audio into text in real-time with high accuracy.",
+    "url": "https://melbinjp.github.io/Transcribe-Realtime-/",
+    "icon": "fa-microphone"
+  },
+  {
+    "title": "VideoGen YouTube Channel",
+    "description": "Explore AI-generated video content and experiments on our official channel.",
+    "url": "https://youtube.com/@video_gen?feature=shared",
+    "icon": "fa-youtube-play"
+  },
+  {
+    "title": "AV Recorder",
+    "description": "Easily record audio and video from your browser, ready for download.",
+    "url": "https://melbinjp.github.io/AV-Recorder/",
+    "icon": "fa-video-camera"
+  }
+]

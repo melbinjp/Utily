@@ -9,7 +9,6 @@
   "description": "A comprehensive portal showcasing a collection of AI-powered web tools and utilities. This is the main landing page that provides access to various AI applications and tools.",
   "main": "index.js",
   "scripts": {
-    "build:css": "./node_modules/postcss-cli/bin/postcss ./src/input.css -o ./dist/output.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
