@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
             featuredTools.forEach((tool, index) => {
                 const carouselItem = document.createElement("div");
                 carouselItem.classList.add("carousel-item");
+                carouselItem.style.backgroundImage = `linear-gradient(to right, rgba(102, 126, 234, 0) 0%, rgba(118, 75, 162, 0.8) 50%, rgba(102, 126, 234, 0) 100%), url(${tool.background_image})`;
                 carouselItem.innerHTML = `
                     <div class="featured-content">
                         <div class="featured-text">
@@ -54,6 +55,9 @@ document.addEventListener("DOMContentLoaded", () => {
             function updateCarousel() {
                 const width = carouselInner.clientWidth;
                 carouselInner.style.transform = `translateX(${-width * currentIndex}px)`;
+                document.querySelectorAll('.carousel-item').forEach((item, index) => {
+                    item.classList.toggle('active', index === currentIndex);
+                });
                 indicators.forEach((indicator, index) => {
                     indicator.classList.toggle("active", index === currentIndex);
                 });
