@@ -16,9 +16,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 const carouselItem = document.createElement("div");
                 carouselItem.classList.add("carousel-item");
                 carouselItem.innerHTML = `
-                    <div id="featured-tool">
-                        <div class="featured-content">
-                            <div class="featured-text">
+                    <div class="featured-content">
+                        <div class="featured-text">
                                 <h2>🚀 Featured Tool</h2>
                                 <h3>${tool.title}</h3>
                                 <p>${tool.long_description}</p>
