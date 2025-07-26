@@ -11,7 +11,8 @@
     "title": "Voice Notes",
     "description": "Record and manage voice notes easily in your browser with a clean interface.",
     "url": "https://melbinjp.github.io/voice_notes/",
-    "icon": "fa-microphone"
+    "icon": "fa-microphone",
+    "featured": true
   },
   {
     "title": "3D Model Viewer",
