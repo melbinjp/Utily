@@ -8,7 +8,8 @@
     "featured": true,
     "floating_card": {
       "title": "Smart Document Q&A",
-      "description": "Ask questions, get instant answers from your documents"
+      "description": "Ask questions, get instant answers from your documents",
+      "icon": "fa-comments"
     }
   },
   {
@@ -19,7 +20,8 @@
     "featured": true,
     "floating_card": {
       "title": "Easy Voice Recording",
-      "description": "Just click and record your thoughts"
+      "description": "Just click and record your thoughts",
+      "icon": "fa-microphone"
     }
   },
   {

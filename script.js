@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             </div>
                             <div class="featured-visual">
                                 <div class="floating-card">
-                                    <div class="card-icon">📄</div>
+                                    <div class="card-icon"><i class="fa ${tool.floating_card.icon}" aria-hidden="true"></i></div>
                                     <div class="card-content">
                                         <h4>${tool.floating_card.title}</h4>
                                         <p>${tool.floating_card.description}</p>
