@@ -3,14 +3,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const carouselInner = document.querySelector(".carousel-inner");
     const prevButton = document.querySelector(".carousel-control.prev");
     const nextButton = document.querySelector(".carousel-control.next");
+    const indicatorsContainer = document.querySelector(".carousel-indicators");
     let currentIndex = 0;
+    let autoplayInterval;
 
     fetch("tools.json")
         .then(response => response.json())
         .then(tools => {
             const featuredTools = tools.filter(tool => tool.featured);
 
-            featuredTools.forEach(tool => {
+            featuredTools.forEach((tool, index) => {
                 const carouselItem = document.createElement("div");
                 carouselItem.classList.add("carousel-item");
                 carouselItem.innerHTML = `
@@ -32,8 +34,8 @@ document.addEventListener("DOMContentLoaded", () => {
                                 <div class="floating-card">
                                     <div class="card-icon">📄</div>
                                     <div class="card-content">
-                                        <h4>Smart Document Q&A</h4>
-                                        <p>Ask questions, get instant answers from your documents</p>
+                                        <h4>${tool.floating_card.title}</h4>
+                                        <p>${tool.floating_card.description}</p>
                                     </div>
                                 </div>
                             </div>
@@ -41,21 +43,49 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
                 `;
                 carouselInner.appendChild(carouselItem);
+
+                const indicator = document.createElement("div");
+                indicator.classList.add("indicator");
+                indicator.dataset.index = index;
+                indicatorsContainer.appendChild(indicator);
             });
+
+            const indicators = document.querySelectorAll(".indicator");
 
             function updateCarousel() {
                 const width = carouselInner.clientWidth;
                 carouselInner.style.transform = `translateX(${-width * currentIndex}px)`;
+                indicators.forEach((indicator, index) => {
+                    indicator.classList.toggle("active", index === currentIndex);
+                });
+            }
+
+            function resetAutoplay() {
+                clearInterval(autoplayInterval);
+                autoplayInterval = setInterval(() => {
+                    currentIndex = (currentIndex + 1) % featuredTools.length;
+                    updateCarousel();
+                }, 5000);
             }
 
             nextButton.addEventListener("click", () => {
                 currentIndex = (currentIndex + 1) % featuredTools.length;
                 updateCarousel();
+                resetAutoplay();
             });
 
             prevButton.addEventListener("click", () => {
                 currentIndex = (currentIndex - 1 + featuredTools.length) % featuredTools.length;
                 updateCarousel();
+                resetAutoplay();
+            });
+
+            indicators.forEach(indicator => {
+                indicator.addEventListener("click", () => {
+                    currentIndex = parseInt(indicator.dataset.index);
+                    updateCarousel();
+                    resetAutoplay();
+                });
             });
 
             tools.forEach(tool => {
@@ -69,5 +99,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 toolGrid.appendChild(toolCard);
             });
+
+            updateCarousel();
+            resetAutoplay();
         });
 });

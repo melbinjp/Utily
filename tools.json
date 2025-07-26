@@ -5,14 +5,22 @@
     "long_description": "Transform how you interact with documents. Upload PDFs, DOCX files, or URLs and have intelligent conversations with their content using AI-powered search.",
     "url": "https://melbinjp.github.io/chat_with_a_doc/",
     "icon": "fa-comments",
-    "featured": true
+    "featured": true,
+    "floating_card": {
+      "title": "Smart Document Q&A",
+      "description": "Ask questions, get instant answers from your documents"
+    }
   },
   {
     "title": "Voice Notes",
     "description": "Record and manage voice notes easily in your browser with a clean interface.",
     "url": "https://melbinjp.github.io/voice_notes/",
     "icon": "fa-microphone",
-    "featured": true
+    "featured": true,
+    "floating_card": {
+      "title": "Easy Voice Recording",
+      "description": "Just click and record your thoughts"
+    }
   },
   {
     "title": "3D Model Viewer",
