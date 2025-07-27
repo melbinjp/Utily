@@ -49,5 +49,19 @@
     "description": "Easily record audio and video from your browser, ready for download.",
     "url": "https://melbinjp.github.io/AV-Recorder/",
     "icon": "fa-video-camera"
+  },
+  {
+    "title": "Example Tool",
+    "description": "This is an example of a tool with all the possible options.",
+    "long_description": "This is a longer description of the example tool. It can be used to provide more details about the tool and its features.",
+    "url": "#",
+    "icon": "fa-flask",
+    "featured": true,
+    "floating_card": {
+      "title": "Example Floating Card",
+      "description": "This is an example of a floating card.",
+      "icon": "fa-star"
+    },
+    "background_image": "https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1290&q=80"
   }
 ]

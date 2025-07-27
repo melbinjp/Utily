@@ -33,13 +33,19 @@ document.addEventListener("DOMContentLoaded", () => {
                                 </div>
                             </div>
                             <div class="featured-visual">
+                                ${tool.floating_card ? `
                                 <div class="floating-card">
-                                    <div class="card-icon"><i class="fa ${tool.floating_card.icon}" aria-hidden="true"></i></div>
+                                    <div class="card-icon"><i class="fa ${tool.floating_card.icon || tool.icon}" aria-hidden="true"></i></div>
                                     <div class="card-content">
-                                        <h4>${tool.floating_card.title}</h4>
-                                        <p>${tool.floating_card.description}</p>
+                                        <h4>${tool.floating_card.title || ''}</h4>
+                                        <p>${tool.floating_card.description || ''}</p>
                                     </div>
                                 </div>
+                                ` : `
+                                <div class="floating-card">
+                                    <div class="card-icon"><i class="fa ${tool.icon}" aria-hidden="true"></i></div>
+                                </div>
+                                `}
                             </div>
                         </div>
                     </div>

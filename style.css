@@ -318,6 +318,7 @@ main {
 }
 
 .carousel-item {
+    background: #667eea;
     background-size: cover;
     background-position: center;
     min-width: 80%;
