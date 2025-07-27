@@ -15,13 +15,15 @@ document.addEventListener("DOMContentLoaded", () => {
             featuredTools.forEach((tool, index) => {
                 const carouselItem = document.createElement("div");
                 carouselItem.classList.add("carousel-item");
-                carouselItem.style.backgroundImage = `linear-gradient(to right, rgba(102, 126, 234, 0) 0%, rgba(118, 75, 162, 0.8) 50%, rgba(102, 126, 234, 0) 100%), url(${tool.background_image})`;
+                if (tool.background_image) {
+                    carouselItem.style.backgroundImage = `linear-gradient(to right, rgba(102, 126, 234, 0) 0%, rgba(118, 75, 162, 0.8) 50%, rgba(102, 126, 234, 0) 100%), url(${tool.background_image})`;
+                }
                 carouselItem.innerHTML = `
                     <div class="featured-content">
                         <div class="featured-text">
                                 <h2>🚀 Featured Tool</h2>
                                 <h3>${tool.title}</h3>
-                                <p>${tool.long_description}</p>
+                                <p>${tool.long_description || tool.description}</p>
                                 <div class="featured-actions">
                                     <a href="${tool.url}" class="primary-btn" target="_blank">
                                         <span>Try it now</span>
