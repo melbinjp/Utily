@@ -9,7 +9,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     fetch("tools.json")
         .then(response => response.json())
-        .then(tools => {
+        .then(allTools => {
+            const tools = allTools.filter(tool => tool.show);
             const featuredTools = tools.filter(tool => tool.featured);
 
             featuredTools.forEach((tool, index) => {

@@ -5,6 +5,7 @@
     "long_description": "This is a longer description of the example tool. It can be used to provide more details about the tool and its features.",
     "url": "#",
     "icon": "fa-flask",
+    "show": false,
     "floating_card": {
       "title": "Example Floating Card",
       "description": "This is an example of a floating card.",
@@ -19,6 +20,7 @@
     "url": "https://melbinjp.github.io/chat_with_a_doc/",
     "icon": "fa-comments",
     "featured": true,
+    "show": true,
     "floating_card": {
       "title": "Smart Document Q&A",
       "description": "Ask questions, get instant answers from your documents",
@@ -32,6 +34,7 @@
     "url": "https://melbinjp.github.io/voice_notes/",
     "icon": "fa-microphone",
     "featured": true,
+    "show": true,
     "floating_card": {
       "title": "Easy Voice Recording",
       "description": "Just click and record your thoughts",
@@ -43,24 +46,28 @@
     "title": "3D Model Viewer",
     "description": "Interactively view and manipulate 3D models directly in your browser.",
     "url": "https://melbinjp.github.io/3d_modelview/",
-    "icon": "fa-cube"
+    "icon": "fa-cube",
+    "show": true
   },
   {
     "title": "Live Audio Transcription",
     "description": "Transcribe spoken audio into text in real-time with high accuracy.",
     "url": "https://melbinjp.github.io/Transcribe-Realtime-/",
-    "icon": "fa-microphone"
+    "icon": "fa-microphone",
+    "show": true
   },
   {
     "title": "VideoGen YouTube Channel",
     "description": "Explore AI-generated video content and experiments on our official channel.",
     "url": "https://youtube.com/@video_gen?feature=shared",
-    "icon": "fa-youtube-play"
+    "icon": "fa-youtube-play",
+    "show": true
   },
   {
     "title": "AV Recorder",
     "description": "Easily record audio and video from your browser, ready for download.",
     "url": "https://melbinjp.github.io/AV-Recorder/",
-    "icon": "fa-video-camera"
+    "icon": "fa-video-camera",
+    "show": true
   }
 ]
