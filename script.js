@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const themeSwitcher = document.querySelector(".theme-switcher");
     const toolGrid = document.getElementById("tool-grid");
     const carouselInner = document.querySelector(".carousel-inner");
     const prevButton = document.querySelector(".carousel-control.prev");
@@ -109,4 +110,29 @@ document.addEventListener("DOMContentLoaded", () => {
             updateCarousel();
             resetAutoplay();
         });
+
+    function setTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+        document.querySelectorAll('.theme-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.theme === theme);
+        });
+    }
+
+    themeSwitcher.addEventListener('click', (e) => {
+        if (e.target.classList.contains('theme-btn')) {
+            setTheme(e.target.dataset.theme);
+        }
+    });
+
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    if (savedTheme) {
+        setTheme(savedTheme);
+    } else if (prefersDark) {
+        setTheme('dark');
+    } else {
+        setTheme('light');
+    }
 });

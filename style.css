@@ -1,31 +1,72 @@
 :root {
-    --accent-color: #007bff; /* A refined blue, chosen as a starting point */
+    --accent-color: #007bff;
+    --text-color: #333;
+    --bkg-color: #f0f2f5;
+    --header-bkg: #ffffff;
+    --card-bkg: #ffffff;
+    --card-border: #ddd;
+    --card-shadow: rgba(0,0,0,0.1);
+}
+
+[data-theme="dark"] {
+    --accent-color: #809fff;
+    --text-color: #eee;
+    --bkg-color: #121212;
+    --header-bkg: #1f1f1f;
+    --card-bkg: #1f1f1f;
+    --card-border: #444;
+    --card-shadow: rgba(255,255,255,0.1);
 }
 
 /* General Body Styles */
 body {
     font-family: 'Open Sans', sans-serif;
-    background-color: #f0f2f5;
-    color: #333;
+    background-color: var(--bkg-color);
+    color: var(--text-color);
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Header Styles */
 header {
-    background-color: #ffffff;
+    background-color: var(--header-bkg);
     padding: 20px 0;
     text-align: center;
     border-bottom: 2px solid var(--accent-color);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 4px var(--card-shadow);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
 }
 
 header h1 {
     font-family: 'Montserrat', sans-serif;
     margin: 0;
     font-size: 2em;
-    color: #333;
+    color: var(--text-color);
+}
+
+.theme-switcher {
+    display: flex;
+    gap: 10px;
+}
+
+.theme-btn {
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 1px solid var(--accent-color);
+    background-color: transparent;
+    color: var(--accent-color);
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.theme-btn.active {
+    background-color: var(--accent-color);
+    color: var(--bkg-color);
 }
 
 /* Featured Tool Section */
@@ -183,11 +224,11 @@ main {
 
 /* Tool Cards */
 .tool-card {
-    background-color: #ffffff;
-    border: 1px solid #ddd;
+    background-color: var(--card-bkg);
+    border: 1px solid var(--card-border);
     border-radius: 8px;
     padding: 20px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px var(--card-shadow);
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
     display: flex; /* For better internal alignment if needed */
     flex-direction: column;
