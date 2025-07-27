@@ -12,9 +12,9 @@
     "floating_card_description": "This is an example of a floating card."
   },
   {
-    "title": "Chat with a Doc",
+    "title": "DocQA",
     "description": "AI-powered Q&A over your own documents.",
-    "url": "https://melbinjp.github.io/chat_with_a_doc/",
+    "url": "https://docqa.wecanuseai.com/",
     "icon": "fa-comments",
     "featured": true,
     "show": true,
