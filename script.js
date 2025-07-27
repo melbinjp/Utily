@@ -36,6 +36,10 @@ document.addEventListener("DOMContentLoaded", () => {
                             <div class="featured-visual">
                                 <div class="floating-card">
                                     <div class="card-icon"><i class="fa ${tool.icon}" aria-hidden="true"></i></div>
+                                    <div class="card-content">
+                                        <h4>${tool.floating_card_title || ''}</h4>
+                                        <p>${tool.floating_card_description || ''}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
