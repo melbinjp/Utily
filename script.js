@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         <div class="featured-text">
                                 <h2>🚀 Featured Tool</h2>
                                 <h3>${tool.title}</h3>
-                                <p>${tool.long_description || tool.description}</p>
+                                <p>${tool.featured_description || tool.description}</p>
                                 <div class="featured-actions">
                                     <a href="${tool.url}" class="primary-btn" target="_blank">
                                         <span>Try it now</span>
@@ -34,19 +34,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                 </div>
                             </div>
                             <div class="featured-visual">
-                                ${tool.floating_card ? `
-                                <div class="floating-card">
-                                    <div class="card-icon"><i class="fa ${tool.floating_card.icon || tool.icon}" aria-hidden="true"></i></div>
-                                    <div class="card-content">
-                                        <h4>${tool.floating_card.title || ''}</h4>
-                                        <p>${tool.floating_card.description || ''}</p>
-                                    </div>
-                                </div>
-                                ` : `
                                 <div class="floating-card">
                                     <div class="card-icon"><i class="fa ${tool.icon}" aria-hidden="true"></i></div>
                                 </div>
-                                `}
                             </div>
                         </div>
                     </div>
