@@ -42,16 +42,18 @@ header {
     padding: 10px 20px;
 }
 
-header h1 {
-    font-family: 'Montserrat', sans-serif;
-    margin: 0;
-    font-size: 2em;
+.settings-btn {
+    background: transparent;
+    border: none;
     color: var(--text-color);
+    font-size: 1.5em;
+    cursor: pointer;
 }
 
 .theme-switcher {
     display: flex;
     gap: 10px;
+    margin-top: 20px;
 }
 
 .theme-btn {
@@ -69,9 +71,65 @@ header h1 {
     color: var(--bkg-color);
 }
 
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal {
+    background-color: var(--card-bkg);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px var(--card-shadow);
+    position: relative;
+    width: 90%;
+    max-width: 500px;
+}
+
+.modal h2 {
+    margin-top: 0;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+header h1 {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    font-size: 2em;
+    color: #333;
+}
+
 /* Featured Tool Section */
 #featured-tool {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    margin: 20px;
     padding: 0;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
     overflow: hidden;
     position: relative;
 }
@@ -224,12 +282,12 @@ main {
 
 /* Tool Cards */
 .tool-card {
-    background-color: var(--card-bkg);
-    border: 1px solid var(--card-border);
+    background-color: #ffffff;
+    border: 1px solid #ddd;
     border-radius: 8px;
     padding: 20px;
-    box-shadow: 0 2px 5px var(--card-shadow);
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.3s ease, border-color 0.3s ease;
     display: flex; /* For better internal alignment if needed */
     flex-direction: column;
     justify-content: space-between; /* Pushes content and link apart if card has fixed height */
@@ -342,78 +400,4 @@ main {
        For example, change minmax to minmax(200px, 1fr) or ensure single column if necessary.
        However, grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) is generally robust.
     */
-}
-
-/* Carousel Styles */
-.carousel {
-    position: relative;
-    margin: 20px auto;
-    width: 80%;
-    overflow: visible;
-}
-
-.carousel-inner {
-    display: flex;
-    transition: transform 0.5s ease;
-    align-items: center;
-}
-
-.carousel-item {
-    background: #667eea;
-    background-size: cover;
-    background-position: center;
-    min-width: 80%;
-    margin: 0 10%;
-    box-sizing: border-box;
-    transform: scale(0.8);
-    transition: transform 0.5s ease, opacity 0.5s ease;
-    opacity: 0.5;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
-
-.carousel-item.active {
-    transform: scale(1);
-    opacity: 1;
-}
-
-.carousel-control {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    z-index: 100;
-}
-
-.carousel-control.prev {
-    left: 10px;
-}
-
-.carousel-control.next {
-    right: 10px;
-}
-
-.carousel-indicators {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 5px;
-}
-
-.indicator {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: #ccc;
-    cursor: pointer;
-}
-
-.indicator.active {
-    background-color: #333;
 }

@@ -7,7 +7,6 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/melbinjp/favicon/master/favicon.png">
     <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/melbinjp/favicon/master/favicon.svg">
-    <meta name="color-scheme" content="light dark">
 
     <!--
     MANUAL REDIRECT:
@@ -29,26 +28,71 @@
 <body>
     <header>
         <h1>wecanuseai.com</h1>
-        <div class="theme-switcher">
-            <button class="theme-btn light-btn" data-theme="light">Light</button>
-            <button class="theme-btn dark-btn" data-theme="dark">Dark</button>
-        </div>
+        <button class="settings-btn"><i class="fa fa-cog"></i></button>
     </header>
-    <div id="featured-tool-carousel" class="carousel">
-        <div class="carousel-inner">
-            <!-- Featured tools will be dynamically inserted here -->
+    <div class="modal-overlay">
+        <div class="modal">
+            <h2>Settings</h2>
+            <div class="theme-switcher">
+                <button class="theme-btn light-btn" data-theme="light">Light</button>
+                <button class="theme-btn dark-btn" data-theme="dark">Dark</button>
+                <button class="theme-btn system-btn" data-theme="system">System</button>
+            </div>
+            <button class="close-btn"><i class="fa fa-times"></i></button>
         </div>
-        <button class="carousel-control prev">&lt;</button>
-        <button class="carousel-control next">&gt;</button>
-        <div class="carousel-indicators">
-            <!-- Indicators will be dynamically inserted here -->
+    </div>
+    <div id="featured-tool">
+        <div class="featured-content">
+            <div class="featured-text">
+                <h2>🚀 Featured Tool</h2>
+                <h3>Chat with a Doc</h3>
+                <p>Transform how you interact with documents. Upload PDFs, DOCX files, or URLs and have intelligent conversations with their content using AI-powered search.</p>
+                <div class="featured-actions">
+                    <a href="https://melbinjp.github.io/chat_with_a_doc/" class="primary-btn" target="_blank">
+                        <span>Try it now</span>
+                        <i class="fa fa-arrow-right"></i>
+                    </a>
+                    <a href="#tools" class="secondary-btn">Explore all tools</a>
+                </div>
+            </div>
+            <div class="featured-visual">
+                <div class="floating-card">
+                    <div class="card-icon">📄</div>
+                    <div class="card-content">
+                        <h4>Smart Document Q&A</h4>
+                        <p>Ask questions, get instant answers from your documents</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <main id="tools">
-        <div id="tool-grid" class="tool-grid">
-            <!-- Tool cards will be dynamically inserted here -->
+        <div class="tool-grid">
+            <div class="tool-card">
+                <h3><i class="fa fa-microphone" aria-hidden="true"></i> <a href="https://melbinjp.github.io/voice_notes/" target="_blank">Voice Notes</a></h3>
+                <p>Record and manage voice notes easily in your browser with a clean interface.</p>
+            </div>
+            <div class="tool-card">
+                <h3><i class="fa fa-cube" aria-hidden="true"></i> <a href="https://melbinjp.github.io/3d_modelview/" target="_blank">3D Model Viewer</a></h3>
+                <p>Interactively view and manipulate 3D models directly in your browser.</p>
+            </div>
+            <div class="tool-card">
+                <h3><i class="fa fa-microphone" aria-hidden="true"></i> <a href="https://melbinjp.github.io/Transcribe-Realtime-/" target="_blank">Live Audio Transcription</a></h3>
+                <p>Transcribe spoken audio into text in real-time with high accuracy.</p>
+            </div>
+            <div class="tool-card">
+                <h3><i class="fa fa-youtube-play" aria-hidden="true"></i> <a href="https://youtube.com/@video_gen?feature=shared" target="_blank">VideoGen YouTube Channel</a></h3>
+                <p>Explore AI-generated video content and experiments on our official channel.</p>
+            </div>
+            <div class="tool-card">
+                <h3><i class="fa fa-video-camera" aria-hidden="true"></i> <a href="https://melbinjp.github.io/AV-Recorder/" target="_blank">AV Recorder</a></h3>
+                <p>Easily record audio and video from your browser, ready for download.</p>
+            </div>
+            <div class="tool-card">
+                <h3><i class="fa fa-comments" aria-hidden="true"></i> <a href="https://melbinjp.github.io/chat_with_a_doc/" target="_blank">Chat with a Doc</a></h3>
+                <p>AI-powered Q&A over your own documents.</p>
+            </div>
         </div>
     </main>
-    <script src="script.js"></script>
 </body>
 </html>

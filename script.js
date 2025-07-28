@@ -1,4 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const settingsBtn = document.querySelector(".settings-btn");
+    const modalOverlay = document.querySelector(".modal-overlay");
+    const closeBtn = document.querySelector(".close-btn");
     const themeSwitcher = document.querySelector(".theme-switcher");
     const toolGrid = document.getElementById("tool-grid");
     const carouselInner = document.querySelector(".carousel-inner");
@@ -7,6 +10,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const indicatorsContainer = document.querySelector(".carousel-indicators");
     let currentIndex = 0;
     let autoplayInterval;
+
+    settingsBtn.addEventListener("click", () => {
+        modalOverlay.classList.add("active");
+    });
+
+    closeBtn.addEventListener("click", () => {
+        modalOverlay.classList.remove("active");
+    });
+
+    modalOverlay.addEventListener("click", (e) => {
+        if (e.target === modalOverlay) {
+            modalOverlay.classList.remove("active");
+        }
+    });
 
     fetch("tools.json")
         .then(response => response.json())
@@ -23,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 carouselItem.innerHTML = `
                     <div class="featured-content">
                         <div class="featured-text">
-                                <h2>🚀 Featured Tool</h2>
+                                 <h2>🚀 Featured Tool</h2>
                                 <h3>${tool.title}</h3>
                                 <p>${tool.featured_description || tool.description}</p>
                                 <div class="featured-actions">
@@ -112,8 +129,14 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
     function setTheme(theme) {
-        document.documentElement.setAttribute('data-theme', theme);
-        localStorage.setItem('theme', theme);
+        if (theme === 'system') {
+            localStorage.removeItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+        } else {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+        }
         document.querySelectorAll('.theme-btn').forEach(btn => {
             btn.classList.toggle('active', btn.dataset.theme === theme);
         });
@@ -130,9 +153,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (savedTheme) {
         setTheme(savedTheme);
-    } else if (prefersDark) {
-        setTheme('dark');
     } else {
-        setTheme('light');
+        setTheme('system');
     }
 });
