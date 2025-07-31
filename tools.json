@@ -1,0 +1,58 @@
+[
+  {
+    "title": "Example Tool",
+    "description": "This is an example of a tool with all the possible options.",
+    "url": "#",
+    "icon": "fa-flask",
+    "show": false,
+    "featured": false,
+    "featured_description": "This is a longer description of the example tool. It can be used to provide more details about the tool and its features.",
+    "background_image": "https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1290&q=80",
+    "floating_card_title": "Example Floating Card",
+    "floating_card_description": "This is an example of a floating card."
+  },
+  {
+    "title": "Chat with a Doc",
+    "description": "AI-powered Q&A over your own documents.",
+    "url": "https://melbinjp.github.io/chat_with_a_doc/",
+    "icon": "fa-comments",
+    "featured": true,
+    "show": true,
+    "featured_description": "Transform how you interact with documents. Upload PDFs, DOCX files, or URLs and have intelligent conversations with their content using AI-powered search."
+  },
+  {
+    "title": "Voice Notes",
+    "description": "Record and manage voice notes easily in your browser.",
+    "url": "https://melbinjp.github.io/voice_notes/",
+    "icon": "fa-microphone",
+    "show": true
+  },
+  {
+    "title": "3D Model Viewer",
+    "description": "Interactively view and manipulate 3D models directly in your browser.",
+    "url": "https://melbinjp.github.io/3d_modelview/",
+    "icon": "fa-cube",
+    "show": true
+  },
+  {
+    "title": "Live Audio Transcription",
+    "description": "Transcribe spoken audio into text in real-time.",
+    "url": "https://melbinjp.github.io/Transcribe-Realtime-/",
+    "icon": "fa-headphones",
+    "show": true
+  },
+  {
+    "title": "VideoGen YouTube Channel",
+    "description": "Explore AI-generated video content and experiments.",
+    "url": "https://youtube.com/@video_gen?feature=shared",
+    "icon": "fab fa-youtube",
+    "show": true
+  },
+  {
+    "title": "AV Recorder",
+    "description": "Record audio and video from your browser, ready for download.",
+    "url": "https://melbinjp.github.io/AV-Recorder/",
+    "icon": "fa-video",
+    "show": true
+  }
+]
