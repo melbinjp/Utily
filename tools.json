@@ -12,7 +12,7 @@
   {
     "title": "Chat with a Doc",
     "description": "AI-powered Q&A over your own documents with intelligent search and citations.",
-    "url": "https://melbinjp.github.io/chat_with_a_doc/",
+    "url": "https://melbinjp.github.io/DocQA/",
     "icon": "fas fa-comments",
     "featured": true,
     "show": true,
