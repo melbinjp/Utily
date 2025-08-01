@@ -84,5 +84,12 @@
     "url": "#",
     "icon": "fas fa-star",
     "show": true
+  },
+  {
+    "title": "Base64 Encoder/Decoder",
+    "description": "Quickly encode and decode text using Base64. A simple and effective developer utility.",
+    "url": "../base64-tool/index.html",
+    "icon": "fas fa-exchange-alt",
+    "show": true
   }
 ]

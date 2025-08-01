@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base64 Encoder/Decoder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Base64 Encoder/Decoder</h1>
+        <div class="io-container">
+            <div class="io-box">
+                <label for="input">Input</label>
+                <textarea id="input" rows="10" placeholder="Type or paste your text here..."></textarea>
+            </div>
+            <div class="io-box">
+                <label for="output">Output</label>
+                <textarea id="output" rows="10" readonly placeholder="Result..."></textarea>
+            </div>
+        </div>
+        <div class="controls">
+            <button id="encode-btn">Encode</button>
+            <button id="decode-btn">Decode</button>
+            <button id="copy-btn">Copy to Clipboard</button>
+            <button id="clear-btn">Clear</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
