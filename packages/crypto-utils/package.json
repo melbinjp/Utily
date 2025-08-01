@@ -1,0 +1,13 @@
+{
+  "name": "crypto-utils",
+  "version": "1.0.0",
+  "description": "Shared cryptography utilities for the WeCanUseAI platform.",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [
+    "crypto",
+    "utils"
+  ],
+  "author": "WeCanUseAI",
+  "license": "MIT"
+}

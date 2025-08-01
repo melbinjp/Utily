@@ -5,8 +5,14 @@
     <link rel="stylesheet" type="text/css" href="popup.css">
 </head>
 <body>
-    <h1>WeCanUseAI Connector</h1>
-    <p>Status: Connected</p>
+    <h1>Base64 Encoder</h1>
+    <textarea id="popup-input" rows="5" placeholder="Enter text to encode..."></textarea>
+    <button id="popup-encode-btn">Encode</button>
+    <div id="popup-output-container">
+        <strong>Output:</strong>
+        <p id="popup-output"></p>
+    </div>
+    <script src="../crypto-utils/index.js"></script>
     <script src="popup.js"></script>
 </body>
 </html>

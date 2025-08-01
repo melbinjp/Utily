@@ -1,6 +1,23 @@
-// popup.js
+document.addEventListener('DOMContentLoaded', () => {
+    const inputEl = document.getElementById('popup-input');
+    const outputEl = document.getElementById('popup-output');
+    const encodeBtn = document.getElementById('popup-encode-btn');
 
-// This script runs in the context of the extension's popup UI.
-// It can be used to handle user interactions within the popup.
+    // The encodeBase64 function is available on the window object
+    // because it was loaded by the crypto-utils/index.js script.
+    const { encodeBase64 } = window.cryptoUtils;
 
-console.log("Popup script loaded.");
+    encodeBtn.addEventListener('click', () => {
+        try {
+            const inputText = inputEl.value;
+            if (inputText.trim() === '') {
+                outputEl.textContent = 'Input is empty.';
+                return;
+            }
+            outputEl.textContent = encodeBase64(inputText);
+        } catch (error) {
+            outputEl.textContent = 'Error encoding text.';
+            console.error('Popup Encoding Error:', error);
+        }
+    });
+});

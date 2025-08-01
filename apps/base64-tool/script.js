@@ -6,7 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const copyBtn = document.getElementById('copy-btn');
     const clearBtn = document.getElementById('clear-btn');
 
-    // Encode function
+    // The encodeBase64 and decodeBase64 functions are available on the window object
+    // because they were loaded by the crypto-utils/index.js script.
+    const { encodeBase64, decodeBase64 } = window.cryptoUtils;
+
     encodeBtn.addEventListener('click', () => {
         try {
             const inputText = inputEl.value;
@@ -14,16 +17,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 outputEl.value = 'Input is empty.';
                 return;
             }
-            // btoa() can throw an error for non-latin characters
-            const encodedText = btoa(unescape(encodeURIComponent(inputText)));
-            outputEl.value = encodedText;
+            outputEl.value = encodeBase64(inputText);
         } catch (error) {
             outputEl.value = 'Error encoding text. Make sure the input is valid.';
             console.error('Encoding Error:', error);
         }
     });
 
-    // Decode function
     decodeBtn.addEventListener('click', () => {
         try {
             const inputText = inputEl.value;
@@ -31,18 +31,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 outputEl.value = 'Input is empty.';
                 return;
             }
-            const decodedText = decodeURIComponent(escape(atob(inputText)));
-            outputEl.value = decodedText;
+            outputEl.value = decodeBase64(inputText);
         } catch (error) {
             outputEl.value = 'Error decoding text. Make sure the input is a valid Base64 string.';
             console.error('Decoding Error:', error);
         }
     });
 
-    // Copy to clipboard function
     copyBtn.addEventListener('click', () => {
         if (outputEl.value.trim() === '' || outputEl.value.startsWith('Error')) {
-            return; // Don't copy empty or error messages
+            return;
         }
         navigator.clipboard.writeText(outputEl.value).then(() => {
             const originalText = copyBtn.innerText;
@@ -55,7 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Clear function
     clearBtn.addEventListener('click', () => {
         inputEl.value = '';
         outputEl.value = '';
