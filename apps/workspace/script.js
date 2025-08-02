@@ -26,8 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const title = document.createElement('div');
             title.className = 'asset-title';
-            // Show a snippet of the content
-            title.textContent = asset.content.substring(0, 20) + '...';
+            // Show the asset name if it exists, otherwise show a snippet
+            title.textContent = asset.name || asset.content.substring(0, 20) + '...';
 
             const deleteBtn = document.createElement('button');
             deleteBtn.className = 'delete-btn';
@@ -48,7 +48,34 @@ document.addEventListener('DOMContentLoaded', () => {
         renderAssets();
     };
 
+    const handleIncomingAsset = () => {
+        const params = new URLSearchParams(window.location.search);
+        const assetName = params.get('assetName');
+        const assetContentEncoded = params.get('assetContent');
+        const assetType = params.get('assetType');
+
+        if (assetName && assetContentEncoded && assetType) {
+            const assets = getAssets();
+            const newAsset = {
+                id: `asset-${Date.now()}`,
+                type: assetType,
+                // The content is Base64 encoded, so we need to decode it.
+                // We need access to the decodeBase64 function here.
+                // For now, let's assume it's available on `window.cryptoUtils`
+                content: window.cryptoUtils.decodeBase64(assetContentEncoded),
+                createdAt: new Date().toISOString(),
+                name: assetName // Add the file name
+            };
+            assets.push(newAsset);
+            localStorage.setItem('wecanuseai-assets', JSON.stringify(assets));
+
+            // Clean the URL
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }
+    };
+
     // Initial render
+    handleIncomingAsset();
     renderAssets();
 
     // Listen for changes in local storage from other tabs/windows
