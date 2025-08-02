@@ -4,11 +4,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const encodeBtn = document.getElementById('encode-btn');
     const decodeBtn = document.getElementById('decode-btn');
     const copyBtn = document.getElementById('copy-btn');
+    const saveAssetBtn = document.getElementById('save-asset-btn');
     const clearBtn = document.getElementById('clear-btn');
 
-    // The encodeBase64 and decodeBase64 functions are available on the window object
-    // because they were loaded by the crypto-utils/index.js script.
     const { encodeBase64, decodeBase64 } = window.cryptoUtils;
+
+    const getAssets = () => {
+        return JSON.parse(localStorage.getItem('wecanuseai-assets') || '[]');
+    };
+
+    const saveAssets = (assets) => {
+        localStorage.setItem('wecanuseai-assets', JSON.stringify(assets));
+    };
 
     encodeBtn.addEventListener('click', () => {
         try {
@@ -19,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             outputEl.value = encodeBase64(inputText);
         } catch (error) {
-            outputEl.value = 'Error encoding text. Make sure the input is valid.';
+            outputEl.value = 'Error encoding text.';
             console.error('Encoding Error:', error);
         }
     });
@@ -33,9 +40,33 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             outputEl.value = decodeBase64(inputText);
         } catch (error) {
-            outputEl.value = 'Error decoding text. Make sure the input is a valid Base64 string.';
+            outputEl.value = 'Error decoding text.';
             console.error('Decoding Error:', error);
         }
+    });
+
+    saveAssetBtn.addEventListener('click', () => {
+        const outputText = outputEl.value;
+        if (outputText.trim() === '' || outputText.startsWith('Error')) {
+            alert('Cannot save an empty or error output as an asset.');
+            return;
+        }
+
+        const assets = getAssets();
+        const newAsset = {
+            id: `asset-${Date.now()}`,
+            type: 'Base64 Text',
+            content: outputText,
+            createdAt: new Date().toISOString()
+        };
+        assets.push(newAsset);
+        saveAssets(assets);
+
+        const originalText = saveAssetBtn.innerText;
+        saveAssetBtn.innerText = 'Saved!';
+        setTimeout(() => {
+            saveAssetBtn.innerText = originalText;
+        }, 1500);
     });
 
     copyBtn.addEventListener('click', () => {

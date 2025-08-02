@@ -95,3 +95,7 @@ button:hover {
 #clear-btn {
     background-color: var(--danger-color);
 }
+
+.secondary-btn {
+    background-color: var(--success-color);
+}

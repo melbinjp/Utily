@@ -60,6 +60,7 @@ body, html {
 }
 
 .asset-card {
+    position: relative;
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -67,9 +68,36 @@ body, html {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
+.delete-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.delete-btn:hover {
+    opacity: 1;
+}
+
 .asset-thumbnail {
     height: 120px;
     background-color: #e9ecef;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #6c757d;
 }
 
 .asset-title {
