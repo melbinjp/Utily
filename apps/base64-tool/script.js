@@ -9,6 +9,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const { encodeBase64, decodeBase64 } = window.cryptoUtils;
 
+    const handleIncomingData = () => {
+        const params = new URLSearchParams(window.location.search);
+        const dataEncoded = params.get('data');
+        if (dataEncoded) {
+            try {
+                const decodedData = decodeBase64(dataEncoded);
+                inputEl.value = decodedData;
+            } catch (error) {
+                inputEl.value = "Error: Could not decode incoming data.";
+                console.error("Error decoding data from URL:", error);
+            }
+        }
+    };
+
     const getAssets = () => {
         return JSON.parse(localStorage.getItem('wecanuseai-assets') || '[]');
     };
@@ -88,4 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
         inputEl.value = '';
         outputEl.value = '';
     });
+
+    // Run the handler on page load
+    handleIncomingData();
 });

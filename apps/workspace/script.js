@@ -5,7 +5,24 @@ document.addEventListener('DOMContentLoaded', () => {
         return JSON.parse(localStorage.getItem('wecanuseai-assets') || '[]');
     };
 
-    const renderAssets = () => {
+    let availableTools = [];
+
+    const fetchTools = async () => {
+        try {
+            // Adjust the path to be relative to the workspace app's location
+            const response = await fetch('../portal/tools.json');
+            if (!response.ok) {
+                throw new Error('Failed to fetch tools.json');
+            }
+            availableTools = await response.json();
+        } catch (error) {
+            console.error(error);
+            // Handle error, maybe show a message to the user
+        }
+    };
+
+    const renderAssets = async () => {
+        await fetchTools(); // Ensure tools are loaded before rendering assets
         const assets = getAssets();
         assetGrid.innerHTML = ''; // Clear existing assets
 
@@ -29,6 +46,40 @@ document.addEventListener('DOMContentLoaded', () => {
             // Show the asset name if it exists, otherwise show a snippet
             title.textContent = asset.name || asset.content.substring(0, 20) + '...';
 
+            const cardFooter = document.createElement('div');
+            cardFooter.className = 'asset-card-footer';
+
+            const openWithBtn = document.createElement('button');
+            openWithBtn.className = 'open-with-btn';
+            openWithBtn.textContent = 'Open With...';
+
+            const toolListDropdown = document.createElement('div');
+            toolListDropdown.className = 'tool-list-dropdown';
+            toolListDropdown.style.display = 'none'; // Hidden by default
+
+            availableTools.forEach(tool => {
+                if (tool.show) { // Only show tools that are meant to be visible
+                    const toolButton = document.createElement('button');
+                    toolButton.className = 'tool-list-item';
+                    toolButton.textContent = tool.title;
+                    toolButton.onclick = () => {
+                        // Encode the asset content to be URL-safe
+                        const encodedContent = window.cryptoUtils.encodeBase64(asset.content);
+                        const toolUrl = new URL(tool.url, window.location.origin);
+                        toolUrl.searchParams.set('data', encodedContent);
+                        window.open(toolUrl, '_blank');
+                    };
+                    toolListDropdown.appendChild(toolButton);
+                }
+            });
+
+            openWithBtn.onclick = () => {
+                toolListDropdown.style.display = toolListDropdown.style.display === 'none' ? 'block' : 'none';
+            };
+
+            cardFooter.appendChild(openWithBtn);
+            cardFooter.appendChild(toolListDropdown);
+
             const deleteBtn = document.createElement('button');
             deleteBtn.className = 'delete-btn';
             deleteBtn.textContent = '×';
@@ -37,6 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
             card.appendChild(deleteBtn);
             card.appendChild(thumbnail);
             card.appendChild(title);
+            card.appendChild(cardFooter); // Append the footer to the card
             assetGrid.appendChild(card);
         });
     };
