@@ -31,12 +31,20 @@ class AIToolsPortal {
     }
     
     async loadTools() {
-        const response = await fetch('tools.json');
-        if (!response.ok) throw new Error('Failed to fetch tools');
-        
-        const allTools = await response.json();
-        this.tools = allTools.filter(tool => tool.show);
-        this.featuredTools = this.tools.filter(tool => tool.featured);
+        try {
+            const response = await fetch('tools.json');
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            
+            const allTools = await response.json();
+            this.tools = allTools.filter(tool => tool.show);
+            this.featuredTools = this.tools.filter(tool => tool.featured);
+        } catch (error) {
+            console.error('Failed to load tools:', error);
+            // Fallback to prevent complete failure
+            this.tools = [];
+            this.featuredTools = [];
+            throw error;
+        }
     }
     
     showLoading() {
@@ -114,8 +122,16 @@ class AIToolsPortal {
         
         if (!carouselInner || !indicatorsContainer) return;
         
+        // Remove placeholder
+        const placeholder = carouselInner.querySelector('.carousel-placeholder');
+        if (placeholder) placeholder.remove();
+        
         carouselInner.innerHTML = '';
         indicatorsContainer.innerHTML = '';
+        
+        // Show carousel controls
+        const controls = document.querySelectorAll('.carousel-control');
+        controls.forEach(control => control.style.opacity = '1');
         
         this.featuredTools.forEach((tool, index) => {
             const carouselItem = this.createCarouselItem(tool, index);
@@ -187,6 +203,10 @@ class AIToolsPortal {
         const toolGrid = document.getElementById('tool-grid');
         if (!toolGrid) return;
         
+        // Remove placeholder
+        const placeholder = toolGrid.querySelector('.tool-placeholder');
+        if (placeholder) placeholder.remove();
+        
         toolGrid.innerHTML = '';
         
         this.tools.forEach(tool => {
@@ -199,8 +219,11 @@ class AIToolsPortal {
         const card = document.createElement('article');
         card.className = 'tool-card';
         card.dataset.category = this.getToolCategory(tool);
+        card.style.minHeight = '200px'; // Prevent layout shift
         
-        card.innerHTML = `
+        // Use template for better performance
+        const template = document.createElement('template');
+        template.innerHTML = `
             <div class="tool-card-header">
                 <div class="tool-card-icon">
                     <i class="${tool.icon}" aria-hidden="true"></i>
@@ -219,6 +242,8 @@ class AIToolsPortal {
                 </a>
             </div>
         `;
+        
+        card.appendChild(template.content.cloneNode(true));
         
         // Add click handler for the entire card
         card.addEventListener('click', (e) => {

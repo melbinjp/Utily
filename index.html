@@ -61,16 +61,28 @@
     -->
     <!-- <meta http-equiv="refresh" content="0; url=PUT_YOUR_REDIRECT_URL_HERE"> -->
 
-    <!-- Preload critical resources -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;500&display=swap" as="style">
-    <link rel="preload" href="tools.json" as="fetch" crossorigin>
+    <!-- Critical CSS inline -->
+    <style>
+        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f7fafc;color:#2d3748;margin:0;line-height:1.6;-webkit-font-smoothing:antialiased}
+        .loading-indicator{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(255,255,255,.9);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:1000;backdrop-filter:blur(5px)}
+        .spinner{width:40px;height:40px;border:3px solid #e2e8f0;border-top:3px solid #667eea;border-radius:50%;animation:spin 1s linear infinite;margin-bottom:1rem}
+        @keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+        .hero-carousel{min-height:400px;margin:1.5rem 0}
+        .tool-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;min-height:600px}
+        .tool-card{background:#fff;border:1px solid #e2e8f0;border-radius:.75rem;padding:2rem;min-height:200px}
+    </style>
     
+    <!-- Preload critical resources -->
+    <link rel="preload" href="tools.json" as="fetch" crossorigin>
+    <link rel="preload" href="style.css" as="style">
+    
+    <!-- Async load non-critical CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     
-    <!-- Modern Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <!-- Defer Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -92,15 +104,21 @@
             </div>
         </nav>
     </header>
-    <section class="hero-carousel" aria-label="Featured AI tools">
+    <section class="hero-carousel" aria-label="Featured AI tools" style="min-height:400px">
         <div id="featured-tool-carousel" class="carousel">
-            <div class="carousel-inner" role="region" aria-live="polite">
+            <div class="carousel-inner" role="region" aria-live="polite" style="min-height:400px">
                 <!-- Featured tools will be dynamically inserted here -->
+                <div class="carousel-placeholder" style="min-height:400px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);border-radius:1rem;color:white">
+                    <div style="text-align:center">
+                        <div style="width:40px;height:40px;border:3px solid rgba(255,255,255,.3);border-top:3px solid white;border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 1rem"></div>
+                        <p>Loading featured tools...</p>
+                    </div>
+                </div>
             </div>
-            <button class="carousel-control prev" aria-label="Previous featured tool">
+            <button class="carousel-control prev" aria-label="Previous featured tool" style="opacity:0">
                 <i class="fas fa-chevron-left" aria-hidden="true"></i>
             </button>
-            <button class="carousel-control next" aria-label="Next featured tool">
+            <button class="carousel-control next" aria-label="Next featured tool" style="opacity:0">
                 <i class="fas fa-chevron-right" aria-hidden="true"></i>
             </button>
             <div class="carousel-indicators" role="tablist" aria-label="Featured tool indicators">
@@ -121,8 +139,14 @@
                     <button class="filter-btn" data-filter="utility">Utilities</button>
                 </div>
             </div>
-            <div id="tool-grid" class="tool-grid" role="region" aria-label="AI tools collection">
+            <div id="tool-grid" class="tool-grid" role="region" aria-label="AI tools collection" style="min-height:600px">
                 <!-- Tool cards will be dynamically inserted here -->
+                <div class="tool-placeholder" style="grid-column:1/-1;display:flex;align-items:center;justify-content:center;min-height:200px">
+                    <div style="text-align:center;color:#718096">
+                        <div style="width:40px;height:40px;border:3px solid #e2e8f0;border-top:3px solid #667eea;border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 1rem"></div>
+                        <p>Loading AI tools...</p>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -143,7 +167,7 @@
         <p>Loading AI tools...</p>
     </div>
     
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
     
     <!-- Service Worker for PWA -->
     <script>

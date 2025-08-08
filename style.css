@@ -171,6 +171,7 @@ header {
 /* Hero Carousel Section */
 .hero-carousel {
     margin: var(--space-lg) 0;
+    min-height: 400px; /* Prevent layout shift */
 }
 
 .carousel {
@@ -185,6 +186,7 @@ header {
     display: flex;
     transition: transform var(--transition-slow);
     align-items: center;
+    min-height: 400px; /* Prevent layout shift */
 }
 
 .carousel-item {
@@ -472,6 +474,7 @@ main {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: var(--space-xl);
     margin-top: var(--space-xl);
+    min-height: 600px; /* Prevent layout shift */
 }
 
 /* Tool Cards */
@@ -487,6 +490,8 @@ main {
     position: relative;
     overflow: hidden;
     cursor: pointer;
+    min-height: 200px; /* Prevent layout shift */
+    contain: layout style; /* Improve performance */
 }
 
 .tool-card::before {
@@ -604,6 +609,7 @@ main {
     justify-content: center;
     box-shadow: var(--shadow-md);
     backdrop-filter: blur(10px);
+    opacity: 0; /* Hidden by default, shown when content loads */
 }
 
 .carousel-control:hover {
@@ -733,6 +739,35 @@ footer {
     color: var(--text-secondary);
     font-size: 0.875rem;
     margin: 0;
+}
+
+/* Performance optimizations */
+.tool-card-icon {
+    will-change: transform;
+}
+
+.primary-btn {
+    will-change: transform;
+}
+
+.floating-card {
+    will-change: transform;
+}
+
+/* Reduce animations on slower devices */
+@media (prefers-reduced-motion: reduce) {
+    .floating-card {
+        animation: none;
+    }
+    
+    .carousel-item {
+        transition: opacity var(--transition-fast);
+    }
+    
+    * {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
 }
 
 /* Responsive Design */
