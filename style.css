@@ -2,8 +2,8 @@
     /* Color System */
     --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-    --accent-color: #667eea;
-    --accent-hover: #5a6fd8;
+    --accent-color: #5061CC;
+    --accent-hover: #4655b8;
     --text-primary: #2d3748;
     --text-secondary: #4a5568;
     --text-muted: #718096;
@@ -73,6 +73,18 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
 
 /* Skip link for accessibility */
