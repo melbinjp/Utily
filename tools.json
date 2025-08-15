@@ -62,27 +62,27 @@
     "description": "Zero-shot image classification using advanced AI models for instant object recognition.",
     "url": "#",
     "icon": "fas fa-image",
-    "show": true
+    "show": false
   },
   {
     "title": "Device Analyzer",
     "description": "Comprehensive system and performance analysis tool for your device capabilities.",
     "url": "#",
     "icon": "fas fa-desktop",
-    "show": true
+    "show": false
   },
   {
     "title": "Code Structure Realizer",
     "description": "Visualize and analyze your codebase structure with interactive diagrams and insights.",
     "url": "#",
     "icon": "fas fa-code-branch",
-    "show": true
+    "show": false
   },
   {
     "title": "Favicon Generator",
     "description": "Create custom favicons for your website with multiple formats and sizes.",
     "url": "#",
     "icon": "fas fa-star",
-    "show": true
+    "show": false
   }
 ]
