@@ -7,28 +7,28 @@
     <meta name="description" content="Explore a curated collection of practical and privacy-conscious AI tools designed to enhance your productivity without compromising your data.">
     <meta name="keywords" content="practical AI tools, privacy-conscious AI, productivity software, AI applications, secure AI, AI utilities">
     <meta name="author" content="WeCanUseAI">
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://wecanuseai.com/">
     <meta property="og:title" content="WeCanUseAI: Practical, Privacy-First AI Tools">
     <meta property="og:description" content="A curated collection of practical and privacy-conscious AI tools designed to enhance your productivity.">
     <meta property="og:image" content="https://favicon.wecanuseai.com/og-image.png">
-    
+
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://wecanuseai.com/">
     <meta property="twitter:title" content="WeCanUseAI: Practical, Privacy-First AI Tools">
     <meta property="twitter:description" content="A curated collection of practical and privacy-conscious AI tools designed to enhance your productivity.">
     <meta property="twitter:image" content="https://favicon.wecanuseai.com/og-image.png">
-    
+
     <!-- Canonical URL -->
     <link rel="canonical" href="https://wecanuseai.com/">
 
     <!-- ✅ PWA Manifest (FIRST for iOS compatibility) -->
     <link rel="manifest" href="site.webmanifest" crossorigin="use-credentials">
     <meta name="theme-color" content="#000000">
-    
+
     <!-- ✅ iOS Critical Tags -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -71,12 +71,12 @@
         .tool-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;min-height:600px}
         .tool-card{background:#fff;border:1px solid #e2e8f0;border-radius:.75rem;padding:2rem;min-height:200px}
     </style>
-    
+
     <!-- Preload critical resources -->
     <link rel="preload" href="tools.json" as="fetch" crossorigin>
     <link rel="preload" href="style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="style.css"></noscript>
-    
+
     <!-- Preload Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" href="https://fonts.gstatic.com/s/montserrat/v30/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCu170w-.ttf" as="font" crossorigin>
@@ -85,14 +85,14 @@
     <!-- Async load non-critical CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    
+
     <!-- Defer Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'">
 </head>
 <body>
     <!-- Skip to main content for accessibility -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
-    
+
     <header role="banner">
         <nav class="header-nav" role="navigation" aria-label="Main navigation">
             <h1 class="logo">
@@ -130,7 +130,7 @@
             </div>
         </div>
     </section>
-    
+
     <main id="main-content" role="main">
         <section class="tools-section">
             <div class="section-header">
@@ -154,7 +154,7 @@
             </div>
         </section>
     </main>
-    
+
     <footer role="contentinfo">
         <div class="footer-content">
             <p>&copy; 2024 WeCanUseAI. Empowering creativity with AI.</p>
@@ -170,9 +170,9 @@
         <div class="spinner"></div>
         <p>Loading AI tools...</p>
     </div>
-    
+
     <script src="js/main.js" type="module" defer></script>
-    
+
     <!-- Service Worker for PWA -->
     <script>
         if ('serviceWorker' in navigator) {
