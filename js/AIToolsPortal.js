@@ -14,13 +14,16 @@ export class AIToolsPortal {
         try {
             await this.loadTools();
             this.renderToolGrid();
+            this.hideLoading(); // Hide loading screen as soon as main content is rendered
+
+            // Load secondary content after hiding the loader
             this.setupFilters();
             this.setupIntersectionObserver();
-            this.lazyLoadCarousel();
+            await this.lazyLoadCarousel();
         } catch (error) {
             console.error('Failed to initialize portal:', error);
             this.showError('Failed to load AI tools. Please refresh the page.');
-        } finally {
+            // If an error happens before hideLoading is called, we still need to hide it.
             this.hideLoading();
         }
     }
