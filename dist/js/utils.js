@@ -1,0 +1,1 @@
+export function escapeHtml(t){if("string"!=typeof t)return"";const e=document.createElement("div");return e.textContent=t,e.innerHTML}

@@ -59,7 +59,7 @@ export class AIToolsPortal {
     hideLoading() {
         const loader = document.getElementById('loading-indicator');
         if (loader) {
-            setTimeout(() => loader.classList.add('hidden'), 150);
+            loader.remove();
         }
     }
 

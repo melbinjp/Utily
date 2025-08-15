@@ -4,6 +4,7 @@
     "@tailwindcss/postcss": "^4.1.1",
     "autoprefixer": "^10.4.21",
     "cssnano": "^7.0.1",
+    "esbuild": "^0.25.9",
     "http-server": "^14.1.1",
     "lighthouse": "^11.4.0",
     "postcss": "^8.4.38",
@@ -17,8 +18,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:css": "postcss style.css -o dist/style.css",
-    "build:js": "cp js/main.js dist/js/main.js",
-    "build": "mkdir -p dist/js && npm run build:css && npm run build:js && cp index.html dist/ && cp js/AIToolsPortal.js js/Carousel.js js/utils.js dist/js/ && cp tools.json dist/ && cp critical.css dist/ && cp site.webmanifest dist/ && cp sw.js dist/ && cp robots.txt dist/ && cp sitemap.xml dist/ && cp CNAME dist/",
+    "build:js": "esbuild js/main.js --bundle --minify-whitespace --minify-syntax --outfile=dist/js/main.js",
+    "build": "mkdir -p dist/js && npm run build:css && npm run build:js && cp index.html dist/ && cp tools.json dist/ && cp critical.css dist/ && cp site.webmanifest dist/ && cp sw.js dist/ && cp robots.txt dist/ && cp sitemap.xml dist/ && cp CNAME dist/",
     "preview": "http-server -p 8080 dist",
     "lighthouse:mobile": "lighthouse http://localhost:8080 --output=json --output-path=./lighthouse-mobile-report.json --only-categories=performance,accessibility,best-practices,seo --chrome-flags='--headless --no-sandbox'",
     "lighthouse:desktop": "lighthouse http://localhost:8080 --output=json --output-path=./lighthouse-desktop-report.json --only-categories=performance,accessibility,best-practices,seo --chrome-flags='--headless --no-sandbox'"
