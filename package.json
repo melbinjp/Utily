@@ -18,7 +18,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:css": "postcss style.css -o dist/style.css",
     "build:js": "terser js/main.js -o dist/js/main.js -c -m",
-    "build": "mkdir -p dist/js && npm run build:css && npm run build:js && cp index.html dist/ && cp -r js/*.js dist/js/ && cp tools.json dist/ && cp critical.css dist/ && cp sw.js dist/ && cp robots.txt dist/ && cp sitemap.xml dist/ && CNAME dist/",
+    "build": "mkdir -p dist/js && npm run build:css && npm run build:js && cp index.html dist/ && cp -r js/*.js dist/js/ && cp tools.json dist/ && cp critical.css dist/ && cp sw.js dist/ && cp robots.txt dist/ && cp sitemap.xml dist/ && cp CNAME dist/",
     "preview": "http-server -p 8080 dist",
     "lighthouse:mobile": "lighthouse http://localhost:8080 --output=json --output-path=./lighthouse-mobile-report.json --only-categories=performance,accessibility,best-practices,seo --chrome-flags='--headless --no-sandbox'",
     "lighthouse:desktop": "lighthouse http://localhost:8080 --output=json --output-path=./lighthouse-desktop-report.json --only-categories=performance,accessibility,best-practices,seo --chrome-flags='--headless --no-sandbox'"
