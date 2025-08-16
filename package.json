@@ -1,6 +1,9 @@
 {
   "devDependencies": {
+    "@axe-core/playwright": "^4.9.1",
     "@fullhuman/postcss-purgecss": "^6.0.0",
+    "@lhci/cli": "^0.13.0",
+    "@playwright/test": "^1.45.0",
     "@tailwindcss/postcss": "^4.1.1",
     "autoprefixer": "^10.4.21",
     "cssnano": "^7.0.1",
@@ -16,7 +19,10 @@
   "description": "A comprehensive portal showcasing a collection of AI-powered web tools and utilities. This is the main landing page that provides access to various AI applications and tools.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "playwright install --with-deps",
+    "test": "npm run test:e2e && npm run test:lighthouse",
+    "test:e2e": "playwright test",
+    "test:lighthouse": "lhci autorun",
     "build:css": "postcss style.css -o dist/style.css",
     "build:js": "esbuild js/main.js --bundle --minify-whitespace --minify-syntax --outfile=dist/js/main.js",
     "copy:assets": "cp index.html dist/ && cp tools.json dist/ && cp critical.css dist/ && cp site.webmanifest dist/ && cp sw.js dist/ && cp robots.txt dist/ && cp sitemap.xml dist/ && cp CNAME dist/",

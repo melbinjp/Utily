@@ -1,0 +1,88 @@
+[
+  {
+    "title": "Example Tool",
+    "description": "This is an example of a tool with all the possible options.",
+    "url": "#",
+    "icon": "fas fa-flask",
+    "show": false,
+    "featured": false,
+    "featured_description": "This is a longer description of the example tool. It can be used to provide more details about the tool and its features.",
+    "background_image": "https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1290&q=80"
+  },
+  {
+    "title": "Chat with a Doc",
+    "description": "AI-powered Q&A over your own documents with intelligent search and citations.",
+    "url": "https://melbinjp.github.io/DocQA/",
+    "icon": "fas fa-comments",
+    "featured": true,
+    "show": true,
+    "featured_description": "Transform how you interact with documents. Upload PDFs, DOCX files, or URLs and have intelligent conversations with their content using advanced AI-powered search and real-time citations.",
+    "background_image": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+  },
+  {
+    "title": "Voice Notes",
+    "description": "Record and manage voice notes easily in your browser with a clean, intuitive interface.",
+    "url": "https://melbinjp.github.io/voice_notes/",
+    "icon": "fas fa-microphone",
+    "featured": true,
+    "show": true,
+    "featured_description": "Capture your thoughts instantly with our browser-based voice recording tool. Perfect for quick notes, reminders, and voice memos with seamless playback and management.",
+    "background_image": "https://images.unsplash.com/photo-1554224155-8d04421a1f33?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+  },
+  {
+    "title": "3D Model Viewer",
+    "description": "Interactively view and manipulate 3D models directly in your browser with advanced controls.",
+    "url": "https://melbinjp.github.io/3d_modelview/",
+    "icon": "fas fa-cube",
+    "show": true
+  },
+  {
+    "title": "Live Audio Transcription",
+    "description": "Transcribe spoken audio into text in real-time with high accuracy and timestamps.",
+    "url": "https://melbinjp.github.io/Transcribe-Realtime-/",
+    "icon": "fas fa-closed-captioning",
+    "show": true
+  },
+  {
+    "title": "VideoGen YouTube Channel",
+    "description": "Explore AI-generated video content and cutting-edge experiments on our official channel.",
+    "url": "https://youtube.com/@video_gen?feature=shared",
+    "icon": "fab fa-youtube",
+    "show": true
+  },
+  {
+    "title": "AV Recorder",
+    "description": "Easily record audio and video from your browser with professional quality output.",
+    "url": "https://melbinjp.github.io/AV-Recorder/",
+    "icon": "fas fa-video",
+    "show": true
+  },
+  {
+    "title": "Image Classification",
+    "description": "Zero-shot image classification using advanced AI models for instant object recognition.",
+    "url": "#",
+    "icon": "fas fa-image",
+    "show": false
+  },
+  {
+    "title": "Device Analyzer",
+    "description": "Comprehensive system and performance analysis tool for your device capabilities.",
+    "url": "#",
+    "icon": "fas fa-desktop",
+    "show": false
+  },
+  {
+    "title": "Code Structure Realizer",
+    "description": "Visualize and analyze your codebase structure with interactive diagrams and insights.",
+    "url": "#",
+    "icon": "fas fa-code-branch",
+    "show": false
+  },
+  {
+    "title": "Favicon Generator",
+    "description": "Create custom favicons for your website with multiple formats and sizes.",
+    "url": "#",
+    "icon": "fas fa-star",
+    "show": false
+  }
+]

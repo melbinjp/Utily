@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeCanUseAI - Practical, Privacy-First AI Tools for Productivity</title>
+    <meta name="description" content="Explore a curated collection of practical and privacy-conscious AI tools designed to enhance your productivity without compromising your data.">
+    <meta name="keywords" content="practical AI tools, privacy-conscious AI, productivity software, AI applications, secure AI, AI utilities">
+    <meta name="author" content="WeCanUseAI">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://wecanuseai.com/">
+    <meta property="og:title" content="WeCanUseAI: Practical, Privacy-First AI Tools">
+    <meta property="og:description" content="A curated collection of practical and privacy-conscious AI tools designed to enhance your productivity.">
+    <meta property="og:image" content="https://favicon.wecanuseai.com/og-image.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://wecanuseai.com/">
+    <meta property="twitter:title" content="WeCanUseAI: Practical, Privacy-First AI Tools">
+    <meta property="twitter:description" content="A curated collection of practical and privacy-conscious AI tools designed to enhance your productivity.">
+    <meta property="twitter:image" content="https://favicon.wecanuseai.com/og-image.png">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://wecanuseai.com/">
+
+    <!-- ✅ PWA Manifest (FIRST for iOS compatibility) -->
+    <link rel="manifest" href="site.webmanifest" crossorigin="use-credentials">
+    <meta name="theme-color" content="#000000">
+
+    <!-- ✅ iOS Critical Tags -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="wecanuseai">
+
+    <!-- ✅ Modern SVG favicon -->
+    <link rel="icon" href="https://favicon.wecanuseai.com/favicon.svg?v=1.0.0" type="image/svg+xml" sizes="any">
+
+    <!-- ✅ Dark/Light PNG versions -->
+    <link rel="icon" href="https://favicon.wecanuseai.com/favicon-light.png?v=1.0.0" media="(prefers-color-scheme: light)">
+    <link rel="icon" href="https://favicon.wecanuseai.com/favicon-dark.png?v=1.0.0" media="(prefers-color-scheme: dark)">
+
+    <!-- ✅ Standard PNG fallbacks -->
+    <link rel="icon" href="https://favicon.wecanuseai.com/favicon-32.png?v=1.0.0" sizes="32x32" type="image/png">
+    <link rel="icon" href="https://favicon.wecanuseai.com/favicon-16.png?v=1.0.0" sizes="16x16" type="image/png">
+
+    <!-- ✅ Old browser fallback -->
+    <link rel="shortcut icon" href="https://favicon.wecanuseai.com/favicon.ico?v=1.0.0">
+
+    <!-- ✅ Apple Touch Icon (for iOS) -->
+    <link rel="apple-touch-icon" href="https://favicon.wecanuseai.com/apple-touch-icon.png?v=1.0.0">
+
+    <!--
+    MANUAL REDIRECT:
+    To redirect this page (wecanuseai.com) to a specific tool or URL,
+    uncomment the meta refresh tag below and change the 'content' attribute.
+    The '0' means redirect immediately (0 seconds).
+    The 'url=' should be the full URL of the page you want to redirect to.
+    Example: content="0; url=https://your-featured-tool-url.com"
+    -->
+    <!-- <meta http-equiv="refresh" content="0; url=PUT_YOUR_REDIRECT_URL_HERE"> -->
+
+    <!-- Critical CSS inline -->
+    <style>
+        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f7fafc;color:#2d3748;margin:0;line-height:1.6;-webkit-font-smoothing:antialiased}
+        .loading-indicator{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(255,255,255,.9);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:1000;backdrop-filter:blur(5px)}
+        .spinner{width:40px;height:40px;border:3px solid #e2e8f0;border-top:3px solid #667eea;border-radius:50%;animation:spin 1s linear infinite;margin-bottom:1rem}
+        @keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+        .hero-carousel{min-height:400px;margin:1.5rem 0}
+        .tool-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;min-height:600px}
+        .tool-card{background:#fff;border:1px solid #e2e8f0;border-radius:.75rem;padding:2rem;min-height:200px}
+    </style>
+
+    <!-- Preload critical resources -->
+    <link rel="preload" href="tools.json" as="fetch" crossorigin>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Preload Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Async load non-critical CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Defer Font Awesome -->
+    <link rel="stylesheet" href="vendor/fontawesome/css/all.min.css" media="print" onload="this.media='all'">
+</head>
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header role="banner">
+        <nav class="header-nav" role="navigation" aria-label="Main navigation">
+            <h1 class="logo">
+                <a href="/">
+                    <i class="fas fa-brain" aria-hidden="true"></i>
+                    wecanuseai.com
+                </a>
+            </h1>
+            <div class="header-actions">
+                <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
+                    <i class="fas fa-moon" aria-hidden="true"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+    <section class="hero-carousel" aria-label="Featured AI tools" style="min-height:400px">
+        <div id="featured-tool-carousel" class="carousel">
+            <div class="carousel-inner" role="region" aria-live="polite" style="min-height:400px">
+                <!-- Featured tools will be dynamically inserted here -->
+                <div class="carousel-placeholder" style="min-height:400px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);border-radius:1rem;color:white">
+                    <div style="text-align:center">
+                        <div style="width:40px;height:40px;border:3px solid rgba(255,255,255,.3);border-top:3px solid white;border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 1rem"></div>
+                        <p>Loading featured tools...</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control prev" aria-label="Previous featured tool" style="opacity:0">
+                <i class="fas fa-chevron-left" aria-hidden="true"></i>
+            </button>
+            <button class="carousel-control next" aria-label="Next featured tool" style="opacity:0">
+                <i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </button>
+            <div class="carousel-indicators" role="tablist" aria-label="Featured tool indicators">
+                <!-- Indicators will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <main id="main-content" role="main">
+        <section class="tools-section">
+            <div class="section-header">
+                <h2>Explore AI Tools</h2>
+                <p>Discover powerful AI applications to enhance your productivity and creativity</p>
+                <div class="tools-filter">
+                    <button class="filter-btn active" data-filter="all">All Tools</button>
+                    <button class="filter-btn" data-filter="ai">AI & ML</button>
+                    <button class="filter-btn" data-filter="media">Media</button>
+                    <button class="filter-btn" data-filter="utility">Utilities</button>
+                </div>
+            </div>
+            <div id="tool-grid" class="tool-grid" role="region" aria-label="AI tools collection" style="min-height:600px">
+                <!-- Tool cards will be dynamically inserted here -->
+                <div class="tool-placeholder" style="grid-column:1/-1;display:flex;align-items:center;justify-content:center;min-height:200px">
+                    <div style="text-align:center;color:#718096">
+                        <div style="width:40px;height:40px;border:3px solid #e2e8f0;border-top:3px solid #667eea;border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 1rem"></div>
+                        <p>Loading AI tools...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer role="contentinfo">
+        <div class="footer-content">
+            <p>&copy; 2024 WeCanUseAI. Empowering creativity with AI.</p>
+            <div class="footer-links">
+                <a href="#" aria-label="Privacy Policy">Privacy</a>
+                <a href="#" aria-label="Terms of Service">Terms</a>
+                <a href="#" aria-label="Contact Us">Contact</a>
+            </div>
+        </div>
+    </footer>
+    <!-- Loading indicator -->
+    <div id="loading-indicator" class="loading-indicator" aria-hidden="true">
+        <div class="spinner"></div>
+        <p>Loading AI tools...</p>
+    </div>
+
+    <script src="js/main.js" type="module" defer></script>
+
+    <!-- Service Worker for PWA -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(registration => console.log('SW registered'))
+                    .catch(error => console.log('SW registration failed'));
+            });
+        }
+    </script>
+</body>
+</html>
