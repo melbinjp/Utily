@@ -41,10 +41,20 @@ export class Carousel {
         item.setAttribute('role', 'tabpanel');
         item.setAttribute('aria-label', `Featured tool: ${tool.title}`);
 
+        // Always set the gradient as a fallback
+        item.style.backgroundImage = `linear-gradient(135deg, rgba(102, 126, 234, 0.8) 0%, rgba(118, 75, 162, 0.9) 100%)`;
+        item.style.backgroundSize = 'cover';
+        item.style.backgroundPosition = 'center';
+
         if (tool.background_image) {
-            item.style.backgroundImage = `linear-gradient(135deg, rgba(102, 126, 234, 0.8) 0%, rgba(118, 75, 162, 0.9) 100%), url(${tool.background_image})`;
-            item.style.backgroundSize = 'cover';
-            item.style.backgroundPosition = 'center';
+            const img = new Image();
+            img.onload = () => {
+                item.style.backgroundImage = `linear-gradient(135deg, rgba(102, 126, 234, 0.8) 0%, rgba(118, 75, 162, 0.9) 100%), url(${tool.background_image})`;
+            };
+            img.onerror = () => {
+                console.warn(`Carousel image failed to load: ${tool.background_image}`);
+            };
+            img.src = tool.background_image;
         }
 
         item.innerHTML = `
