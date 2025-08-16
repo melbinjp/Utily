@@ -138,8 +138,18 @@ export class Carousel {
     update() {
         this.inner.style.transform = `translateX(-${this.currentIndex * 100}%)`;
         this.container.querySelectorAll('.carousel-item').forEach((item, index) => {
-            item.classList.toggle('active', index === this.currentIndex);
-            item.setAttribute('aria-hidden', index !== this.currentIndex);
+            const isActive = index === this.currentIndex;
+            item.classList.toggle('active', isActive);
+            item.setAttribute('aria-hidden', !isActive);
+
+            const focusableElements = item.querySelectorAll('a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
+            focusableElements.forEach(el => {
+                if (isActive) {
+                    el.removeAttribute('tabindex');
+                } else {
+                    el.setAttribute('tabindex', '-1');
+                }
+            });
         });
         this.container.querySelectorAll('.indicator').forEach((indicator, index) => {
             indicator.classList.toggle('active', index === this.currentIndex);
