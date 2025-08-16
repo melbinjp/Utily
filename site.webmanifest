@@ -11,29 +11,29 @@
   "orientation": "any",
   "icons": [
     {
-      "src": "android-chrome-192.png",
+      "src": "https://favicon.wecanuseai.com/android-chrome-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "android-chrome-512.png",
+      "src": "https://favicon.wecanuseai.com/android-chrome-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "apple-touch-icon.png",
+      "src": "https://favicon.wecanuseai.com/apple-touch-icon.png",
       "sizes": "180x180",
       "type": "image/png"
     },
     {
-      "src": "favicon-32.png",
+      "src": "https://favicon.wecanuseai.com/favicon-32.png",
       "sizes": "32x32",
       "type": "image/png"
     },
     {
-      "src": "favicon-16.png",
+      "src": "https://favicon.wecanuseai.com/favicon-16.png",
       "sizes": "16x16",
       "type": "image/png"
     }
