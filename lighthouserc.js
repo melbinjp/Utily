@@ -4,6 +4,9 @@ module.exports = {
       url: ['http://localhost:8080/index.html'],
       numberOfRuns: 3,
       staticDistDir: './dist',
+      settings: {
+        chromeFlags: '--no-sandbox',
+      },
     },
     assert: {
       preset: 'lighthouse:no-pwa',
