@@ -13,7 +13,6 @@ export class AIToolsPortal {
 
         try {
             await this.loadTools();
-            this.preloadFeaturedImages(); // Preload images for a smoother carousel experience
             this.renderToolGrid();
             this.hideLoading(); // Hide loading screen as soon as main content is rendered
 
@@ -41,17 +40,6 @@ export class AIToolsPortal {
             this.tools = [];
             throw error;
         }
-    }
-
-    preloadFeaturedImages() {
-        const featuredTools = this.tools.filter(tool => tool.featured && tool.background_image);
-        featuredTools.forEach(tool => {
-            const link = document.createElement('link');
-            link.rel = 'preload';
-            link.as = 'image';
-            link.href = tool.background_image;
-            document.head.appendChild(link);
-        });
     }
 
     async lazyLoadCarousel() {
