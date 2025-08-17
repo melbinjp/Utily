@@ -8,10 +8,14 @@ test.describe('Homepage Smoke and Accessibility Tests', () => {
     // The page can be slow to load, so give it a longer timeout
     await page.goto(targetUrl, { timeout: 60000 });
     // The page loads content dynamically, so wait for the grid to populate
-    await page.waitForSelector('#tool-grid .tool-card', { timeout: 15000 });
+    await expect(page.locator('#tool-grid .tool-card').first()).toBeVisible({
+      timeout: 15000,
+    });
   });
 
-  test('should load the homepage and display the main content', async ({ page }) => {
+  test('should load the homepage and display the main content', async ({
+    page,
+  }) => {
     // 1. Verify page title
     await expect(page).toHaveTitle(/WeCanUseAI/);
 
@@ -25,7 +29,9 @@ test.describe('Homepage Smoke and Accessibility Tests', () => {
     expect(count).toBeGreaterThan(0);
   });
 
-  test('should not have any critical accessibility violations', async ({ page }) => {
+  test('should not have any critical accessibility violations', async ({
+    page,
+  }) => {
     const accessibilityScanResults = await new AxeBuilder({ page })
       .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'critical'])
       .analyze();

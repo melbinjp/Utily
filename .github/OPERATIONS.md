@@ -1,70 +1,58 @@
-# Operations Guide
+# Operations Manual
 
-This document provides instructions for deploying, testing, and managing the website.
+This document provides instructions for operating and maintaining this application.
 
-## Continuous Integration (CI)
+## Running Verifications Locally
 
-The CI pipeline is defined in `.github/workflows/deploy.yml`. It is triggered on every push to the `main` branch and on every pull request targeting `main`.
+To ensure code quality and stability, all verification checks should be run locally before pushing changes.
 
-The pipeline consists of the following jobs:
-
-1.  **`build`**: Installs dependencies and builds the static site into the `dist/` directory. The resulting `dist` folder is uploaded as an artifact.
-2.  **`test`**: Downloads the build artifact and runs a series of checks:
-    *   **Smoke Tests**: Uses Playwright to verify that the main page loads and key content is visible.
-    *   **Accessibility Tests**: Uses `axe-core` via Playwright to check for critical accessibility violations.
-    *   **Performance Tests**: Uses Lighthouse CI to audit the site against performance, accessibility, best practices, and SEO budgets defined in `lighthouserc.js`.
-
-3.  **`deploy`**: If the `test` job succeeds and the trigger was a push to `main`, this job deploys the build artifact to the `gh-pages` branch, which is then served by GitHub Pages.
-
-## Running Tests Locally
-
-To run all checks locally, you first need to build the site, then run the tests.
-
+### 1. Install Dependencies
 ```bash
-# Install dependencies
-npm install
+npm ci
+```
 
-# Build the site
-npm run build
+### 2. Run the Full Verification Matrix
+This command runs all checks: linting, formatting, security audit, and tests.
 
-# Run Playwright E2E and accessibility tests
-# This will run tests in headless mode.
-npm run test:e2e
+First, start the local server in one terminal window:
+```bash
+npm run preview
+```
 
-# Run Lighthouse performance audit
-# This command starts a server, runs tests, and then shuts down.
-# The CHROME_PATH is needed to tell Lighthouse where to find the browser installed by Playwright.
-CHROME_PATH="$(npm run-script-if-present -s echo $(node -p 'require("playwright").chromium.executablePath()'))" npm run test:lighthouse
+Then, in another terminal, run the verification checks:
+```bash
+# Set the CHROME_PATH for Lighthouse
+export CHROME_PATH=$(node -p 'require("playwright").chromium.executablePath()')
+
+# Run all checks
+npm run format:check
+npm run lint
+npm run test
 ```
 
 ## Deployment
 
-Deployment is handled automatically by the CI pipeline. Every commit pushed to the `main` branch that passes all tests will be deployed to production.
+Deployment is handled automatically by the GitHub Actions workflow in `.github/workflows/deploy.yml`.
 
-### Manual Deployment
+- **Trigger:** A `push` to the `main` branch will trigger the build, test, and deploy process.
+- **Environment:** The site is deployed to GitHub Pages.
+- **Status:** The status of the deployment can be monitored in the "Actions" tab of the GitHub repository.
 
-To trigger a manual deployment, you can re-run the last successful workflow run on the `main` branch from the GitHub Actions tab.
+## Rollback Plan
 
-### Rollback
+In the event of a faulty deployment, the site can be rolled back to a previous stable version using the GitHub Pages deployment history.
 
-To roll back to a previous version, identify the commit hash of the last known good state. Then, revert the merge commit on the `main` branch that introduced the bad change:
+1.  Navigate to the repository's **Settings** tab.
+2.  Go to the **Pages** section.
+3.  In the "Build and deployment" section, you will see a history of deployments.
+4.  Click the "..." menu next to a previous, successful deployment and select "Re-run job" or a similar option to redeploy that specific version.
+
+Alternatively, a git revert can be used to create a new commit that undoes the faulty changes, which will then trigger a new, clean deployment.
 
 ```bash
-# Revert the problematic merge commit
-git revert -m 1 <MERGE_COMMIT_HASH>
+# Revert the last commit
+git revert HEAD
 
 # Push the revert commit to main
 git push origin main
 ```
-
-This will trigger the CI/CD pipeline, which will deploy the last known good version of the site.
-
-## Security
-
-### Content Security Policy (CSP)
-
-A Content Security Policy is not yet enforced. A strict CSP should be added to the `<meta http-equiv="Content-Security-Policy" ...>` tag in `index.html` to mitigate XSS and other injection attacks. This was flagged as an issue in the initial Lighthouse report.
-
-### HSTS & Secure Cookies
-
-Since the site is hosted on GitHub Pages, HSTS (HTTP Strict Transport Security) is managed by GitHub. There are no cookies used by the site itself.

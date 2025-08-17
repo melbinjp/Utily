@@ -1,0 +1,43 @@
+# .github/dependabot.yml
+# Basic Dependabot configuration for npm.
+
+version: 2
+updates:
+  # Enable version updates for npm
+  - package-ecosystem: 'npm'
+    # Look for `package.json` and `lock` files in the root directory
+    directory: '/'
+    # Check for updates daily
+    schedule:
+      interval: 'daily'
+    # Add a custom reviewer
+    reviewers:
+      - 'melbinjpaulose'
+    # Add a custom assignee
+    assignees:
+      - 'jules'
+    # Add a prefix to the commit message
+    commit-message:
+      prefix: 'deps'
+      prefix-development: 'dev-deps'
+      include: 'scope'
+    # Add custom labels to PRs
+    labels:
+      - 'dependencies'
+      - 'jules'
+    # Use a custom branch name prefix
+    branch-name-separator: '-'
+    # Group updates to reduce noise
+    groups:
+      # Group all patch and minor updates for dev dependencies
+      dev-dependencies:
+        dependency-type: 'development'
+        update-types:
+          - 'patch'
+          - 'minor'
+      # Group all patch and minor updates for production dependencies
+      prod-dependencies:
+        dependency-type: 'production'
+        update-types:
+          - 'patch'
+          - 'minor'

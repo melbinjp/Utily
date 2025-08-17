@@ -1,8 +1,8 @@
 import { AIToolsPortal } from './AIToolsPortal.js';
 
 function addKeyframes() {
-    const style = document.createElement('style');
-    style.textContent = `
+  const style = document.createElement('style');
+  style.textContent = `
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
@@ -23,10 +23,10 @@ function addKeyframes() {
             margin-top: 1rem; font-weight: 600;
         }
     `;
-    document.head.appendChild(style);
+  document.head.appendChild(style);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    addKeyframes();
-    new AIToolsPortal();
+  addKeyframes();
+  new AIToolsPortal();
 });

@@ -11,10 +11,22 @@ module.exports = {
     assert: {
       preset: 'lighthouse:no-pwa',
       assertions: {
-        'categories:performance': ['warn', { minScore: 0.80, aggregationMethod: 'median-run' }],
-        'categories:accessibility': ['warn', { minScore: 0.80, aggregationMethod: 'median-run' }],
-        'categories:best-practices': ['warn', { minScore: 0.70, aggregationMethod: 'median-run' }],
-        'categories:seo': ['warn', { minScore: 0.70, aggregationMethod: 'median-run' }],
+        'categories:performance': [
+          'warn',
+          { minScore: 0.8, aggregationMethod: 'median-run' },
+        ],
+        'categories:accessibility': [
+          'warn',
+          { minScore: 0.8, aggregationMethod: 'median-run' },
+        ],
+        'categories:best-practices': [
+          'warn',
+          { minScore: 0.7, aggregationMethod: 'median-run' },
+        ],
+        'categories:seo': [
+          'warn',
+          { minScore: 0.7, aggregationMethod: 'median-run' },
+        ],
         'critical-request-chains': 'off',
         'unused-javascript': 'off',
       },
