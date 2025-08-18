@@ -6,8 +6,7 @@
     "icon": "fas fa-flask",
     "show": false,
     "featured": false,
-    "featured_description": "This is a longer description of the example tool. It can be used to provide more details about the tool and its features.",
-    "background_image": "https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1290&q=80"
+    "featured_description": "This is a longer description of the example tool. It can be used to provide more details about the tool and its features."
   },
   {
     "title": "Chat with a Doc",
@@ -16,8 +15,7 @@
     "icon": "fas fa-comments",
     "featured": true,
     "show": true,
-    "featured_description": "Transform how you interact with documents. Upload PDFs, DOCX files, or URLs and have intelligent conversations with their content using advanced AI-powered search and real-time citations.",
-    "background_image": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+    "featured_description": "Transform how you interact with documents. Upload PDFs, DOCX files, or URLs and have intelligent conversations with their content using advanced AI-powered search and real-time citations."
   },
   {
     "title": "Voice Notes",
@@ -26,8 +24,7 @@
     "icon": "fas fa-microphone",
     "featured": true,
     "show": true,
-    "featured_description": "Capture your thoughts instantly with our browser-based voice recording tool. Perfect for quick notes, reminders, and voice memos with seamless playback and management.",
-    "background_image": "https://images.unsplash.com/photo-1554224155-8d04421a1f33?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+    "featured_description": "Capture your thoughts instantly with our browser-based voice recording tool. Perfect for quick notes, reminders, and voice memos with seamless playback and management."
   },
   {
     "title": "3D Model Viewer",

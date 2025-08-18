@@ -1,3 +1,4 @@
+@import 'node_modules/@fortawesome/fontawesome-free/css/all.min.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -651,8 +652,8 @@ main {
   background: rgb(255 255 255 / 90%);
   color: #333;
   border: none;
-  width: 48px;
-  height: 48px;
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
   cursor: pointer;
   z-index: 10;
@@ -691,13 +692,14 @@ main {
 }
 
 .indicator {
-  width: 12px;
-  height: 12px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   background: rgb(255 255 255 / 50%);
   cursor: pointer;
   transition: all var(--transition-fast);
   border: 2px solid transparent;
+  margin: 0 8px;
 }
 
 .indicator:hover {
@@ -786,7 +788,6 @@ footer {
   font-size: 0.875rem;
   margin: 0;
 }
-
 
 /* Reduce animations on slower devices */
 @media (prefers-reduced-motion: reduce) {
