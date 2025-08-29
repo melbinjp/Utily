@@ -3,11 +3,7 @@
     "name": "minScore",
     "expected": 0.9,
     "actual": 0,
-    "values": [
-      0,
-      0,
-      0
-    ],
+    "values": [0, 0, 0],
     "operator": ">=",
     "passed": false,
     "auditId": "bootup-time",
@@ -20,11 +16,7 @@
     "name": "minScore",
     "expected": 0.9,
     "actual": 0,
-    "values": [
-      0,
-      0,
-      0
-    ],
+    "values": [0, 0, 0],
     "operator": ">=",
     "passed": false,
     "auditId": "csp-xss",
@@ -37,11 +29,7 @@
     "name": "minScore",
     "expected": 0.9,
     "actual": 0.7,
-    "values": [
-      0.7,
-      0.7,
-      0.7
-    ],
+    "values": [0.7, 0.7, 0.7],
     "operator": ">=",
     "passed": false,
     "auditId": "cumulative-layout-shift",
@@ -54,11 +42,7 @@
     "name": "minScore",
     "expected": 0.9,
     "actual": 0,
-    "values": [
-      0,
-      0,
-      0
-    ],
+    "values": [0, 0, 0],
     "operator": ">=",
     "passed": false,
     "auditId": "dom-size",
@@ -71,11 +55,7 @@
     "name": "minScore",
     "expected": 0.9,
     "actual": 0,
-    "values": [
-      0,
-      0,
-      0
-    ],
+    "values": [0, 0, 0],
     "operator": ">=",
     "passed": false,
     "auditId": "errors-in-console",
@@ -88,11 +68,7 @@
     "name": "minScore",
     "expected": 0.9,
     "actual": 0.56,
-    "values": [
-      0.54,
-      0.56,
-      0.55
-    ],
+    "values": [0.54, 0.56, 0.55],
     "operator": ">=",
     "passed": false,
     "auditId": "first-contentful-paint",
@@ -105,11 +81,7 @@
     "name": "minScore",
     "expected": 0.9,
     "actual": 0.78,
-    "values": [
-      0.75,
-      0.77,
-      0.78
-    ],
+    "values": [0.75, 0.77, 0.78],
     "operator": ">=",
     "passed": false,
     "auditId": "first-meaningful-paint",
@@ -122,11 +94,7 @@
     "name": "minScore",
     "expected": 0.9,
     "actual": 0,
-    "values": [
-      0,
-      0,
-      0
-    ],
+    "values": [0, 0, 0],
     "operator": ">=",
     "passed": false,
     "auditId": "inspector-issues",
@@ -138,11 +106,7 @@
     "name": "minScore",
     "expected": 0.9,
     "actual": 0.68,
-    "values": [
-      0.65,
-      0.65,
-      0.68
-    ],
+    "values": [0.65, 0.65, 0.68],
     "operator": ">=",
     "passed": false,
     "auditId": "largest-contentful-paint",
@@ -155,11 +119,7 @@
     "name": "minScore",
     "expected": 0.9,
     "actual": 0,
-    "values": [
-      0,
-      0,
-      0
-    ],
+    "values": [0, 0, 0],
     "operator": ">=",
     "passed": false,
     "auditId": "mainthread-work-breakdown",
@@ -172,11 +132,7 @@
     "name": "maxLength",
     "expected": 0,
     "actual": 2,
-    "values": [
-      2,
-      2,
-      2
-    ],
+    "values": [2, 2, 2],
     "operator": "<=",
     "passed": false,
     "auditId": "render-blocking-resources",
@@ -189,11 +145,7 @@
     "name": "minScore",
     "expected": 0.9,
     "actual": 0,
-    "values": [
-      0,
-      0,
-      0
-    ],
+    "values": [0, 0, 0],
     "operator": ">=",
     "passed": false,
     "auditId": "server-response-time",
@@ -206,11 +158,7 @@
     "name": "minScore",
     "expected": 0.9,
     "actual": 0.85,
-    "values": [
-      0.85,
-      0.85,
-      0.85
-    ],
+    "values": [0.85, 0.85, 0.85],
     "operator": ">=",
     "passed": false,
     "auditId": "tap-targets",
@@ -223,11 +171,7 @@
     "name": "minScore",
     "expected": 0.9,
     "actual": 0,
-    "values": [
-      0,
-      0,
-      0
-    ],
+    "values": [0, 0, 0],
     "operator": ">=",
     "passed": false,
     "auditId": "total-byte-weight",
@@ -240,11 +184,7 @@
     "name": "minScore",
     "expected": 0.85,
     "actual": 0.79,
-    "values": [
-      0.77,
-      0.79,
-      0.78
-    ],
+    "values": [0.77, 0.79, 0.78],
     "operator": ">=",
     "passed": false,
     "auditProperty": "performance",
