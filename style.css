@@ -644,6 +644,105 @@ main {
   display: none;
 }
 
+.hero-carousel {
+  min-height: 400px;
+}
+
+.carousel-inner {
+  min-height: 400px;
+}
+
+.carousel-placeholder {
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 1rem;
+  color: white;
+}
+
+.carousel-placeholder .spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top: 3px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.error-message {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  color: white;
+  text-align: center;
+}
+
+.error-content {
+  background: #dc3545;
+  padding: 2rem;
+  border-radius: 1rem;
+  max-width: 400px;
+}
+
+.error-content i {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.error-content button {
+  background: white;
+  color: #dc3545;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+.tool-grid {
+  min-height: 600px;
+}
+
+.tool-placeholder {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+
+.tool-placeholder .spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #e2e8f0;
+  border-top: 3px solid #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem;
+}
+
 /* Carousel Controls */
 .carousel-control {
   position: absolute;
