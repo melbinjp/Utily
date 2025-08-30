@@ -1,4 +1,4 @@
-@import 'node_modules/@fortawesome/fontawesome-free/css/all.min.css';
+@import 'node_modules/@fortawesome/fontawesome-free/css/solid.min.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -530,6 +530,11 @@ main {
   color: var(--accent-color);
 }
 
+.footer-link-item {
+  padding: 0.5rem;
+  margin: -0.5rem;
+}
+
 /* Tool Cards */
 .tool-card {
   background: var(--bg-primary);
@@ -918,4 +923,64 @@ footer {
   .tool-card {
     border-width: 2px;
   }
+}
+
+/* Refactored inline styles */
+.min-h-400 {
+  min-height: 400px;
+}
+
+.carousel-placeholder-style {
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 1rem;
+  color: white;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.spinner-style-light {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top: 3px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+.carousel-control-style {
+  opacity: 0;
+}
+
+.tool-grid-style {
+  min-height: 600px;
+}
+
+.tool-placeholder-style {
+  grid-column: 1/-1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+
+.text-align-center-color-muted {
+  text-align: center;
+  color: #718096;
+}
+
+.spinner-style-dark {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #e2e8f0;
+  border-top: 3px solid #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem;
 }

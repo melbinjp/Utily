@@ -23,7 +23,8 @@
     "stylelint-config-prettier": "^9.0.5",
     "stylelint-config-standard": "^29.0.0",
     "tailwindcss": "^4.1.12",
-    "terser": "^5.28.1"
+    "terser": "^5.28.1",
+    "fontawesome-subset": "^4.6.0"
   },
   "name": "app",
   "version": "1.0.0",
@@ -41,12 +42,13 @@
     "lint": "npm run lint:js && npm run lint:css",
     "lint:js": "eslint . --ext js",
     "lint:css": "stylelint \"*.css\"",
+    "clean": "rm -rf dist",
     "build:css": "postcss style.css -o dist/style.css",
     "build:js": "esbuild js/main.js --bundle --minify-whitespace --minify-syntax --outfile=dist/js/main.js",
     "copy:assets": "cp index.html dist/ && cp tools.json dist/ && cp site.webmanifest dist/ && cp sw.js dist/ && cp robots.txt dist/ && cp sitemap.xml dist/ && cp CNAME dist/",
-    "copy:js": "cp -r js/*.js dist/js/",
-    "copy:fontawesome-webfonts": "mkdir -p dist/webfonts && cp -r node_modules/@fortawesome/fontawesome-free/webfonts/* dist/webfonts/",
-    "build": "mkdir -p dist/js && npm run build:css && npm run build:js && npm run copy:assets && npm run copy:js && npm run copy:fontawesome-webfonts",
+    "copy:fontawesome-webfonts": "echo 'No-op'",
+    "subset:fontawesome": "node subset.js",
+    "build": "npm run clean && mkdir -p dist/js && npm run build:css && npm run build:js && npm run copy:assets && cp js/sw-register.js dist/js/ && npm run subset:fontawesome",
     "preview": "http-server -p 8080 dist",
     "lighthouse:mobile": "lighthouse http://localhost:8080 --output=json --output-path=./lighthouse-mobile-report.json --only-categories=performance,accessibility,best-practices,seo --chrome-flags='--headless --no-sandbox'",
     "lighthouse:desktop": "lighthouse http://localhost:8080 --output=json --output-path=./lighthouse-desktop-report.json --only-categories=performance,accessibility,best-practices,seo --chrome-flags='--headless --no-sandbox'"
