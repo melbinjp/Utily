@@ -1,12 +1,33 @@
 import { escapeHtml } from './utils.js';
 
+/**
+ * Manages the AI Tools Portal application.
+ * Handles loading tools, rendering the UI, and user interactions like filtering and theme switching.
+ */
 export class AIToolsPortal {
   constructor() {
     this.tools = [];
     this.currentFilter = 'all';
+    this._cacheSelectors();
     this.init();
   }
 
+  /**
+   * Caches frequently used DOM elements to avoid repeated queries.
+   * @private
+   */
+  _cacheSelectors() {
+    this.loadingIndicator = document.getElementById('loading-indicator');
+    this.themeToggle = document.querySelector('.theme-toggle');
+    this.themeIcon = document.querySelector('.theme-toggle i');
+    this.toolGrid = document.getElementById('tool-grid');
+    this.filterButtons = document.querySelectorAll('.filter-btn');
+    this.heroCarousel = document.querySelector('.hero-carousel');
+  }
+
+  /**
+   * Initializes the application by loading data and setting up UI components.
+   */
   async init() {
     this.showLoading();
     this.setupThemeToggle();
@@ -28,6 +49,10 @@ export class AIToolsPortal {
     }
   }
 
+  /**
+   * Fetches the tool data from the `tools.json` file.
+   * @throws {Error} If the network request fails.
+   */
   async loadTools() {
     try {
       const response = await fetch('tools.json');
@@ -42,27 +67,37 @@ export class AIToolsPortal {
     }
   }
 
+  /**
+   * Lazily loads and initializes the hero carousel for featured tools.
+   */
   async lazyLoadCarousel() {
     const featuredTools = this.tools.filter((tool) => tool.featured);
     if (featuredTools.length > 0) {
       const { Carousel } = await import('./Carousel.js');
-      new Carousel(featuredTools, document.querySelector('.hero-carousel'));
+      new Carousel(featuredTools, this.heroCarousel);
     } else {
-      document.querySelector('.hero-carousel')?.remove();
+      this.heroCarousel?.remove();
     }
   }
 
+  /**
+   * Shows the main loading indicator.
+   */
   showLoading() {
-    document.getElementById('loading-indicator')?.classList.remove('hidden');
+    this.loadingIndicator?.classList.remove('hidden');
   }
 
+  /**
+   * Hides the main loading indicator.
+   */
   hideLoading() {
-    const loader = document.getElementById('loading-indicator');
-    if (loader) {
-      loader.remove();
-    }
+    this.loadingIndicator?.remove();
   }
 
+  /**
+   * Displays a full-screen error message.
+   * @param {string} message - The error message to display.
+   */
   showError(message) {
     const errorDiv = document.createElement('div');
     errorDiv.className = 'error-message';
@@ -73,14 +108,15 @@ export class AIToolsPortal {
     });
   }
 
+  /**
+   * Sets up the light/dark theme toggle button and loads the saved theme.
+   */
   setupThemeToggle() {
-    const themeToggle = document.querySelector('.theme-toggle');
     const currentTheme = localStorage.getItem('theme') || 'light';
-
     document.documentElement.setAttribute('data-theme', currentTheme);
     this.updateThemeIcon(currentTheme);
 
-    themeToggle?.addEventListener('click', () => {
+    this.themeToggle?.addEventListener('click', () => {
       const newTheme =
         document.documentElement.getAttribute('data-theme') === 'dark'
           ? 'light'
@@ -91,29 +127,39 @@ export class AIToolsPortal {
     });
   }
 
+  /**
+   * Updates the theme toggle icon to reflect the current theme.
+   * @param {string} theme - The current theme ('light' or 'dark').
+   */
   updateThemeIcon(theme) {
-    const icon = document.querySelector('.theme-toggle i');
-    if (icon) {
-      icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+    if (this.themeIcon) {
+      this.themeIcon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
     }
   }
 
+  /**
+   * Renders the grid of tool cards.
+   */
   renderToolGrid() {
-    const toolGrid = document.getElementById('tool-grid');
-    if (!toolGrid) return;
+    if (!this.toolGrid) return;
 
-    toolGrid.querySelector('.tool-placeholder')?.remove();
-    toolGrid.innerHTML = '';
+    this.toolGrid.querySelector('.tool-placeholder')?.remove();
+    this.toolGrid.innerHTML = '';
 
     this.tools.forEach((tool) => {
-      toolGrid.appendChild(this.createToolCard(tool));
+      this.toolGrid.appendChild(this.createToolCard(tool));
     });
   }
 
+  /**
+   * Creates an HTML element for a single tool card.
+   * @param {object} tool - The tool data object.
+   * @returns {HTMLElement} The created tool card element.
+   */
   createToolCard(tool) {
     const card = document.createElement('article');
     card.className = 'tool-card';
-    card.dataset.category = this.getToolCategory(tool);
+    card.dataset.category = tool.category || 'utility';
     card.style.minHeight = '200px';
 
     const template = document.createElement('template');
@@ -137,29 +183,11 @@ export class AIToolsPortal {
     return card;
   }
 
-  getToolCategory(tool) {
-    const title = tool.title.toLowerCase();
-    const description = tool.description.toLowerCase();
-    if (
-      title.includes('chat') ||
-      title.includes('ai') ||
-      description.includes('ai') ||
-      description.includes('transcription')
-    )
-      return 'ai';
-    if (
-      title.includes('audio') ||
-      title.includes('video') ||
-      title.includes('3d') ||
-      title.includes('voice')
-    )
-      return 'media';
-    return 'utility';
-  }
-
+  /**
+   * Sets up the event listeners for the category filter buttons.
+   */
   setupFilters() {
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    filterButtons.forEach((button) => {
+    this.filterButtons.forEach((button) => {
       button.addEventListener('click', () => {
         const filter = button.dataset.filter;
         this.setActiveFilter(filter);
@@ -168,16 +196,22 @@ export class AIToolsPortal {
     });
   }
 
+  /**
+   * Sets the visual 'active' state on a filter button.
+   * @param {string} filter - The filter to set as active.
+   */
   setActiveFilter(filter) {
-    document
-      .querySelectorAll('.filter-btn')
-      .forEach((btn) => btn.classList.remove('active'));
+    this.filterButtons.forEach((btn) => btn.classList.remove('active'));
     document
       .querySelector(`[data-filter="${filter}"]`)
       ?.classList.add('active');
     this.currentFilter = filter;
   }
 
+  /**
+   * Filters the displayed tool cards based on the selected category.
+   * @param {string} filter - The category to show ('all', 'ai', 'media', 'utility').
+   */
   filterTools(filter) {
     document.querySelectorAll('.tool-card').forEach((card) => {
       const category = card.dataset.category;
@@ -188,6 +222,9 @@ export class AIToolsPortal {
     });
   }
 
+  /**
+   * Sets up an Intersection Observer to apply animations to tool cards as they scroll into view.
+   */
   setupIntersectionObserver() {
     const observer = new IntersectionObserver(
       (entries, obs) => {

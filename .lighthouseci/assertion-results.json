@@ -12,7 +12,7 @@
     "passed": false,
     "auditId": "bootup-time",
     "level": "warn",
-    "url": "http://localhost:34367/index.html",
+    "url": "http://localhost:40547/index.html",
     "auditTitle": "JavaScript execution time",
     "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/performance/bootup-time/"
   },
@@ -29,7 +29,7 @@
     "passed": false,
     "auditId": "csp-xss",
     "level": "error",
-    "url": "http://localhost:34367/index.html",
+    "url": "http://localhost:40547/index.html",
     "auditTitle": "Ensure CSP is effective against XSS attacks",
     "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/best-practices/csp-xss/"
   },
@@ -38,15 +38,15 @@
     "expected": 0.9,
     "actual": 0.83,
     "values": [
-      0.83,
       0.81,
-      0.81
+      0.83,
+      0.83
     ],
     "operator": ">=",
     "passed": false,
     "auditId": "cumulative-layout-shift",
     "level": "warn",
-    "url": "http://localhost:34367/index.html",
+    "url": "http://localhost:40547/index.html",
     "auditTitle": "Cumulative Layout Shift",
     "auditDocumentationLink": "https://web.dev/articles/cls"
   },
@@ -63,7 +63,7 @@
     "passed": false,
     "auditId": "dom-size",
     "level": "warn",
-    "url": "http://localhost:34367/index.html",
+    "url": "http://localhost:40547/index.html",
     "auditTitle": "Avoids an excessive DOM size",
     "auditDocumentationLink": "https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations"
   },
@@ -72,15 +72,15 @@
     "expected": 0.9,
     "actual": 0.7,
     "values": [
-      0.67,
       0.7,
-      0.7
+      0.67,
+      0.67
     ],
     "operator": ">=",
     "passed": false,
     "auditId": "first-contentful-paint",
     "level": "warn",
-    "url": "http://localhost:34367/index.html",
+    "url": "http://localhost:40547/index.html",
     "auditTitle": "First Contentful Paint",
     "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/performance/first-contentful-paint/"
   },
@@ -89,15 +89,15 @@
     "expected": 0.9,
     "actual": 0.88,
     "values": [
-      0.86,
       0.88,
-      0.88
+      0.86,
+      0.86
     ],
     "operator": ">=",
     "passed": false,
     "auditId": "first-meaningful-paint",
     "level": "warn",
-    "url": "http://localhost:34367/index.html",
+    "url": "http://localhost:40547/index.html",
     "auditTitle": "First Meaningful Paint",
     "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/performance/first-meaningful-paint/"
   },
@@ -114,7 +114,7 @@
     "passed": false,
     "auditId": "largest-contentful-paint",
     "level": "warn",
-    "url": "http://localhost:34367/index.html",
+    "url": "http://localhost:40547/index.html",
     "auditTitle": "Largest Contentful Paint",
     "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/performance/lighthouse-largest-contentful-paint/"
   },
@@ -131,7 +131,7 @@
     "passed": false,
     "auditId": "mainthread-work-breakdown",
     "level": "warn",
-    "url": "http://localhost:34367/index.html",
+    "url": "http://localhost:40547/index.html",
     "auditTitle": "Minimizes main-thread work",
     "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/performance/mainthread-work-breakdown/"
   },
@@ -148,7 +148,7 @@
     "passed": false,
     "auditId": "render-blocking-resources",
     "level": "warn",
-    "url": "http://localhost:34367/index.html",
+    "url": "http://localhost:40547/index.html",
     "auditTitle": "Eliminate render-blocking resources",
     "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/performance/render-blocking-resources/"
   },
@@ -165,7 +165,7 @@
     "passed": false,
     "auditId": "server-response-time",
     "level": "warn",
-    "url": "http://localhost:34367/index.html",
+    "url": "http://localhost:40547/index.html",
     "auditTitle": "Initial server response time was short",
     "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/performance/time-to-first-byte/"
   },
@@ -182,7 +182,7 @@
     "passed": false,
     "auditId": "tap-targets",
     "level": "error",
-    "url": "http://localhost:34367/index.html",
+    "url": "http://localhost:40547/index.html",
     "auditTitle": "Tap targets are not sized appropriately",
     "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/seo/tap-targets/"
   },
@@ -199,7 +199,7 @@
     "passed": false,
     "auditId": "total-byte-weight",
     "level": "error",
-    "url": "http://localhost:34367/index.html",
+    "url": "http://localhost:40547/index.html",
     "auditTitle": "Avoids enormous network payloads",
     "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/performance/total-byte-weight/"
   }

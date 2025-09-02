@@ -1,6 +1,15 @@
 import { escapeHtml } from './utils.js';
 
+/**
+ * Represents a UI carousel for displaying featured content.
+ * Handles rendering, navigation (autoplay, manual, keyboard, touch), and accessibility.
+ */
 export class Carousel {
+  /**
+   * Creates an instance of Carousel.
+   * @param {object[]} featuredTools - An array of tool objects to display in the carousel.
+   * @param {HTMLElement} carouselContainer - The main container element for the carousel.
+   */
   constructor(featuredTools, carouselContainer) {
     this.featuredTools = featuredTools;
     this.container = carouselContainer;
@@ -24,6 +33,9 @@ export class Carousel {
     this.startAutoplay();
   }
 
+  /**
+   * Renders the carousel items and indicators.
+   */
   render() {
     // Remove placeholder and show controls
     const placeholder = this.inner.querySelector('.carousel-placeholder');
@@ -43,6 +55,12 @@ export class Carousel {
     this.update();
   }
 
+  /**
+   * Creates a single carousel item element.
+   * @param {object} tool - The tool data object for the item.
+   * @returns {HTMLElement} The created carousel item element.
+   * @private
+   */
   createCarouselItem(tool) {
     const item = document.createElement('div');
     item.className = 'carousel-item';
@@ -92,6 +110,12 @@ export class Carousel {
     return item;
   }
 
+  /**
+   * Creates a single indicator button element.
+   * @param {number} index - The index of the slide the indicator corresponds to.
+   * @returns {HTMLElement} The created indicator element.
+   * @private
+   */
   createIndicator(index) {
     const indicator = document.createElement('button');
     indicator.className = 'indicator';
@@ -102,6 +126,10 @@ export class Carousel {
     return indicator;
   }
 
+  /**
+   * Sets up all event listeners for carousel interactions.
+   * @private
+   */
   setupEventListeners() {
     this.container
       .querySelector('.carousel-control.prev')
@@ -118,6 +146,10 @@ export class Carousel {
     this.setupTouchNavigation();
   }
 
+  /**
+   * Sets up keyboard navigation (left/right arrows).
+   * @private
+   */
   setupKeyboardNavigation() {
     document.addEventListener('keydown', (e) => {
       if (e.target.matches('input, textarea, select')) return;
@@ -131,6 +163,10 @@ export class Carousel {
     });
   }
 
+  /**
+   * Sets up touch/swipe navigation.
+   * @private
+   */
   setupTouchNavigation() {
     let startX = 0;
     let isDragging = false;
@@ -157,6 +193,10 @@ export class Carousel {
     );
   }
 
+  /**
+   * Updates the carousel's visual state to reflect the current index.
+   * Manages active classes, ARIA attributes, and focusability.
+   */
   update() {
     this.inner.style.transform = `translateX(-${this.currentIndex * 100}%)`;
     this.container.querySelectorAll('.carousel-item').forEach((item, index) => {
@@ -183,12 +223,18 @@ export class Carousel {
       });
   }
 
+  /**
+   * Navigates to the next slide.
+   */
   nextSlide() {
     this.currentIndex = (this.currentIndex + 1) % this.featuredTools.length;
     this.update();
     this.resetAutoplay();
   }
 
+  /**
+   * Navigates to the previous slide.
+   */
   previousSlide() {
     this.currentIndex =
       (this.currentIndex - 1 + this.featuredTools.length) %
@@ -197,26 +243,44 @@ export class Carousel {
     this.resetAutoplay();
   }
 
+  /**
+   * Navigates to a specific slide by its index.
+   * @param {number} index - The index of the slide to go to.
+   */
   goToSlide(index) {
     this.currentIndex = index;
     this.update();
     this.resetAutoplay();
   }
 
+  /**
+   * Starts the autoplay interval.
+   * @private
+   */
   startAutoplay() {
     if (this.featuredTools.length <= 1) return;
     this.autoplayInterval = setInterval(() => this.nextSlide(), 6000);
   }
 
+  /**
+   * Pauses the autoplay interval.
+   */
   pauseAutoplay() {
     clearInterval(this.autoplayInterval);
     this.autoplayInterval = null;
   }
 
+  /**
+   * Resumes autoplay if it has been paused.
+   */
   resumeAutoplay() {
     if (!this.autoplayInterval) this.startAutoplay();
   }
 
+  /**
+   * Resets the autoplay timer by pausing and resuming it.
+   * @private
+   */
   resetAutoplay() {
     this.pauseAutoplay();
     this.resumeAutoplay();

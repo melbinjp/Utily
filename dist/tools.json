@@ -4,6 +4,7 @@
     "description": "This is an example of a tool with all the possible options.",
     "url": "#",
     "icon": "fas fa-flask",
+    "category": "utility",
     "show": false,
     "featured": false,
     "featured_description": "This is a longer description of the example tool. It can be used to provide more details about the tool and its features."
@@ -13,6 +14,7 @@
     "description": "AI-powered Q&A over your own documents with intelligent search and citations.",
     "url": "https://melbinjp.github.io/DocQA/",
     "icon": "fas fa-comments",
+    "category": "ai",
     "featured": true,
     "show": true,
     "featured_description": "Transform how you interact with documents. Upload PDFs, DOCX files, or URLs and have intelligent conversations with their content using advanced AI-powered search and real-time citations."
@@ -22,6 +24,7 @@
     "description": "Record and manage voice notes easily in your browser with a clean, intuitive interface.",
     "url": "https://melbinjp.github.io/voice_notes/",
     "icon": "fas fa-microphone",
+    "category": "media",
     "featured": true,
     "show": true,
     "featured_description": "Capture your thoughts instantly with our browser-based voice recording tool. Perfect for quick notes, reminders, and voice memos with seamless playback and management."
@@ -31,6 +34,7 @@
     "description": "Interactively view and manipulate 3D models directly in your browser with advanced controls.",
     "url": "https://melbinjp.github.io/3d_modelview/",
     "icon": "fas fa-cube",
+    "category": "media",
     "show": true
   },
   {
@@ -38,6 +42,7 @@
     "description": "Transcribe spoken audio into text in real-time with high accuracy and timestamps.",
     "url": "https://melbinjp.github.io/Transcribe-Realtime-/",
     "icon": "fas fa-closed-captioning",
+    "category": "ai",
     "show": true
   },
   {
@@ -45,6 +50,7 @@
     "description": "Explore AI-generated video content and cutting-edge experiments on our official channel.",
     "url": "https://youtube.com/@video_gen?feature=shared",
     "icon": "fab fa-youtube",
+    "category": "media",
     "show": true
   },
   {
@@ -52,6 +58,7 @@
     "description": "Easily record audio and video from your browser with professional quality output.",
     "url": "https://melbinjp.github.io/AV-Recorder/",
     "icon": "fas fa-video",
+    "category": "media",
     "show": true
   },
   {
@@ -59,6 +66,7 @@
     "description": "Zero-shot image classification using advanced AI models for instant object recognition.",
     "url": "#",
     "icon": "fas fa-image",
+    "category": "ai",
     "show": false
   },
   {
@@ -66,6 +74,7 @@
     "description": "Comprehensive system and performance analysis tool for your device capabilities.",
     "url": "#",
     "icon": "fas fa-desktop",
+    "category": "utility",
     "show": false
   },
   {
@@ -73,6 +82,7 @@
     "description": "Visualize and analyze your codebase structure with interactive diagrams and insights.",
     "url": "#",
     "icon": "fas fa-code-branch",
+    "category": "utility",
     "show": false
   },
   {
@@ -80,6 +90,7 @@
     "description": "Create custom favicons for your website with multiple formats and sizes.",
     "url": "#",
     "icon": "fas fa-star",
+    "category": "utility",
     "show": false
   }
 ]

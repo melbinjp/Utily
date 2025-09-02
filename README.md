@@ -11,6 +11,20 @@ This repository contains the source code for WeCanUseAI.com, a portal showcasing
 - **Dark Mode**: Supports a dark color scheme.
 - **PWA Ready**: Includes a service worker and manifest for Progressive Web App capabilities.
 
+## 🏛️ Architecture
+
+The application is built with vanilla HTML, CSS, and JavaScript, emphasizing modularity and clean separation of concerns.
+
+-   **`index.html`**: The main entry point of the application. It defines the page structure and includes placeholders for dynamic content.
+-   **`style.css`**: The primary stylesheet, built using PostCSS and Tailwind CSS for utility-first styling.
+-   **`js/`**: Contains all the JavaScript modules.
+    -   **`main.js`**: The main script that kicks off the application. It imports and instantiates the `AIToolsPortal`.
+    -   **`AIToolsPortal.js`**: The core application class. It manages data fetching (`tools.json`), renders the tool grid, and handles UI interactions like theme switching and filtering.
+    -   **`Carousel.js`**: A self-contained module for the featured tools carousel. It is lazy-loaded by `AIToolsPortal.js` for better initial page load performance.
+    -   **`utils.js`**: A place for shared utility functions (e.g., `escapeHtml`).
+-   **`tools.json`**: A JSON file that acts as a simple database for the AI tools displayed on the site. Each tool has properties like title, description, URL, and category.
+-   **`dist/`**: The output directory for the production build. All assets are optimized and copied here.
+
 ## Lighthouse Scores
 
 The following scores were achieved after the latest optimizations:
