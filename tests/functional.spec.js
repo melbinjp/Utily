@@ -73,4 +73,32 @@ test.describe('Functional Tests', () => {
     await expect(errorMessage).toBeVisible();
     await expect(errorMessage).toContainText('Failed to load AI tools');
   });
+
+  test('carousel keyboard navigation should only work when focused', async ({ page }) => {
+    const carousel = page.locator('.hero-carousel');
+    const getActiveSlideIndex = async () => {
+      const activeIndicator = page.locator('.carousel-indicators .indicator.active');
+      return await activeIndicator.getAttribute('data-index');
+    };
+
+    // 1. Check initial slide
+    const initialSlideIndex = await getActiveSlideIndex();
+    expect(initialSlideIndex).toBe('0');
+
+    // 2. Press ArrowRight on the body (unfocused)
+    await page.locator('body').press('ArrowRight');
+
+    // 3. Expect the slide NOT to have changed (this is the part that will fail)
+    let currentSlideIndex = await getActiveSlideIndex();
+    expect(currentSlideIndex).toBe(initialSlideIndex);
+
+    // 4. Focus the carousel and press ArrowRight again
+    await carousel.focus();
+    await carousel.press('ArrowRight');
+
+    // 5. Expect the slide TO have changed
+    currentSlideIndex = await getActiveSlideIndex();
+    expect(currentSlideIndex).not.toBe(initialSlideIndex);
+    expect(currentSlideIndex).toBe('1');
+  });
 });

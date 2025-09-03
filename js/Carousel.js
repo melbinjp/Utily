@@ -37,6 +37,10 @@ export class Carousel {
    * Renders the carousel items and indicators.
    */
   render() {
+    // Make the carousel container focusable for keyboard navigation
+    this.container.setAttribute('tabindex', '0');
+    this.container.style.outline = 'none'; // Avoid default focus ring
+
     // Remove placeholder and show controls
     const placeholder = this.inner.querySelector('.carousel-placeholder');
     if (placeholder) placeholder.remove();
@@ -151,8 +155,8 @@ export class Carousel {
    * @private
    */
   setupKeyboardNavigation() {
-    document.addEventListener('keydown', (e) => {
-      if (e.target.matches('input, textarea, select')) return;
+    this.container.addEventListener('keydown', (e) => {
+      // No need to check for input fields anymore, as the listener is on the container
       if (e.key === 'ArrowLeft') {
         e.preventDefault();
         this.previousSlide();

@@ -12,7 +12,7 @@
     "passed": false,
     "auditId": "bootup-time",
     "level": "warn",
-    "url": "http://localhost:40547/index.html",
+    "url": "http://localhost:33577/index.html",
     "auditTitle": "JavaScript execution time",
     "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/performance/bootup-time/"
   },
@@ -29,26 +29,9 @@
     "passed": false,
     "auditId": "csp-xss",
     "level": "error",
-    "url": "http://localhost:40547/index.html",
+    "url": "http://localhost:33577/index.html",
     "auditTitle": "Ensure CSP is effective against XSS attacks",
     "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/best-practices/csp-xss/"
-  },
-  {
-    "name": "minScore",
-    "expected": 0.9,
-    "actual": 0.83,
-    "values": [
-      0.81,
-      0.83,
-      0.83
-    ],
-    "operator": ">=",
-    "passed": false,
-    "auditId": "cumulative-layout-shift",
-    "level": "warn",
-    "url": "http://localhost:40547/index.html",
-    "auditTitle": "Cumulative Layout Shift",
-    "auditDocumentationLink": "https://web.dev/articles/cls"
   },
   {
     "name": "minScore",
@@ -63,58 +46,58 @@
     "passed": false,
     "auditId": "dom-size",
     "level": "warn",
-    "url": "http://localhost:40547/index.html",
+    "url": "http://localhost:33577/index.html",
     "auditTitle": "Avoids an excessive DOM size",
     "auditDocumentationLink": "https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations"
   },
   {
     "name": "minScore",
     "expected": 0.9,
-    "actual": 0.7,
+    "actual": 0.67,
     "values": [
-      0.7,
+      0.1,
       0.67,
-      0.67
+      0.31
     ],
     "operator": ">=",
     "passed": false,
     "auditId": "first-contentful-paint",
     "level": "warn",
-    "url": "http://localhost:40547/index.html",
+    "url": "http://localhost:33577/index.html",
     "auditTitle": "First Contentful Paint",
     "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/performance/first-contentful-paint/"
   },
   {
     "name": "minScore",
     "expected": 0.9,
-    "actual": 0.88,
+    "actual": 0.58,
     "values": [
-      0.88,
-      0.86,
-      0.86
+      0.29,
+      0.58,
+      0.58
     ],
     "operator": ">=",
     "passed": false,
     "auditId": "first-meaningful-paint",
     "level": "warn",
-    "url": "http://localhost:40547/index.html",
+    "url": "http://localhost:33577/index.html",
     "auditTitle": "First Meaningful Paint",
     "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/performance/first-meaningful-paint/"
   },
   {
     "name": "minScore",
     "expected": 0.9,
-    "actual": 0.89,
+    "actual": 0.55,
     "values": [
-      0.89,
-      0.89,
-      0.89
+      0.27,
+      0.55,
+      0.5
     ],
     "operator": ">=",
     "passed": false,
     "auditId": "largest-contentful-paint",
     "level": "warn",
-    "url": "http://localhost:40547/index.html",
+    "url": "http://localhost:33577/index.html",
     "auditTitle": "Largest Contentful Paint",
     "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/performance/lighthouse-largest-contentful-paint/"
   },
@@ -131,24 +114,24 @@
     "passed": false,
     "auditId": "mainthread-work-breakdown",
     "level": "warn",
-    "url": "http://localhost:40547/index.html",
+    "url": "http://localhost:33577/index.html",
     "auditTitle": "Minimizes main-thread work",
     "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/performance/mainthread-work-breakdown/"
   },
   {
     "name": "maxLength",
     "expected": 0,
-    "actual": 2,
+    "actual": 3,
     "values": [
-      2,
-      2,
-      2
+      3,
+      3,
+      3
     ],
     "operator": "<=",
     "passed": false,
     "auditId": "render-blocking-resources",
     "level": "warn",
-    "url": "http://localhost:40547/index.html",
+    "url": "http://localhost:33577/index.html",
     "auditTitle": "Eliminate render-blocking resources",
     "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/performance/render-blocking-resources/"
   },
@@ -165,7 +148,7 @@
     "passed": false,
     "auditId": "server-response-time",
     "level": "warn",
-    "url": "http://localhost:40547/index.html",
+    "url": "http://localhost:33577/index.html",
     "auditTitle": "Initial server response time was short",
     "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/performance/time-to-first-byte/"
   },
@@ -182,7 +165,7 @@
     "passed": false,
     "auditId": "tap-targets",
     "level": "error",
-    "url": "http://localhost:40547/index.html",
+    "url": "http://localhost:33577/index.html",
     "auditTitle": "Tap targets are not sized appropriately",
     "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/seo/tap-targets/"
   },
@@ -199,8 +182,58 @@
     "passed": false,
     "auditId": "total-byte-weight",
     "level": "error",
-    "url": "http://localhost:40547/index.html",
+    "url": "http://localhost:33577/index.html",
     "auditTitle": "Avoids enormous network payloads",
     "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/performance/total-byte-weight/"
+  },
+  {
+    "name": "maxLength",
+    "expected": 0,
+    "actual": 1,
+    "values": [
+      1,
+      1,
+      1
+    ],
+    "operator": "<=",
+    "passed": false,
+    "auditId": "unused-css-rules",
+    "level": "error",
+    "url": "http://localhost:33577/index.html",
+    "auditTitle": "Reduce unused CSS",
+    "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/performance/unused-css-rules/"
+  },
+  {
+    "name": "minScore",
+    "expected": 0.9,
+    "actual": 0.89,
+    "values": [
+      0.77,
+      0.89,
+      0.89
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditId": "interactive",
+    "level": "warn",
+    "url": "http://localhost:33577/index.html",
+    "auditTitle": "Time to Interactive",
+    "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/performance/interactive/"
+  },
+  {
+    "name": "minScore",
+    "expected": 0.85,
+    "actual": 0.78,
+    "values": [
+      0.64,
+      0.78,
+      0.75
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditProperty": "performance",
+    "auditId": "categories",
+    "level": "error",
+    "url": "http://localhost:33577/index.html"
   }
 ]
