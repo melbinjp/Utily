@@ -1,8 +1,5 @@
 module.exports = {
-  extends: [
-    'stylelint-config-standard',
-    'stylelint-config-prettier', // Must be last to override other configs
-  ],
+  extends: ['stylelint-config-standard'],
   // Add any custom rules here
   rules: {
     'no-descending-specificity': null,

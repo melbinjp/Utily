@@ -17,7 +17,9 @@ test.describe('Functional Tests', () => {
     await page.click('button[data-filter="ai"]');
 
     // Wait for the filtering to apply
-    await expect(page.locator('#tool-grid .tool-card:not(.hidden)').first()).toHaveAttribute('data-category', 'ai');
+    await expect(
+      page.locator('#tool-grid .tool-card:not(.hidden)').first()
+    ).toHaveAttribute('data-category', 'ai');
 
     // Get all visible tool cards
     const visibleCards = page.locator('#tool-grid .tool-card:not(.hidden)');
@@ -32,7 +34,9 @@ test.describe('Functional Tests', () => {
 
     // Click on the 'Media' filter
     await page.click('button[data-filter="media"]');
-    await expect(page.locator('#tool-grid .tool-card:not(.hidden)').first()).toHaveAttribute('data-category', 'media');
+    await expect(
+      page.locator('#tool-grid .tool-card:not(.hidden)').first()
+    ).toHaveAttribute('data-category', 'media');
     const visibleMediaCards = page.locator(
       '#tool-grid .tool-card:not(.hidden)'
     );
