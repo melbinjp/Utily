@@ -107,19 +107,19 @@ export class Carousel {
                     </div>
                 </div>
             </div>`;
-    
+
     // Add click handler for the entire card
     const featuredContent = item.querySelector('.featured-content');
     const handleCardClick = (e) => {
       // Don't trigger if clicking the "Explore all tools" link
       if (e.target.closest('.secondary-btn')) return;
-      
+
       const url = featuredContent.dataset.url;
       if (url && url !== '#') {
         window.open(url, '_blank', 'noopener,noreferrer');
       }
     };
-    
+
     featuredContent.addEventListener('click', handleCardClick);
     featuredContent.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
@@ -127,7 +127,7 @@ export class Carousel {
         handleCardClick(e);
       }
     });
-    
+
     return item;
   }
 
@@ -220,7 +220,7 @@ export class Carousel {
    */
   update() {
     this.inner.style.transform = `translateX(-${this.currentIndex * 100}%)`;
-    
+
     this.container.querySelectorAll('.carousel-item').forEach((item, index) => {
       const isActive = index === this.currentIndex;
       item.classList.toggle('active', isActive);
@@ -237,7 +237,7 @@ export class Carousel {
         }
       });
     });
-    
+
     this.container
       .querySelectorAll('.indicator')
       .forEach((indicator, index) => {
@@ -259,7 +259,10 @@ export class Carousel {
    * Navigates to the previous slide.
    */
   previousSlide() {
-    this.currentIndex = this.currentIndex === 0 ? this.featuredTools.length - 1 : this.currentIndex - 1;
+    this.currentIndex =
+      this.currentIndex === 0
+        ? this.featuredTools.length - 1
+        : this.currentIndex - 1;
     this.update();
     this.resetAutoplay();
   }

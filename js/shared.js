@@ -3,7 +3,7 @@ const SITE_CONFIG = {
   siteName: 'WeCanUseAI',
   tagline: 'Empowering creativity with AI',
   faviconBase: 'https://favicon.wecanuseai.com',
-  version: '1.0.0'
+  version: '1.0.0',
 };
 
 // Insert favicons into head
@@ -51,7 +51,7 @@ async function loadHeader() {
       `;
     }
   }
-  
+
   // Always initialize theme toggle
   initializeThemeToggle();
 }
@@ -62,32 +62,40 @@ function initializeThemeToggle() {
   if (themeToggle && !themeToggle.hasAttribute('data-initialized')) {
     themeToggle.setAttribute('data-initialized', 'true');
     const html = document.documentElement;
-    
+
     // Set initial theme immediately to prevent flash
     const savedMode = localStorage.getItem('themeMode') || 'system';
-    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)')
+      .matches
+      ? 'dark'
+      : 'light';
     const actualTheme = savedMode === 'system' ? systemTheme : savedMode;
     html.setAttribute('data-theme', actualTheme);
     updateThemeIcon(savedMode, actualTheme);
-    
+
     // Listen for system theme changes
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-      if (localStorage.getItem('themeMode') === 'system') {
-        applyTheme('system');
-      }
-    });
-    
+    window
+      .matchMedia('(prefers-color-scheme: dark)')
+      .addEventListener('change', () => {
+        if (localStorage.getItem('themeMode') === 'system') {
+          applyTheme('system');
+        }
+      });
+
     themeToggle.addEventListener('click', () => {
       const currentMode = localStorage.getItem('themeMode') || 'system';
       let nextMode;
-      
+
       if (currentMode === 'system') {
-        const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        const systemTheme = window.matchMedia('(prefers-color-scheme: dark)')
+          .matches
+          ? 'dark'
+          : 'light';
         nextMode = systemTheme === 'dark' ? 'light' : 'dark';
       } else {
         nextMode = 'system';
       }
-      
+
       localStorage.setItem('themeMode', nextMode);
       applyTheme(nextMode);
     });
@@ -97,17 +105,20 @@ function initializeThemeToggle() {
 // Apply theme based on mode
 function applyTheme(mode) {
   const html = document.documentElement;
-  
+
   // Temporarily disable transitions for instant switch
   document.body.classList.add('theme-switching');
-  
-  const actualTheme = mode === 'system' 
-    ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
-    : mode;
-  
+
+  const actualTheme =
+    mode === 'system'
+      ? window.matchMedia('(prefers-color-scheme: dark)').matches
+        ? 'dark'
+        : 'light'
+      : mode;
+
   html.setAttribute('data-theme', actualTheme);
   updateThemeIcon(mode, actualTheme);
-  
+
   // Re-enable transitions after a frame
   requestAnimationFrame(() => {
     document.body.classList.remove('theme-switching');
@@ -126,7 +137,7 @@ function updateThemeIcon(mode, actualTheme) {
     } else {
       iconName = 'moon';
     }
-    
+
     const useElement = icon.querySelector('use');
     if (useElement) {
       useElement.setAttribute('href', `#icon-${iconName}`);
@@ -138,9 +149,12 @@ function updateThemeIcon(mode, actualTheme) {
 // Insert or enhance footer
 function insertFooter() {
   const footer = document.querySelector('footer[role="contentinfo"]');
-  
+
   // If footer is empty (legal pages), insert full footer
-  if (footer && footer.innerHTML.trim() === '<!-- Footer loaded by shared.js -->') {
+  if (
+    footer &&
+    footer.innerHTML.trim() === '<!-- Footer loaded by shared.js -->'
+  ) {
     footer.innerHTML = `
       <div class="footer-content">
         <p>&copy; <span class="copyright-year"></span> ${SITE_CONFIG.siteName}. ${SITE_CONFIG.tagline}.</p>
@@ -153,7 +167,7 @@ function insertFooter() {
       </div>
     `;
   }
-  
+
   // Always update copyright year (works on all pages)
   const copyrightSpan = document.querySelector('.copyright-year');
   if (copyrightSpan) {

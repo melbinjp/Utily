@@ -6,15 +6,15 @@ function extractUsedIcons() {
   const files = glob.sync('**/*.{html,js,json}', { ignore: 'node_modules/**' });
   const iconRegex = /fa-[\w-]+/g;
   const usedIcons = new Set();
-  
-  files.forEach(file => {
+
+  files.forEach((file) => {
     const content = fs.readFileSync(file, 'utf8');
     const matches = content.match(iconRegex);
     if (matches) {
-      matches.forEach(icon => usedIcons.add(icon));
+      matches.forEach((icon) => usedIcons.add(icon));
     }
   });
-  
+
   return Array.from(usedIcons);
 }
 

@@ -137,7 +137,7 @@ header {
   z-index: 100;
   width: 100vw;
   margin-left: calc(-50vw + 50%);
-  transition: 
+  transition:
     background-color var(--transition-fast),
     border-color var(--transition-fast);
 }
@@ -261,8 +261,6 @@ header {
   border: 1px solid var(--border-color);
 }
 
-
-
 .carousel-item.active {
   opacity: 1;
   transform: scale(1) translateZ(0);
@@ -303,10 +301,6 @@ header {
   border-radius: var(--radius-xl);
 }
 
-
-
-
-
 .featured-content:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-xl);
@@ -316,8 +310,6 @@ header {
   outline: 2px solid var(--accent-color);
   outline-offset: 4px;
 }
-
-
 
 .featured-header {
   display: flex;
@@ -331,14 +323,20 @@ header {
 .featured-icon {
   width: 80px;
   height: 80px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.25) 0%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
   border-radius: var(--radius-xl);
   display: flex;
   align-items: center;
   justify-content: center;
   backdrop-filter: blur(15px);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
   position: relative;
   overflow: hidden;
   transition: all var(--transition-normal);
@@ -351,7 +349,12 @@ header {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: conic-gradient(from 0deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  background: conic-gradient(
+    from 0deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
   animation: rotate 8s linear infinite;
   z-index: 0;
 }
@@ -367,7 +370,9 @@ header {
 
 .featured-content:hover .featured-icon {
   transform: scale(1.05);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .featured-title {
@@ -539,7 +544,7 @@ header {
 
 .card-icon .icon {
   color: #667eea;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
   width: 4rem;
   height: 4rem;
 }
@@ -1344,11 +1349,11 @@ main {
   .legal-page {
     padding: var(--space-xl) var(--space-md);
   }
-  
+
   .container {
     padding: 0 var(--space-md);
   }
-  
+
   .legal-page h1 {
     font-size: 2rem;
   }
@@ -1382,19 +1387,19 @@ main {
   .tool-grid {
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   }
-  
+
   .carousel {
     padding: 0 var(--space-2xl);
   }
-  
+
   main {
     padding: 0 var(--space-2xl);
   }
-  
+
   .header-nav {
     padding: var(--space-md) var(--space-2xl);
   }
-  
+
   .footer-content {
     padding: 0 var(--space-2xl);
   }

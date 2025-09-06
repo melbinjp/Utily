@@ -10,13 +10,13 @@ class IconSystem {
     try {
       const response = await fetch('assets/icons/sprite.svg');
       const svgText = await response.text();
-      
+
       // Insert sprite at beginning of body
       const div = document.createElement('div');
       div.className = 'svg-sprite-container';
       div.innerHTML = svgText;
       document.body.insertBefore(div, document.body.firstChild);
-      
+
       this.spriteLoaded = true;
       console.log('✅ Icon sprite loaded');
     } catch (error) {
@@ -28,11 +28,11 @@ class IconSystem {
   createIcon(name, className = '') {
     const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     const use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
-    
+
     svg.setAttribute('class', `icon icon-${name} ${className}`.trim());
     svg.setAttribute('aria-hidden', 'true');
     use.setAttribute('href', `#icon-${name}`);
-    
+
     svg.appendChild(use);
     return svg;
   }
@@ -40,21 +40,21 @@ class IconSystem {
   // Replace FontAwesome icons with SVG sprites
   replaceFontAwesome() {
     const faIcons = document.querySelectorAll('[class*="fa-"]');
-    
-    faIcons.forEach(element => {
+
+    faIcons.forEach((element) => {
       const classes = Array.from(element.classList);
-      const faClass = classes.find(cls => cls.startsWith('fa-'));
-      
+      const faClass = classes.find((cls) => cls.startsWith('fa-'));
+
       if (faClass) {
         const iconName = faClass.replace('fa-', '');
         const svgIcon = this.createIcon(iconName);
-        
+
         // Copy non-FA classes
-        const otherClasses = classes.filter(cls => !cls.startsWith('fa'));
+        const otherClasses = classes.filter((cls) => !cls.startsWith('fa'));
         if (otherClasses.length > 0) {
           svgIcon.classList.add(...otherClasses);
         }
-        
+
         element.parentNode.replaceChild(svgIcon, element);
       }
     });

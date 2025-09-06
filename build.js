@@ -9,7 +9,6 @@ fs.mkdirSync('dist', { recursive: true });
 fs.mkdirSync('dist/js', { recursive: true });
 fs.mkdirSync('dist/assets', { recursive: true });
 
-
 console.log('🧹 Cleaned dist directory');
 
 // Build CSS
@@ -37,7 +36,7 @@ const filesToCopy = [
   { src: 'sw.js', dest: 'dist/sw.js' },
   { src: 'privacy.html', dest: 'dist/privacy.html' },
   { src: 'terms.html', dest: 'dist/terms.html' },
-  { src: 'contact.html', dest: 'dist/contact.html' }
+  { src: 'contact.html', dest: 'dist/contact.html' },
 ];
 
 filesToCopy.forEach(({ src, dest }) => {

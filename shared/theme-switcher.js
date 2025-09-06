@@ -5,15 +5,16 @@ class ThemeSwitcher {
     this.defaultTheme = options.defaultTheme || 'light';
     this.toggleSelector = options.toggleSelector || '.theme-toggle';
     this.iconSelector = options.iconSelector || '.theme-toggle i';
-    
+
     this.init();
   }
 
   init() {
     // Set initial theme
-    const savedTheme = localStorage.getItem(this.storageKey) || this.defaultTheme;
+    const savedTheme =
+      localStorage.getItem(this.storageKey) || this.defaultTheme;
     this.setTheme(savedTheme);
-    
+
     // Add event listeners
     this.bindEvents();
   }
@@ -33,7 +34,8 @@ class ThemeSwitcher {
   }
 
   toggle() {
-    const current = document.documentElement.getAttribute('data-theme') || this.defaultTheme;
+    const current =
+      document.documentElement.getAttribute('data-theme') || this.defaultTheme;
     const newTheme = current === 'light' ? 'dark' : 'light';
     this.setTheme(newTheme);
   }
