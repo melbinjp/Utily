@@ -71,7 +71,7 @@ function initializeThemeToggle() {
       : 'light';
     const actualTheme = savedMode === 'system' ? systemTheme : savedMode;
     html.setAttribute('data-theme', actualTheme);
-    updateThemeIcon(savedMode, actualTheme);
+    updateThemeIcon(savedMode);
 
     // Listen for system theme changes
     window
@@ -117,7 +117,7 @@ function applyTheme(mode) {
       : mode;
 
   html.setAttribute('data-theme', actualTheme);
-  updateThemeIcon(mode, actualTheme);
+  updateThemeIcon(mode);
 
   // Re-enable transitions after a frame
   requestAnimationFrame(() => {
@@ -126,7 +126,7 @@ function applyTheme(mode) {
 }
 
 // Update theme icon
-function updateThemeIcon(mode, actualTheme) {
+function updateThemeIcon(mode) {
   const icon = document.querySelector('.theme-toggle .icon');
   if (icon) {
     let iconName;

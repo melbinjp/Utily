@@ -16,8 +16,8 @@ test.describe('Functional Tests', () => {
     // Click on the 'AI & ML' filter
     await page.click('button[data-filter="ai"]');
 
-    // Wait for the animation/transition to complete
-    await page.waitForTimeout(500);
+    // Wait for the filtering to apply
+    await expect(page.locator('#tool-grid .tool-card:not(.hidden)').first()).toHaveAttribute('data-category', 'ai');
 
     // Get all visible tool cards
     const visibleCards = page.locator('#tool-grid .tool-card:not(.hidden)');
@@ -32,7 +32,7 @@ test.describe('Functional Tests', () => {
 
     // Click on the 'Media' filter
     await page.click('button[data-filter="media"]');
-    await page.waitForTimeout(500);
+    await expect(page.locator('#tool-grid .tool-card:not(.hidden)').first()).toHaveAttribute('data-category', 'media');
     const visibleMediaCards = page.locator(
       '#tool-grid .tool-card:not(.hidden)'
     );
