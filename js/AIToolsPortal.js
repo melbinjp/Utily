@@ -19,7 +19,7 @@ export class AIToolsPortal {
   _cacheSelectors() {
     this.loadingIndicator = document.getElementById('loading-indicator');
     this.themeToggle = document.querySelector('.theme-toggle');
-    this.themeIcon = document.querySelector('.theme-toggle i');
+    this.themeIcon = document.querySelector('.theme-toggle .icon');
     this.toolGrid = document.getElementById('tool-grid');
     this.filterButtons = document.querySelectorAll('.filter-btn');
     this.heroCarousel = document.querySelector('.hero-carousel');
@@ -30,7 +30,6 @@ export class AIToolsPortal {
    */
   async init() {
     this.showLoading();
-    this.setupThemeToggle();
 
     try {
       await this.loadTools();
@@ -133,7 +132,12 @@ export class AIToolsPortal {
    */
   updateThemeIcon(theme) {
     if (this.themeIcon) {
-      this.themeIcon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+      const iconName = theme === 'dark' ? 'sun' : 'moon';
+      const useElement = this.themeIcon.querySelector('use');
+      if (useElement) {
+        useElement.setAttribute('href', `#icon-${iconName}`);
+      }
+      this.themeIcon.setAttribute('class', `icon icon-${iconName}`);
     }
   }
 
@@ -162,15 +166,16 @@ export class AIToolsPortal {
     card.dataset.category = tool.category || 'utility';
     card.style.minHeight = '200px';
 
+    const iconName = tool.icon.replace(/fa[sb]? fa-/, '');
     const template = document.createElement('template');
     template.innerHTML = `
             <div class="tool-card-header">
-                <div class="tool-card-icon"><i class="${tool.icon}" aria-hidden="true"></i></div>
+                <div class="tool-card-icon"><svg class="icon icon-${iconName}" aria-hidden="true"><use href="#icon-${iconName}"></use></svg></div>
                 <h3><a href="${tool.url}" target="_blank" rel="noopener noreferrer">${escapeHtml(tool.title)}</a></h3>
             </div>
             <p>${escapeHtml(tool.description)}</p>
             <div class="tool-card-footer">
-                <a href="${tool.url}" class="tool-card-link" target="_blank" rel="noopener noreferrer">Try it out <span class="sr-only">for ${escapeHtml(tool.title)}</span><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+                <a href="${tool.url}" class="tool-card-link" target="_blank" rel="noopener noreferrer">Try it out <span class="sr-only">for ${escapeHtml(tool.title)}</span><svg class="icon icon-external-link-alt" aria-hidden="true"><use href="#icon-external-link-alt"></use></svg></a>
             </div>`;
 
     card.appendChild(template.content.cloneNode(true));
@@ -230,7 +235,7 @@ export class AIToolsPortal {
       (entries, obs) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+            entry.target.style.animation = 'fade-in-up 0.6s ease forwards';
             obs.unobserve(entry.target);
           }
         });

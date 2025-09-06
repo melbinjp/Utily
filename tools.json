@@ -17,7 +17,7 @@
     "category": "ai",
     "featured": true,
     "show": true,
-    "featured_description": "Transform how you interact with documents. Upload PDFs, DOCX files, or URLs and have intelligent conversations with their content using advanced AI-powered search and real-time citations."
+    "featured_description": "AI-powered document Q&A with intelligent search and citations."
   },
   {
     "title": "Voice Notes",
@@ -27,7 +27,7 @@
     "category": "media",
     "featured": true,
     "show": true,
-    "featured_description": "Capture your thoughts instantly with our browser-based voice recording tool. Perfect for quick notes, reminders, and voice memos with seamless playback and management."
+    "featured_description": "Browser-based voice recording for quick notes and memos."
   },
   {
     "title": "3D Model Viewer",
@@ -35,6 +35,7 @@
     "url": "https://melbinjp.github.io/3d_modelview/",
     "icon": "fas fa-cube",
     "category": "media",
+    "featured": true,
     "show": true
   },
   {

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; style-src 'self' https://fonts.googleapis.com; style-src-elem 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://favicon.wecanuseai.com; script-src 'self'; object-src 'none'; base-uri 'none';"
+      content="default-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://favicon.wecanuseai.com blob:; script-src 'self' 'sha256-vvt4KWwuNr51XfE5m+hzeNEGhiOfZzG97ccfqGsPwvE='; object-src 'none'; base-uri 'none';"
     />
     <title>
       WeCanUseAI - Practical, Privacy-First AI Tools for Productivity
@@ -71,51 +71,7 @@
     />
     <meta name="apple-mobile-web-app-title" content="wecanuseai" />
 
-    <!-- ✅ Modern SVG favicon -->
-    <link
-      rel="icon"
-      href="https://favicon.wecanuseai.com/favicon.svg?v=1.0.0"
-      type="image/svg+xml"
-      sizes="any"
-    />
-
-    <!-- ✅ Dark/Light PNG versions -->
-    <link
-      rel="icon"
-      href="https://favicon.wecanuseai.com/favicon-light.png?v=1.0.0"
-      media="(prefers-color-scheme: light)"
-    />
-    <link
-      rel="icon"
-      href="https://favicon.wecanuseai.com/favicon-dark.png?v=1.0.0"
-      media="(prefers-color-scheme: dark)"
-    />
-
-    <!-- ✅ Standard PNG fallbacks -->
-    <link
-      rel="icon"
-      href="https://favicon.wecanuseai.com/favicon-32.png?v=1.0.0"
-      sizes="32x32"
-      type="image/png"
-    />
-    <link
-      rel="icon"
-      href="https://favicon.wecanuseai.com/favicon-16.png?v=1.0.0"
-      sizes="16x16"
-      type="image/png"
-    />
-
-    <!-- ✅ Old browser fallback -->
-    <link
-      rel="shortcut icon"
-      href="https://favicon.wecanuseai.com/favicon.ico?v=1.0.0"
-    />
-
-    <!-- ✅ Apple Touch Icon (for iOS) -->
-    <link
-      rel="apple-touch-icon"
-      href="https://favicon.wecanuseai.com/apple-touch-icon.png?v=1.0.0"
-    />
+    <!-- Favicons loaded by shared.js -->
 
     <!--
     MANUAL REDIRECT:
@@ -127,21 +83,11 @@
     -->
     <!-- <meta http-equiv="refresh" content="0; url=PUT_YOUR_REDIRECT_URL_HERE"> -->
 
-
     <!-- Preload critical resources -->
     <link rel="preload" href="tools.json" as="fetch" crossorigin />
-    <link rel="stylesheet" href="vendor/fontawesome/css/all.min.css" />
+
     <link rel="stylesheet" href="style.css" />
 
-    <!-- Preload Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-    <!-- Async load non-critical CSS -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
 
   </head>
   <body>
@@ -150,41 +96,30 @@
 
     <header role="banner">
       <nav class="header-nav" role="navigation" aria-label="Main navigation">
-        <h1 class="logo">
+        <h1 class="site-logo">
           <a href="/">
-            <i class="fas fa-brain" aria-hidden="true"></i>
+            <svg class="icon icon-logo" aria-hidden="true"><use href="#icon-logo"></use></svg>
             wecanuseai.com
           </a>
         </h1>
         <div class="header-actions">
           <button
             class="theme-toggle"
-            aria-label="Toggle dark mode"
-            title="Toggle theme"
+            aria-label="Toggle theme mode"
+            title="Theme: System/Light/Dark"
           >
-            <i class="fas fa-moon" aria-hidden="true"></i>
+            <svg class="icon icon-moon" aria-hidden="true"><use href="#icon-moon"></use></svg>
           </button>
         </div>
       </nav>
     </header>
-    <section
-      class="hero-carousel min-h-400"
-      aria-label="Featured AI tools"
-    >
+    <section class="hero-carousel min-h-400" aria-label="Featured AI tools">
       <div id="featured-tool-carousel" class="carousel">
-        <div
-          class="carousel-inner min-h-400"
-          role="region"
-          aria-live="polite"
-        >
+        <div class="carousel-inner min-h-400" role="region" aria-live="polite">
           <!-- Featured tools will be dynamically inserted here -->
-          <div
-            class="carousel-placeholder carousel-placeholder-style"
-          >
+          <div class="carousel-placeholder carousel-placeholder-style">
             <div class="text-align-center">
-              <div
-                class="spinner-style-light"
-              ></div>
+              <div class="spinner-style-light"></div>
               <p>Loading featured tools...</p>
             </div>
           </div>
@@ -193,13 +128,13 @@
           class="carousel-control prev carousel-control-style"
           aria-label="Previous featured tool"
         >
-          <i class="fas fa-chevron-left" aria-hidden="true"></i>
+‹
         </button>
         <button
           class="carousel-control next carousel-control-style"
           aria-label="Next featured tool"
         >
-          <i class="fas fa-chevron-right" aria-hidden="true"></i>
+›
         </button>
         <div
           class="carousel-indicators"
@@ -235,13 +170,9 @@
           aria-label="AI tools collection"
         >
           <!-- Tool cards will be dynamically inserted here -->
-          <div
-            class="tool-placeholder tool-placeholder-style"
-          >
+          <div class="tool-placeholder tool-placeholder-style">
             <div class="text-align-center-color-muted">
-              <div
-                class="spinner-style-dark"
-              ></div>
+              <div class="spinner-style-dark"></div>
               <p>Loading AI tools...</p>
             </div>
           </div>
@@ -251,11 +182,20 @@
 
     <footer role="contentinfo">
       <div class="footer-content">
-        <p>&copy; 2024 WeCanUseAI. Empowering creativity with AI.</p>
+        <p>&copy; <span class="copyright-year"></span> WeCanUseAI. Empowering creativity with AI.</p>
         <div class="footer-links">
-          <a href="#" class="footer-link-item" aria-label="Privacy Policy">Privacy</a>
-          <a href="#" class="footer-link-item" aria-label="Terms of Service">Terms</a>
-          <a href="#" class="footer-link-item" aria-label="Contact Us">Contact</a>
+          <a href="/" class="footer-link-item" aria-label="Home Page"
+            >Home</a
+          >
+          <a href="privacy.html" class="footer-link-item" aria-label="Privacy Policy"
+            >Privacy</a
+          >
+          <a href="terms.html" class="footer-link-item" aria-label="Terms of Service"
+            >Terms</a
+          >
+          <a href="contact.html" class="footer-link-item" aria-label="Contact Us"
+            >Contact</a
+          >
         </div>
       </div>
     </footer>
@@ -265,6 +205,7 @@
       <p>Loading AI tools...</p>
     </div>
 
+    <script src="js/shared.js"></script>
     <script src="js/main.js" type="module" defer></script>
 
     <!-- Service Worker for PWA -->

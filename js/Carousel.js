@@ -87,30 +87,47 @@ export class Carousel {
       img.src = tool.background_image;
     }
 
+    const iconName = tool.icon.replace(/fa[sb]? fa-/, '');
     item.innerHTML = `
-            <div class="featured-content">
-                <div class="featured-text">
-                    <h2><i class="fas fa-rocket" aria-hidden="true"></i> Featured Tool</h2>
+            <div class="featured-content" role="button" tabindex="0" aria-label="Open ${escapeHtml(tool.title)}" data-url="${tool.url}">
+                <div class="featured-header">
+                    <div class="featured-icon">
+                        <svg class="icon icon-${iconName}" aria-hidden="true"><use href="#icon-${iconName}"></use></svg>
+                    </div>
                     <h3>${escapeHtml(tool.title)}</h3>
+                </div>
+                <div class="featured-body">
                     <p>${escapeHtml(tool.featured_description || tool.description)}</p>
                     <div class="featured-actions">
-                        <a href="${tool.url}" class="primary-btn" target="_blank" rel="noopener noreferrer" aria-label="Try it now: ${tool.title}">
+                        <span class="primary-btn">
                             <span>Try it now</span>
-                            <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                        </a>
+                            <svg class="icon icon-arrow-right" aria-hidden="true"><use href="#icon-arrow-right"></use></svg>
+                        </span>
                         <a href="#main-content" class="secondary-btn">Explore all tools</a>
                     </div>
                 </div>
-                <div class="featured-visual">
-                    <div class="floating-card">
-                        <div class="card-icon"><i class="${tool.icon}" aria-hidden="true"></i></div>
-                        <div class="card-content">
-                            <h4>${escapeHtml(tool.title)}</h4>
-                            <p>AI-Powered Tool</p>
-                        </div>
-                    </div>
-                </div>
             </div>`;
+    
+    // Add click handler for the entire card
+    const featuredContent = item.querySelector('.featured-content');
+    const handleCardClick = (e) => {
+      // Don't trigger if clicking the "Explore all tools" link
+      if (e.target.closest('.secondary-btn')) return;
+      
+      const url = featuredContent.dataset.url;
+      if (url && url !== '#') {
+        window.open(url, '_blank', 'noopener,noreferrer');
+      }
+    };
+    
+    featuredContent.addEventListener('click', handleCardClick);
+    featuredContent.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        handleCardClick(e);
+      }
+    });
+    
     return item;
   }
 
@@ -203,6 +220,7 @@ export class Carousel {
    */
   update() {
     this.inner.style.transform = `translateX(-${this.currentIndex * 100}%)`;
+    
     this.container.querySelectorAll('.carousel-item').forEach((item, index) => {
       const isActive = index === this.currentIndex;
       item.classList.toggle('active', isActive);
@@ -219,6 +237,7 @@ export class Carousel {
         }
       });
     });
+    
     this.container
       .querySelectorAll('.indicator')
       .forEach((indicator, index) => {
@@ -240,9 +259,7 @@ export class Carousel {
    * Navigates to the previous slide.
    */
   previousSlide() {
-    this.currentIndex =
-      (this.currentIndex - 1 + this.featuredTools.length) %
-      this.featuredTools.length;
+    this.currentIndex = this.currentIndex === 0 ? this.featuredTools.length - 1 : this.currentIndex - 1;
     this.update();
     this.resetAutoplay();
   }

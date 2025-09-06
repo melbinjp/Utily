@@ -10,7 +10,9 @@ test.describe('Functional Tests', () => {
     });
   });
 
-  test('should filter tool cards when a category is selected', async ({ page }) => {
+  test('should filter tool cards when a category is selected', async ({
+    page,
+  }) => {
     // Click on the 'AI & ML' filter
     await page.click('button[data-filter="ai"]');
 
@@ -25,25 +27,27 @@ test.describe('Functional Tests', () => {
     // Check that all visible cards have the 'ai' category
     for (let i = 0; i < count; i++) {
       const card = visibleCards.nth(i);
-      const category = await card.getAttribute('data-category');
-      expect(category).toBe('ai');
+      await expect(card).toHaveAttribute('data-category', 'ai');
     }
 
     // Click on the 'Media' filter
     await page.click('button[data-filter="media"]');
     await page.waitForTimeout(500);
-    const visibleMediaCards = page.locator('#tool-grid .tool-card:not(.hidden)');
+    const visibleMediaCards = page.locator(
+      '#tool-grid .tool-card:not(.hidden)'
+    );
     const mediaCount = await visibleMediaCards.count();
     expect(mediaCount).toBeGreaterThan(0);
 
     for (let i = 0; i < mediaCount; i++) {
       const card = visibleMediaCards.nth(i);
-      const category = await card.getAttribute('data-category');
-      expect(category).toBe('media');
+      await expect(card).toHaveAttribute('data-category', 'media');
     }
   });
 
-  test('should toggle dark mode when theme button is clicked', async ({ page }) => {
+  test('should toggle dark mode when theme button is clicked', async ({
+    page,
+  }) => {
     const html = page.locator('html');
     const themeToggle = page.locator('.theme-toggle');
 
@@ -59,9 +63,11 @@ test.describe('Functional Tests', () => {
     await expect(html).toHaveAttribute('data-theme', 'light');
   });
 
-  test('should display an error message if tools.json fails to load', async ({ page }) => {
+  test('should display an error message if tools.json fails to load', async ({
+    page,
+  }) => {
     // Intercept the network request for tools.json and make it fail
-    await page.route('**/tools.json', route => {
+    await page.route('**/tools.json', (route) => {
       route.abort();
     });
 
@@ -74,10 +80,14 @@ test.describe('Functional Tests', () => {
     await expect(errorMessage).toContainText('Failed to load AI tools');
   });
 
-  test('carousel keyboard navigation should only work when focused', async ({ page }) => {
+  test('carousel keyboard navigation should only work when focused', async ({
+    page,
+  }) => {
     const carousel = page.locator('.hero-carousel');
     const getActiveSlideIndex = async () => {
-      const activeIndicator = page.locator('.carousel-indicators .indicator.active');
+      const activeIndicator = page.locator(
+        '.carousel-indicators .indicator.active'
+      );
       return await activeIndicator.getAttribute('data-index');
     };
 

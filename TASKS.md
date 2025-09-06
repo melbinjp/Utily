@@ -25,10 +25,10 @@ This document tracks prioritized tasks for improving the stability, performance,
 ## P2: Medium Priority
 
 - [ ] **Improve `tap-targets` accessibility.**
-    - **Owner:** (suggest `@melbinjpaulose`)
-    - **Status:** In Progress
-    - **Effort:** Low
-    - **Notes:** The `tap-targets` score is currently 0.85, which is a borderline failure. The carousel controls may need further design adjustments to ensure they consistently meet the 48x48px target without overlapping.
+  - **Owner:** (suggest `@melbinjpaulose`)
+  - **Status:** In Progress
+  - **Effort:** Low
+  - **Notes:** The `tap-targets` score is currently 0.85, which is a borderline failure. The carousel controls may need further design adjustments to ensure they consistently meet the 48x48px target without overlapping.
 
 - [ ] **Add Unit Tests for JavaScript Logic.**
   - **Owner:** (suggest `@melbinjpaulose`)
@@ -52,17 +52,17 @@ This document tracks prioritized tasks for improving the stability, performance,
   - **Effort:** Medium
   - **Notes:** Added linting, formatting, and dependency security checks to the CI pipeline.
 - [x] **Resolve Tailwind CSS Purging Issue.**
-    - **Owner:** `@jules`
-    - **Status:** Done
-    - **Effort:** Medium
-    - **Notes:** Configured `postcss-import` and `purgecss` to correctly remove unused CSS, significantly reducing the size of `style.css`.
+  - **Owner:** `@jules`
+  - **Status:** Done
+  - **Effort:** Medium
+  - **Notes:** Configured `postcss-import` and `purgecss` to correctly remove unused CSS, significantly reducing the size of `style.css`.
 - [x] **Fix 404 errors for JS modules and fonts.**
-    - **Owner:** `@jules`
-    - **Status:** Done
-    - **Effort:** Low
-    - **Notes:** Updated the build process to correctly copy all necessary JavaScript modules and webfonts to the `dist` directory.
+  - **Owner:** `@jules`
+  - **Status:** Done
+  - **Effort:** Low
+  - **Notes:** Updated the build process to correctly copy all necessary JavaScript modules and webfonts to the `dist` directory.
 - [x] **Refactor inline JavaScript.**
-    - **Owner:** `@jules`
-    - **Status:** Done
-    - **Effort:** Low
-    - **Notes:** Removed inline `onclick` and service worker registration scripts from `index.html` to improve CSP compliance.
+  - **Owner:** `@jules`
+  - **Status:** Done
+  - **Effort:** Low
+  - **Notes:** Removed inline `onclick` and service worker registration scripts from `index.html` to improve CSP compliance.

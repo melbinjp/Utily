@@ -15,15 +15,18 @@ This repository contains the source code for WeCanUseAI.com, a portal showcasing
 
 The application is built with vanilla HTML, CSS, and JavaScript, emphasizing modularity and clean separation of concerns.
 
--   **`index.html`**: The main entry point of the application. It defines the page structure and includes placeholders for dynamic content.
--   **`style.css`**: The primary stylesheet, built using PostCSS and Tailwind CSS for utility-first styling.
--   **`js/`**: Contains all the JavaScript modules.
-    -   **`main.js`**: The main script that kicks off the application. It imports and instantiates the `AIToolsPortal`.
-    -   **`AIToolsPortal.js`**: The core application class. It manages data fetching (`tools.json`), renders the tool grid, and handles UI interactions like theme switching and filtering.
-    -   **`Carousel.js`**: A self-contained module for the featured tools carousel. It is lazy-loaded by `AIToolsPortal.js` for better initial page load performance.
-    -   **`utils.js`**: A place for shared utility functions (e.g., `escapeHtml`).
--   **`tools.json`**: A JSON file that acts as a simple database for the AI tools displayed on the site. Each tool has properties like title, description, URL, and category.
--   **`dist/`**: The output directory for the production build. All assets are optimized and copied here.
+- **`index.html`**: The main entry point of the application. It defines the page structure and includes placeholders for dynamic content.
+- **`style.css`**: The primary stylesheet, built using PostCSS and Tailwind CSS for utility-first styling.
+- **`js/`**: Contains all the JavaScript modules.
+  - **`main.js`**: The main script that kicks off the application. It imports and instantiates the `AIToolsPortal`.
+  - **`AIToolsPortal.js`**: The core application class. It manages data fetching (`tools.json`), renders the tool grid, and handles UI interactions like theme switching and filtering.
+  - **`Carousel.js`**: A self-contained module for the featured tools carousel. It is lazy-loaded by `AIToolsPortal.js` for better initial page load performance.
+  - **`sw-register.js`**: Service worker registration script for PWA functionality.
+  - **`utils.js`**: A place for shared utility functions (e.g., `escapeHtml`).
+- **`tools.json`**: A JSON file that acts as a simple database for the AI tools displayed on the site. Each tool has properties like title, description, URL, and category.
+- **`tests/`**: End-to-end tests using Playwright for functional testing.
+- **`build.js`**: Custom build script that handles asset optimization and copying.
+- **`dist/`**: The output directory for the production build (created during build process). All assets are optimized and copied here.
 
 ## Lighthouse Scores
 
@@ -70,17 +73,35 @@ This project uses `npm` for dependency management and running build scripts.
 
 ### Build Scripts
 
-- **`npm run build`**: Creates a production-ready build in the `dist/` directory. This script performs the following tasks:
-  - Optimizes and purges unused CSS with `postcss` and `cssnano`.
-  - Minifies JavaScript with `terser`.
-  - Copies all necessary files (`index.html`, `tools.json`, etc.) to the `dist/` directory.
+- **`npm run build`**: Creates a production-ready build in the `dist/` directory using `build.js`. This script performs the following tasks:
+  - Optimizes and purges unused CSS with PostCSS and cssnano.
+  - Minifies JavaScript with esbuild.
+  - Copies all necessary files (`index.html`, `tools.json`, service worker, etc.) to the `dist/` directory.
+  - Optimizes FontAwesome icons with subsetting.
 
 - **`npm run build:css`**: Runs only the CSS optimization task.
 - **`npm run build:js`**: Runs only the JavaScript minification task.
+- **`npm run subset:fontawesome`**: Optimizes FontAwesome icons by including only used icons.
 
 ### Local Development
 
 - **`npm run preview`**: Starts a local development server using `http-server` to serve the `dist/` directory. This is useful for testing the production build locally.
+
+### Testing
+
+- **`npm test`**: Runs the complete test suite (E2E tests + Lighthouse tests).
+- **`npm run test:e2e`**: Runs end-to-end tests using Playwright.
+- **`npm run test:lighthouse`**: Runs both mobile and desktop Lighthouse tests.
+- **`npm run test:lighthouse:mobile`**: Runs Lighthouse on mobile emulation.
+- **`npm run test:lighthouse:desktop`**: Runs Lighthouse on desktop emulation.
+
+### Code Quality
+
+- **`npm run lint`**: Runs ESLint and Stylelint to check code quality.
+- **`npm run lint:js`**: Runs ESLint on JavaScript files.
+- **`npm run lint:css`**: Runs Stylelint on CSS files.
+- **`npm run format`**: Formats code using Prettier.
+- **`npm run format:check`**: Checks if code is properly formatted.
 
 ### Performance Testing
 
