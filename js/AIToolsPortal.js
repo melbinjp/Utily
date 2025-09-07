@@ -55,14 +55,21 @@ export class AIToolsPortal {
   async loadTools() {
     try {
       const response = await fetch('tools.json');
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
-
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
       const allTools = await response.json();
+      if (!Array.isArray(allTools)) {
+        throw new Error('Invalid tools data format');
+      }
       this.tools = allTools.filter((tool) => tool.show);
+      if (this.tools.length === 0) {
+        throw new Error('No tools available');
+      }
     } catch (error) {
       console.error('Failed to load tools:', error);
       this.tools = [];
-      throw error;
+      throw new Error('Failed to load AI tools data');
     }
   }
 
@@ -100,7 +107,13 @@ export class AIToolsPortal {
   showError(message) {
     const errorDiv = document.createElement('div');
     errorDiv.className = 'error-message';
-    errorDiv.innerHTML = `<div class="error-content"><i class="fas fa-exclamation-triangle"></i><p>${message}</p><button id="retry-button">Retry</button></div>`;
+    errorDiv.setAttribute('role', 'alert');
+    errorDiv.innerHTML = `
+      <div class="error-content">
+        <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
+        <p>${message}</p>
+        <button id="retry-button" class="retry-button">Retry</button>
+      </div>`;
     document.body.appendChild(errorDiv);
     document.getElementById('retry-button').addEventListener('click', () => {
       location.reload();

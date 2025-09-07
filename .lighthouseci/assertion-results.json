@@ -12,7 +12,7 @@
     "passed": false,
     "auditId": "cache-insight",
     "level": "warn",
-    "url": "http://localhost:42103/index.html",
+    "url": "http://localhost:5584/index.html",
     "auditTitle": "Use efficient cache lifetimes",
     "auditDocumentationLink": "https://web.dev/uses-long-cache-ttl/"
   },
@@ -29,7 +29,7 @@
     "passed": false,
     "auditId": "render-blocking-insight",
     "level": "warn",
-    "url": "http://localhost:42103/index.html",
+    "url": "http://localhost:5584/index.html",
     "auditTitle": "Render blocking requests",
     "auditDocumentationLink": "https://web.dev/learn/performance/understanding-the-critical-path#render-blocking_resources"
   },
@@ -46,7 +46,7 @@
     "passed": false,
     "auditId": "render-blocking-resources",
     "level": "warn",
-    "url": "http://localhost:42103/index.html",
+    "url": "http://localhost:5584/index.html",
     "auditTitle": "Eliminate render-blocking resources",
     "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/performance/render-blocking-resources/"
   },
@@ -63,7 +63,7 @@
     "passed": false,
     "auditId": "uses-long-cache-ttl",
     "level": "warn",
-    "url": "http://localhost:42103/index.html",
+    "url": "http://localhost:5584/index.html",
     "auditTitle": "Serve static assets with an efficient cache policy",
     "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/performance/uses-long-cache-ttl/"
   }

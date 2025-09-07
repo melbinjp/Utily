@@ -30,6 +30,12 @@ export class Carousel {
 
     this.render();
     this.setupEventListeners();
+    
+    // Force reset to index 0 and update the display
+    this.currentIndex = 0;
+    this.update();
+    
+    // Start autoplay after initialization
     this.startAutoplay();
   }
 
@@ -89,7 +95,7 @@ export class Carousel {
 
     const iconName = tool.icon.replace(/fa[sb]? fa-/, '');
     item.innerHTML = `
-            <div class="featured-content" role="button" tabindex="0" aria-label="Open ${escapeHtml(tool.title)}" data-url="${tool.url}">
+            <div class="featured-content">
                 <div class="featured-header">
                     <div class="featured-icon">
                         <svg class="icon icon-${iconName}" aria-hidden="true"><use href="#icon-${iconName}"></use></svg>
@@ -163,6 +169,16 @@ export class Carousel {
     document.addEventListener('visibilitychange', () =>
       document.hidden ? this.pauseAutoplay() : this.resumeAutoplay()
     );
+
+    // Handle clicks on featured content
+    this.container.addEventListener('click', (e) => {
+      const featuredContent = e.target.closest('.featured-content');
+      if (featuredContent) {
+        const url = featuredContent.getAttribute('data-url');
+        if (url) window.location.href = url;
+      }
+    });
+
     this.setupKeyboardNavigation();
     this.setupTouchNavigation();
   }
