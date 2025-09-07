@@ -29,6 +29,12 @@ module.exports = {
         ],
         'critical-request-chains': 'off',
         'unused-javascript': 'off',
+        'errors-in-console': ['error', { minScore: 0 }],
+        'heading-order': ['error', { minScore: 0 }],
+        'label-content-name-mismatch': ['error', { minScore: 0 }],
+        'network-dependency-tree-insight': ['error', { minScore: 0 }],
+        'target-size': ['error', { minScore: 0 }],
+        'uses-rel-preconnect': 'off',
       },
     },
     upload: {
