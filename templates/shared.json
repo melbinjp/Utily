@@ -1,0 +1,21 @@
+{
+  "site": {
+    "name": "WeCanUseAI",
+    "tagline": "Empowering creativity with AI",
+    "faviconBase": "https://favicon.wecanuseai.com",
+    "version": "1.0.0"
+  },
+  "favicons": [
+    "<link rel=\"icon\" href=\"{{site.faviconBase}}/favicon.svg?v={{site.version}}\" type=\"image/svg+xml\" sizes=\"any\" />",
+    "<link rel=\"icon\" href=\"{{site.faviconBase}}/favicon-32.png?v={{site.version}}\" sizes=\"32x32\" type=\"image/png\" />",
+    "<link rel=\"shortcut icon\" href=\"{{site.faviconBase}}/favicon.ico?v={{site.version}}\" />"
+  ],
+  "footer": {
+    "copyright": "&copy; {{currentYear}} {{site.name}}. {{site.tagline}}.",
+    "links": [
+      { "text": "Privacy", "href": "privacy.html" },
+      { "text": "Terms", "href": "terms.html" },
+      { "text": "Contact", "href": "contact.html" }
+    ]
+  }
+}
