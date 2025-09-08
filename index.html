@@ -7,18 +7,28 @@
       http-equiv="Content-Security-Policy"
       content="default-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://favicon.wecanuseai.com blob:; script-src 'self' 'sha256-vvt4KWwuNr51XfE5m+hzeNEGhiOfZzG97ccfqGsPwvE='; object-src 'none'; base-uri 'none';"
     />
-    <title>
-      WeCanUseAI - Practical, Privacy-First AI Tools for Productivity
-    </title>
-    <meta
-      name="description"
-      content="Explore a curated collection of practical and privacy-conscious AI tools designed to enhance your productivity without compromising your data."
-    />
-    <meta
-      name="keywords"
-      content="practical AI tools, privacy-conscious AI, productivity software, AI applications, secure AI, AI utilities"
-    />
+    <title>WeCanUseAI - Practical, Privacy-First AI Tools for Productivity</title>
+    <meta name="description" content="Explore a curated collection of practical and privacy-conscious AI tools designed to enhance your productivity without compromising your data." />
+    <meta name="keywords" content="practical AI tools, privacy-conscious AI, productivity software, AI applications, secure AI, AI utilities" />
     <meta name="author" content="WeCanUseAI" />
+    
+    <!-- Performance optimizations -->
+    <link rel="preload" href="/style.css" as="style">
+    <link rel="preload" href="/js/main.js" as="script">
+    <link rel="preload" href="/assets/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="dns-prefetch" href="https://favicon.wecanuseai.com">
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    
+    <!-- Defer non-critical CSS -->
+    <link rel="stylesheet" href="/style.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="/style.css"></noscript>
+    
+    <!-- Optimize font loading -->
+    <link rel="preconnect" href="https://favicon.wecanuseai.com" crossorigin>
+    
+    <!-- Add modulepreload for JS modules -->
+    <link rel="modulepreload" href="/js/shared.js">
+    <link rel="modulepreload" href="/js/utils.js">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />

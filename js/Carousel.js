@@ -19,6 +19,7 @@ export class Carousel {
     );
     this.currentIndex = 0;
     this.autoplayInterval = null;
+    this.autoplayEnabled = true; // New flag to control autoplay
 
     if (
       !this.inner ||
@@ -35,8 +36,13 @@ export class Carousel {
     this.currentIndex = 0;
     this.update();
     
-    // Start autoplay after initialization
-    this.startAutoplay();
+    // Store reference to instance
+    this.attachToElement();
+    
+    // Start autoplay after initialization if enabled
+    if (this.autoplayEnabled) {
+      this.startAutoplay();
+    }
   }
 
   /**
@@ -189,7 +195,11 @@ export class Carousel {
    */
   setupKeyboardNavigation() {
     this.container.addEventListener('keydown', (e) => {
-      // No need to check for input fields anymore, as the listener is on the container
+      // Only handle keyboard navigation when the carousel has focus and the event is directly on the container
+      if (document.activeElement !== this.container || e.target !== this.container) {
+        return;
+      }
+
       if (e.key === 'ArrowLeft') {
         e.preventDefault();
         this.previousSlide();
@@ -299,7 +309,16 @@ export class Carousel {
    */
   startAutoplay() {
     if (this.featuredTools.length <= 1) return;
-    this.autoplayInterval = setInterval(() => this.nextSlide(), 6000);
+    if (!this.autoplayInterval && this.autoplayEnabled) {
+      this.autoplayInterval = setInterval(() => this.nextSlide(), 6000);
+    }
+  }
+
+  /**
+   * Store a reference to the carousel instance on the element
+   */
+  attachToElement() {
+    this.container.__carousel = this;
   }
 
   /**
