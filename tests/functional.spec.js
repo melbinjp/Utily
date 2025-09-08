@@ -5,11 +5,21 @@ test.describe('Functional Tests', () => {
 
   // Helper: wait until the lazy-loaded carousel instance is present
   async function waitForCarouselInitialized(page, timeout = 10000) {
-    await page.locator('.hero-carousel').first().waitFor({ state: 'attached', timeout });
-    await page.waitForFunction(() => {
-      const el = document.querySelector('.hero-carousel');
-      return !!(el && el.__carousel && typeof el.__carousel.pauseAutoplay === 'function');
-    }, { timeout });
+    await page
+      .locator('.hero-carousel')
+      .first()
+      .waitFor({ state: 'attached', timeout });
+    await page.waitForFunction(
+      () => {
+        const el = document.querySelector('.hero-carousel');
+        return !!(
+          el &&
+          el.__carousel &&
+          typeof el.__carousel.pauseAutoplay === 'function'
+        );
+      },
+      { timeout }
+    );
   }
 
   test.beforeEach(async ({ page }) => {
@@ -19,7 +29,9 @@ test.describe('Functional Tests', () => {
     });
   });
 
-  test('should filter tool cards when a category is selected', async ({ page }) => {
+  test('should filter tool cards when a category is selected', async ({
+    page,
+  }) => {
     // Click on the 'AI & ML' filter
     await page.click('button[data-filter="ai"]');
     // Wait for the filtering to apply
@@ -40,7 +52,9 @@ test.describe('Functional Tests', () => {
     await expect(
       page.locator('#tool-grid .tool-card:not(.hidden)').first()
     ).toHaveAttribute('data-category', 'media');
-    const visibleMediaCards = page.locator('#tool-grid .tool-card:not(.hidden)');
+    const visibleMediaCards = page.locator(
+      '#tool-grid .tool-card:not(.hidden)'
+    );
     const mediaCount = await visibleMediaCards.count();
     expect(mediaCount).toBeGreaterThan(0);
     for (let i = 0; i < mediaCount; i++) {
@@ -49,7 +63,9 @@ test.describe('Functional Tests', () => {
     }
   });
 
-  test('should toggle dark mode when theme button is clicked', async ({ page }) => {
+  test('should toggle dark mode when theme button is clicked', async ({
+    page,
+  }) => {
     const html = page.locator('html');
     const themeToggle = page.locator('.theme-toggle');
     // Check initial theme (should be light by default)
@@ -62,7 +78,9 @@ test.describe('Functional Tests', () => {
     await expect(html).toHaveAttribute('data-theme', 'light');
   });
 
-  test('should display an error message if tools.json fails to load', async ({ page }) => {
+  test('should display an error message if tools.json fails to load', async ({
+    page,
+  }) => {
     // Intercept the network request for tools.json and make it fail
     await page.route('**/tools.json', (route) => {
       route.abort();
@@ -72,10 +90,14 @@ test.describe('Functional Tests', () => {
     // Check if the error message is visible
     const errorMessage = page.locator('.error-message');
     await expect(errorMessage).toBeVisible({ timeout: 10000 }); // Increase timeout to 10 seconds
-    await expect(errorMessage).toContainText('Failed to load AI tools', { timeout: 10000 });
+    await expect(errorMessage).toContainText('Failed to load AI tools', {
+      timeout: 10000,
+    });
   });
 
-  test('carousel keyboard navigation should only work when focused', async ({ page }) => {
+  test('carousel keyboard navigation should only work when focused', async ({
+    page,
+  }) => {
     // Ensure carousel is initialized (it is lazy-loaded)
     await waitForCarouselInitialized(page);
 
@@ -89,8 +111,13 @@ test.describe('Functional Tests', () => {
     });
 
     const getActiveSlideIndex = async () => {
-  await page.locator('.carousel-indicators .indicator.active').first().waitFor({ state: 'visible', timeout: 5000 });
-  const activeIndicator = page.locator('.carousel-indicators .indicator.active');
+      await page
+        .locator('.carousel-indicators .indicator.active')
+        .first()
+        .waitFor({ state: 'visible', timeout: 5000 });
+      const activeIndicator = page.locator(
+        '.carousel-indicators .indicator.active'
+      );
       return await activeIndicator.getAttribute('data-index');
     };
 

@@ -58,6 +58,11 @@ async function build() {
   fs.mkdirSync('dist/js', { recursive: true });
   fs.mkdirSync('dist/assets', { recursive: true });
   fs.mkdirSync('dist/assets/images', { recursive: true });
+  fs.mkdirSync('dist/assets/fonts', { recursive: true });
+  fs.mkdirSync('dist/assets/icons', { recursive: true });
+  fs.mkdirSync('dist/assets/favicon', { recursive: true });
+  fs.mkdirSync('dist/components', { recursive: true });
+
 
   // Copy .nojekyll if present
   if (fs.existsSync('.nojekyll')) {
@@ -71,7 +76,7 @@ async function build() {
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:;
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; object-src 'none'; base-uri 'none';
   Strict-Transport-Security: max-age=31536000; includeSubDomains
 
 /*.html
@@ -109,6 +114,14 @@ async function build() {
     console.error('❌ JavaScript build failed:', error.message);
   }
 
+  // Build icons and subset FontAwesome
+  try {
+    execSync('npm run subset:fontawesome', { stdio: 'inherit' });
+    execSync('npm run build:icons', { stdio: 'inherit' });
+  } catch (error) {
+    console.error('❌ Icon or font subsetting failed:', error.message);
+  }
+
   // Optimize images (best-effort)
   await optimizeImages();
 
@@ -117,11 +130,19 @@ async function build() {
     { src: 'index.html', dest: 'dist/index.html' },
     { src: 'tools.json', dest: 'dist/tools.json' },
     { src: 'js/shared.js', dest: 'dist/js/shared.js' },
+    { src: 'js/utils.js', dest: 'dist/js/utils.js' },
     { src: 'js/sw-register.js', dest: 'dist/js/sw-register.js' },
     { src: 'sw.js', dest: 'dist/sw.js' },
     { src: 'privacy.html', dest: 'dist/privacy.html' },
     { src: 'terms.html', dest: 'dist/terms.html' },
     { src: 'contact.html', dest: 'dist/contact.html' },
+    { src: 'robots.txt', dest: 'dist/robots.txt' },
+    { src: 'site.webmanifest', dest: 'dist/site.webmanifest' },
+    { src: '.htaccess', dest: 'dist/.htaccess' },
+    { src: 'CNAME', dest: 'dist/CNAME' },
+    { src: 'assets/favicon/favicon.svg', dest: 'dist/assets/favicon/favicon.svg' },
+    { src: 'assets/fonts/fontawesome.css', dest: 'dist/assets/fonts/fontawesome.css' },
+    { src: 'components/header.html', dest: 'dist/components/header.html' },
   ];
 
   filesToCopy.forEach(({ src, dest }) => {

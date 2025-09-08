@@ -20,20 +20,23 @@ export class AIToolsPortal {
    * @private
    */
   _setupIntersectionObserver() {
-    this.observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const toolId = entry.target.dataset.toolId;
-          if (toolId && !this.visibleTools.has(toolId)) {
-            this.visibleTools.add(toolId);
-            this._renderTool(this.tools.find(t => t.id === toolId));
+    this.observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const toolId = entry.target.dataset.toolId;
+            if (toolId && !this.visibleTools.has(toolId)) {
+              this.visibleTools.add(toolId);
+              this._renderTool(this.tools.find((t) => t.id === toolId));
+            }
           }
-        }
-      });
-    }, {
-      rootMargin: '50px',
-      threshold: 0.1
-    });
+        });
+      },
+      {
+        rootMargin: '50px',
+        threshold: 0.1,
+      }
+    );
   }
 
   /**
@@ -88,7 +91,10 @@ export class AIToolsPortal {
         throw new Error('Invalid tools data format');
       }
       // Show all tools in development
-      this.tools = process.env.NODE_ENV === 'development' ? allTools : allTools.filter((tool) => tool.show);
+      this.tools =
+        process.env.NODE_ENV === 'development'
+          ? allTools
+          : allTools.filter((tool) => tool.show);
       if (this.tools.length === 0) {
         throw new Error('No tools available');
       }
@@ -147,7 +153,7 @@ export class AIToolsPortal {
         <p>${message}</p>
         <button id="retry-button" class="retry-button">Retry</button>
       </div>`;
-    
+
     document.body.appendChild(errorDiv);
 
     const retryButton = document.getElementById('retry-button');
@@ -222,7 +228,7 @@ export class AIToolsPortal {
     template.innerHTML = `
             <div class="tool-card-header">
                 <div class="tool-card-icon"><svg class="icon icon-${iconName}" aria-hidden="true"><use href="#icon-${iconName}"></use></svg></div>
-                <h3><a href="${tool.url}" target="_blank" rel="noopener noreferrer">${escapeHtml(tool.title)}</a></h3>
+                <h2><a href="${tool.url}" target="_blank" rel="noopener noreferrer">${escapeHtml(tool.title)}</a></h2>
             </div>
             <p>${escapeHtml(tool.description)}</p>
             <div class="tool-card-footer">

@@ -31,14 +31,14 @@ export class Carousel {
 
     this.render();
     this.setupEventListeners();
-    
+
     // Force reset to index 0 and update the display
     this.currentIndex = 0;
     this.update();
-    
+
     // Store reference to instance
     this.attachToElement();
-    
+
     // Start autoplay after initialization if enabled
     if (this.autoplayEnabled) {
       this.startAutoplay();
@@ -106,7 +106,7 @@ export class Carousel {
                     <div class="featured-icon">
                         <svg class="icon icon-${iconName}" aria-hidden="true"><use href="#icon-${iconName}"></use></svg>
                     </div>
-                    <h3>${escapeHtml(tool.title)}</h3>
+                    <h2>${escapeHtml(tool.title)}</h2>
                 </div>
                 <div class="featured-body">
                     <p>${escapeHtml(tool.featured_description || tool.description)}</p>
@@ -196,7 +196,10 @@ export class Carousel {
   setupKeyboardNavigation() {
     this.container.addEventListener('keydown', (e) => {
       // Only handle keyboard navigation when the carousel has focus and the event is directly on the container
-      if (document.activeElement !== this.container || e.target !== this.container) {
+      if (
+        document.activeElement !== this.container ||
+        e.target !== this.container
+      ) {
         return;
       }
 

@@ -1,9 +1,4 @@
 {
-  "scripts": {
-    "test:lighthouse": "npm run lighthouse:mobile && npm run lighthouse:desktop",
-    "lighthouse:mobile": "lighthouse https://wecanuseai.com --output=json --output-path=./lighthouse-mobile-report.json --only-categories=performance,accessibility,best-practices,seo --preset=mobile --quiet --chrome-flags=\"--headless\"",
-    "lighthouse:desktop": "lighthouse https://wecanuseai.com --output=json --output-path=./lighthouse-desktop-report.json --only-categories=performance,accessibility,best-practices,seo --preset=desktop --quiet --chrome-flags=\"--headless\""
-  },
   "devDependencies": {
     "@axe-core/playwright": "^4.9.1",
     "@eslint/js": "^9.33.0",

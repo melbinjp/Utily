@@ -1340,7 +1340,6 @@ footer {
 
 /* Ensure body has proper flex layout for sticky footer */
 
-
 /* Container class for consistent width */
 .container {
   max-width: 800px;

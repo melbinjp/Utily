@@ -10,7 +10,7 @@ module.exports = {
         './components/**/*.html',
         './privacy.html',
         './terms.html',
-        './contact.html'
+        './contact.html',
       ],
       defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || [],
       safelist: [
@@ -21,25 +21,28 @@ module.exports = {
         'open',
         'hidden',
         /^fa-/,
-        /^carousel-/
-      ]
+        /^carousel-/,
+      ],
     }),
     require('cssnano')({
-      preset: ['default', {
-        discardComments: { removeAll: true },
-        normalizeWhitespace: true,
-        colormin: true,
-        minifyFontValues: true,
-        minifyGradients: true,
-        mergeLonghand: true,
-        mergeRules: true,
-        minifySelectors: true,
-        normalizeUrl: true,
-        discardUnused: true,
-        discardDuplicates: true,
-        reduceIdents: false,
-        zindex: false
-      }]
+      preset: [
+        'default',
+        {
+          discardComments: { removeAll: true },
+          normalizeWhitespace: true,
+          colormin: true,
+          minifyFontValues: true,
+          minifyGradients: true,
+          mergeLonghand: true,
+          mergeRules: true,
+          minifySelectors: true,
+          normalizeUrl: true,
+          discardUnused: true,
+          discardDuplicates: true,
+          reduceIdents: false,
+          zindex: false,
+        },
+      ],
     }),
   ],
 };

@@ -100,14 +100,17 @@ This project uses `npm` for dependency management and running build scripts.
 The Playwright end-to-end tests are configured to run in a CI environment and may have issues running in some local development environments. If you need to run the tests locally, follow these steps:
 
 1.  **Build the project:**
+
     ```bash
     npm run build
     ```
 
 2.  **Start the development server:**
+
     ```bash
     npm run preview
     ```
+
     This will start a server on `http://localhost:8080`.
 
 3.  **Run the Playwright tests:**
@@ -116,7 +119,6 @@ The Playwright end-to-end tests are configured to run in a CI environment and ma
     npx playwright test
     ```
     This will run the tests against the local server.
-
 
 ### Code Quality
 
