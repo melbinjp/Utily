@@ -101,45 +101,24 @@ export class Carousel {
 
     const iconName = tool.icon.replace(/fa[sb]? fa-/, '');
     item.innerHTML = `
-            <div class="featured-content">
-                <div class="featured-header">
-                    <div class="featured-icon">
-                        <svg class="icon icon-${iconName}" aria-hidden="true"><use href="#icon-${iconName}"></use></svg>
-                    </div>
-                    <h2>${escapeHtml(tool.title)}</h2>
-                </div>
-                <div class="featured-body">
-                    <p>${escapeHtml(tool.featured_description || tool.description)}</p>
-                    <div class="featured-actions">
-                        <span class="primary-btn">
-                            <span>Try it now</span>
-                            <svg class="icon icon-arrow-right" aria-hidden="true"><use href="#icon-arrow-right"></use></svg>
-                        </span>
-                        <a href="#main-content" class="secondary-btn">Explore all tools</a>
-                    </div>
-                </div>
-            </div>`;
-
-    // Add click handler for the entire card
-    const featuredContent = item.querySelector('.featured-content');
-    const handleCardClick = (e) => {
-      // Don't trigger if clicking the "Explore all tools" link
-      if (e.target.closest('.secondary-btn')) return;
-
-      const url = featuredContent.dataset.url;
-      if (url && url !== '#') {
-        window.open(url, '_blank', 'noopener,noreferrer');
-      }
-    };
-
-    featuredContent.addEventListener('click', handleCardClick);
-    featuredContent.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        handleCardClick(e);
-      }
-    });
-
+    <div class="featured-content" data-url="${tool.url}">
+        <div class="featured-header">
+            <div class="featured-icon">
+                <svg class="icon icon-${iconName}" aria-hidden="true"><use href="#icon-${iconName}"></use></svg>
+            </div>
+            <h2>${escapeHtml(tool.title)}</h2>
+        </div>
+        <div class="featured-body">
+            <p>${escapeHtml(tool.featured_description || tool.description)}</p>
+            <div class="featured-actions">
+                <a href="${tool.url}" target="_blank" rel="noopener noreferrer" class="primary-btn">
+                    <span>Try it now</span>
+                    <svg class="icon icon-arrow-right" aria-hidden="true"><use href="#icon-arrow-right"></use></svg>
+                </a>
+                <a href="#main-content" class="secondary-btn">Explore all tools</a>
+            </div>
+        </div>
+    </div>`;
     return item;
   }
 
@@ -175,15 +154,6 @@ export class Carousel {
     document.addEventListener('visibilitychange', () =>
       document.hidden ? this.pauseAutoplay() : this.resumeAutoplay()
     );
-
-    // Handle clicks on featured content
-    this.container.addEventListener('click', (e) => {
-      const featuredContent = e.target.closest('.featured-content');
-      if (featuredContent) {
-        const url = featuredContent.getAttribute('data-url');
-        if (url) window.location.href = url;
-      }
-    });
 
     this.setupKeyboardNavigation();
     this.setupTouchNavigation();
