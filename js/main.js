@@ -22,7 +22,11 @@ const startApp = () => {
 };
 
 // Use passive event listeners where possible
-document.addEventListener('DOMContentLoaded', () => {
-  loadCSS();
-  startApp();
-}, { passive: true });
+document.addEventListener(
+  'DOMContentLoaded',
+  () => {
+    loadCSS();
+    startApp();
+  },
+  { passive: true }
+);

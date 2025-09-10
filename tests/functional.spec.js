@@ -10,15 +10,23 @@ test.describe('Functional Tests', () => {
     });
   });
 
-  test('should have a clickable "Try it now" link in the featured tool card', async ({ page }) => {
+  test('should have a clickable "Try it now" link in the featured tool card', async ({
+    page,
+  }) => {
     // Wait for the carousel to be ready
-    await expect(page.locator('.carousel-item.active .featured-actions .primary-btn').first()).toBeVisible({ timeout: 10000 });
+    await expect(
+      page
+        .locator('.carousel-item.active .featured-actions .primary-btn')
+        .first()
+    ).toBeVisible({ timeout: 10000 });
 
     // Get the first featured tool card's "Try it now" button
-    const tryItNowButton = page.locator('.carousel-item.active .featured-actions .primary-btn').first();
+    const tryItNowButton = page
+      .locator('.carousel-item.active .featured-actions .primary-btn')
+      .first();
 
     // Check that it's an 'a' tag
-    const tagName = await tryItNowButton.evaluate(node => node.tagName);
+    const tagName = await tryItNowButton.evaluate((node) => node.tagName);
     expect(tagName.toLowerCase()).toBe('a');
 
     // Check that it has an href attribute

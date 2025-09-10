@@ -63,7 +63,6 @@ async function build() {
   fs.mkdirSync('dist/assets/favicon', { recursive: true });
   fs.mkdirSync('dist/components', { recursive: true });
 
-
   // Copy .nojekyll if present
   if (fs.existsSync('.nojekyll')) {
     fs.copyFileSync('.nojekyll', 'dist/.nojekyll');
@@ -140,8 +139,14 @@ async function build() {
     { src: 'site.webmanifest', dest: 'dist/site.webmanifest' },
     { src: '.htaccess', dest: 'dist/.htaccess' },
     { src: 'CNAME', dest: 'dist/CNAME' },
-    { src: 'assets/favicon/favicon.svg', dest: 'dist/assets/favicon/favicon.svg' },
-    { src: 'assets/fonts/fontawesome.css', dest: 'dist/assets/fonts/fontawesome.css' },
+    {
+      src: 'assets/favicon/favicon.svg',
+      dest: 'dist/assets/favicon/favicon.svg',
+    },
+    {
+      src: 'assets/fonts/fontawesome.css',
+      dest: 'dist/assets/fonts/fontawesome.css',
+    },
     { src: 'components/header.html', dest: 'dist/components/header.html' },
   ];
 
