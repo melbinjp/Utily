@@ -13,6 +13,8 @@
     "eslint": "^9.33.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-playwright": "^2.2.2",
+    "express": "^5.1.0",
+    "express-static-gzip": "^3.0.0",
     "fontawesome-subset": "^4.6.0",
     "glob": "^11.0.3",
     "globals": "^16.3.0",
@@ -52,7 +54,7 @@
     "build:icons": "node scripts/build-icons.js",
     "subset:fontawesome": "node subset.js",
     "build": "node build.js",
-    "preview": "http-server -p 8080 dist",
+    "preview": "node server.js",
     "lighthouse:mobile": "lighthouse http://localhost:8080 --output=json --output-path=./lighthouse-mobile-report.json --only-categories=performance,accessibility,best-practices,seo --chrome-flags='--headless --no-sandbox'",
     "lighthouse:desktop": "lighthouse http://localhost:8080 --output=json --output-path=./lighthouse-desktop-report.json --only-categories=performance,accessibility,best-practices,seo --chrome-flags='--headless --no-sandbox'"
   },

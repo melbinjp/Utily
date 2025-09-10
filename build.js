@@ -1,7 +1,7 @@
 const fs = require('fs');
-const path = require('path');
 const { execSync } = require('child_process');
 const util = require('util');
+const { glob } = require('glob');
 const zlib = require('zlib');
 const brotli = require('brotli');
 const imagemin = require('imagemin');
@@ -96,7 +96,6 @@ async function build() {
   try {
     execSync('npm run build:css', { stdio: 'inherit' });
     console.log('✅ CSS built successfully');
-    await compressFile('dist/style.css');
   } catch (error) {
     console.error('❌ CSS build failed:', error.message);
   }
@@ -105,10 +104,6 @@ async function build() {
   try {
     execSync('npm run build:js', { stdio: 'inherit' });
     console.log('✅ JavaScript built successfully');
-    const jsFiles = fs.existsSync('dist/js') ? fs.readdirSync('dist/js') : [];
-    for (const file of jsFiles) {
-      await compressFile(path.join('dist/js', file));
-    }
   } catch (error) {
     console.error('❌ JavaScript build failed:', error.message);
   }
@@ -158,6 +153,12 @@ async function build() {
       console.warn(`⚠️  File not found: ${src}`);
     }
   });
+
+  // Compress all text-based files
+  const filesToCompress = await glob('dist/**/*.{html,css,js,json,svg,webmanifest}');
+  for (const file of filesToCompress) {
+    await compressFile(file);
+  }
 
   console.log('🎉 Build completed successfully!');
 }

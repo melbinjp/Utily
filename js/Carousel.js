@@ -82,7 +82,10 @@ export class Carousel {
     item.className = 'carousel-item';
     item.setAttribute('role', 'tabpanel');
     item.setAttribute('aria-label', `Featured tool: ${tool.title}`);
-    item.setAttribute('data-tool-id', tool.title.toLowerCase().replace(/\s+/g, '-'));
+    item.setAttribute(
+      'data-tool-id',
+      tool.title.toLowerCase().replace(/\s+/g, '-')
+    );
 
     // Always set the gradient as a fallback
     item.style.backgroundImage = `linear-gradient(135deg, rgba(102, 126, 234, 0.8) 0%, rgba(118, 75, 162, 0.9) 100%)`;

@@ -56,24 +56,35 @@ export default [
     },
   },
   {
-    // Configuration for Node.js files
+    // Configuration for eslint.config.mjs
+    files: ['eslint.config.mjs'],
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      globals: {
+        ...globals.node,
+      },
+    },
+  },
+  {
+    // Configuration for other Node.js files
     files: [
       '*.js',
       'scripts/**/*.js',
       'tests/**/*.js',
-      '*.mjs',
       'tailwind.config.js',
       '.stylelintrc.js',
       'lighthouserc.js',
     ],
     languageOptions: {
       ecmaVersion: 'latest',
-      sourceType: 'module',
+      sourceType: 'commonjs',
       globals: {
-        ...globals.nodeBuiltin,
+        ...globals.node,
         require: true,
         module: true,
         process: true,
+        __dirname: true,
         document: true, // For test files that interact with browser
         window: true, // For test files that interact with browser
       },
