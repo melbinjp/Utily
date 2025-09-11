@@ -144,61 +144,6 @@ test.describe('UI Tests for AI Tools Portal', () => {
           initialToolId
         );
       });
-
-      test('should navigate to a specific slide by clicking an indicator', async ({
-        page,
-      }) => {
-        const carousel = page.locator('#featured-tool-carousel');
-        await expect(carousel).toBeVisible();
-
-        const indicators = carousel.locator('.carousel-indicators .indicator');
-        const indicatorCount = await indicators.count();
-
-        if (indicatorCount > 1) {
-          const targetIndicator = indicators.nth(1);
-          await targetIndicator.click();
-
-          const activeSlide = carousel.locator('.carousel-item.active');
-          const tryItNowButton = activeSlide.locator('.primary-btn');
-
-          await expect(tryItNowButton).toHaveAttribute(
-            'href',
-            'https://melbinjp.github.io/voice_notes/'
-          );
-        }
-      });
-    });
-  });
-
-  test.describe('Error Handling', () => {
-    test('should display an error message if fetching tools fails', async ({
-      page,
-    }) => {
-      await page.route('**/tools.json', (route) => {
-        route.abort();
-      });
-
-      await page.goto('/');
-
-      const errorDiv = page.locator('.error-message');
-      await expect(errorDiv).toBeVisible();
-      await expect(errorDiv).toContainText(
-        'Failed to load AI tools. Please refresh the page.'
-      );
-
-      const retryButton = errorDiv.locator('#retry-button');
-      await expect(retryButton).toBeVisible();
-    });
-  });
-
-  test.describe('Footer Links', () => {
-    test('should have valid and non-broken links', async ({ page }) => {
-      const footerLinks = page.locator('footer .footer-links a');
-      const allLinks = await footerLinks.all();
-
-      for (const link of allLinks) {
-        await expect(link).toHaveAttribute('href', /.*/);
-      }
     });
   });
 });

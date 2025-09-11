@@ -31,7 +31,6 @@ module.exports = defineConfig({
   ],
   webServer: {
     command: 'npm run preview',
-    port: 8080,
-    reuseExistingServer: !process.env.CI,
+    reuseExistingServer: true,
   },
 });
