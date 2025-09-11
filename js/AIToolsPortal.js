@@ -8,8 +8,35 @@ export class AIToolsPortal {
   constructor() {
     this.tools = [];
     this.currentFilter = 'all';
+    this.visibleTools = new Set();
+    this.observer = null;
     this._cacheSelectors();
+    this._setupIntersectionObserver();
     this.init();
+  }
+
+  /**
+   * Sets up IntersectionObserver for lazy loading
+   * @private
+   */
+  _setupIntersectionObserver() {
+    this.observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const toolId = entry.target.dataset.toolId;
+            if (toolId && !this.visibleTools.has(toolId)) {
+              this.visibleTools.add(toolId);
+              this._renderTool(this.tools.find((t) => t.id === toolId));
+            }
+          }
+        });
+      },
+      {
+        rootMargin: '50px',
+        threshold: 0.1,
+      }
+    );
   }
 
   /**
@@ -42,9 +69,9 @@ export class AIToolsPortal {
       await this.lazyLoadCarousel();
     } catch (error) {
       console.error('Failed to initialize portal:', error);
-      this.showError('Failed to load AI tools. Please refresh the page.');
       // If an error happens before hideLoading is called, we still need to hide it.
       this.hideLoading();
+      this.showError('Failed to load AI tools. Please refresh the page.');
     }
   }
 
@@ -54,7 +81,8 @@ export class AIToolsPortal {
    */
   async loadTools() {
     try {
-      const response = await fetch('tools.json');
+      // Update path to be relative to the current location
+      const response = await fetch('./tools.json');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -62,7 +90,11 @@ export class AIToolsPortal {
       if (!Array.isArray(allTools)) {
         throw new Error('Invalid tools data format');
       }
-      this.tools = allTools.filter((tool) => tool.show);
+      // Show all tools in development
+      this.tools =
+        process.env.NODE_ENV === 'development'
+          ? allTools
+          : allTools.filter((tool) => tool.show);
       if (this.tools.length === 0) {
         throw new Error('No tools available');
       }
@@ -103,8 +135,15 @@ export class AIToolsPortal {
   /**
    * Displays a full-screen error message.
    * @param {string} message - The error message to display.
+   * @returns {Promise<void>} A promise that resolves when the error message is added to the DOM
    */
   showError(message) {
+    // Remove any existing error messages
+    const existingError = document.querySelector('.error-message');
+    if (existingError) {
+      existingError.remove();
+    }
+
     const errorDiv = document.createElement('div');
     errorDiv.className = 'error-message';
     errorDiv.setAttribute('role', 'alert');
@@ -114,10 +153,15 @@ export class AIToolsPortal {
         <p>${message}</p>
         <button id="retry-button" class="retry-button">Retry</button>
       </div>`;
+
     document.body.appendChild(errorDiv);
-    document.getElementById('retry-button').addEventListener('click', () => {
-      location.reload();
-    });
+
+    const retryButton = document.getElementById('retry-button');
+    if (retryButton) {
+      retryButton.addEventListener('click', () => {
+        location.reload();
+      });
+    }
   }
 
   /**
@@ -184,7 +228,7 @@ export class AIToolsPortal {
     template.innerHTML = `
             <div class="tool-card-header">
                 <div class="tool-card-icon"><svg class="icon icon-${iconName}" aria-hidden="true"><use href="#icon-${iconName}"></use></svg></div>
-                <h3><a href="${tool.url}" target="_blank" rel="noopener noreferrer">${escapeHtml(tool.title)}</a></h3>
+                <h2><a href="${tool.url}" target="_blank" rel="noopener noreferrer">${escapeHtml(tool.title)}</a></h2>
             </div>
             <p>${escapeHtml(tool.description)}</p>
             <div class="tool-card-footer">

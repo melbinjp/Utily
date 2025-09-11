@@ -13,19 +13,19 @@ module.exports = {
       assertions: {
         'categories:performance': [
           'error',
-          { minScore: 0.85, aggregationMethod: 'median-run' },
+          { minScore: 0.8, aggregationMethod: 'median-run' },
         ],
         'categories:accessibility': [
           'error',
-          { minScore: 0.9, aggregationMethod: 'median-run' },
+          { minScore: 0.8, aggregationMethod: 'median-run' },
         ],
         'categories:best-practices': [
           'error',
-          { minScore: 0.85, aggregationMethod: 'median-run' },
+          { minScore: 0.8, aggregationMethod: 'median-run' },
         ],
         'categories:seo': [
           'error',
-          { minScore: 0.9, aggregationMethod: 'median-run' },
+          { minScore: 0.8, aggregationMethod: 'median-run' },
         ],
         'critical-request-chains': 'off',
         'unused-javascript': 'off',

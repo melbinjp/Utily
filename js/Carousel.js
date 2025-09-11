@@ -19,6 +19,7 @@ export class Carousel {
     );
     this.currentIndex = 0;
     this.autoplayInterval = null;
+    this.autoplayEnabled = true; // New flag to control autoplay
 
     if (
       !this.inner ||
@@ -30,13 +31,18 @@ export class Carousel {
 
     this.render();
     this.setupEventListeners();
-    
+
     // Force reset to index 0 and update the display
     this.currentIndex = 0;
     this.update();
-    
-    // Start autoplay after initialization
-    this.startAutoplay();
+
+    // Store reference to instance
+    this.attachToElement();
+
+    // Start autoplay after initialization if enabled
+    if (this.autoplayEnabled) {
+      this.startAutoplay();
+    }
   }
 
   /**
@@ -76,6 +82,10 @@ export class Carousel {
     item.className = 'carousel-item';
     item.setAttribute('role', 'tabpanel');
     item.setAttribute('aria-label', `Featured tool: ${tool.title}`);
+    item.setAttribute(
+      'data-tool-id',
+      tool.title.toLowerCase().replace(/\s+/g, '-')
+    );
 
     // Always set the gradient as a fallback
     item.style.backgroundImage = `linear-gradient(135deg, rgba(102, 126, 234, 0.8) 0%, rgba(118, 75, 162, 0.9) 100%)`;
@@ -95,45 +105,24 @@ export class Carousel {
 
     const iconName = tool.icon.replace(/fa[sb]? fa-/, '');
     item.innerHTML = `
-            <div class="featured-content">
-                <div class="featured-header">
-                    <div class="featured-icon">
-                        <svg class="icon icon-${iconName}" aria-hidden="true"><use href="#icon-${iconName}"></use></svg>
-                    </div>
-                    <h3>${escapeHtml(tool.title)}</h3>
-                </div>
-                <div class="featured-body">
-                    <p>${escapeHtml(tool.featured_description || tool.description)}</p>
-                    <div class="featured-actions">
-                        <span class="primary-btn">
-                            <span>Try it now</span>
-                            <svg class="icon icon-arrow-right" aria-hidden="true"><use href="#icon-arrow-right"></use></svg>
-                        </span>
-                        <a href="#main-content" class="secondary-btn">Explore all tools</a>
-                    </div>
-                </div>
-            </div>`;
-
-    // Add click handler for the entire card
-    const featuredContent = item.querySelector('.featured-content');
-    const handleCardClick = (e) => {
-      // Don't trigger if clicking the "Explore all tools" link
-      if (e.target.closest('.secondary-btn')) return;
-
-      const url = featuredContent.dataset.url;
-      if (url && url !== '#') {
-        window.open(url, '_blank', 'noopener,noreferrer');
-      }
-    };
-
-    featuredContent.addEventListener('click', handleCardClick);
-    featuredContent.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        handleCardClick(e);
-      }
-    });
-
+    <div class="featured-content" data-url="${tool.url}">
+        <div class="featured-header">
+            <div class="featured-icon">
+                <svg class="icon icon-${iconName}" aria-hidden="true"><use href="#icon-${iconName}"></use></svg>
+            </div>
+            <h2>${escapeHtml(tool.title)}</h2>
+        </div>
+        <div class="featured-body">
+            <p>${escapeHtml(tool.featured_description || tool.description)}</p>
+            <div class="featured-actions">
+                <a href="${tool.url}" target="_blank" rel="noopener noreferrer" class="primary-btn">
+                    <span>Try it now</span>
+                    <svg class="icon icon-arrow-right" aria-hidden="true"><use href="#icon-arrow-right"></use></svg>
+                </a>
+                <a href="#main-content" class="secondary-btn">Explore all tools</a>
+            </div>
+        </div>
+    </div>`;
     return item;
   }
 
@@ -170,15 +159,6 @@ export class Carousel {
       document.hidden ? this.pauseAutoplay() : this.resumeAutoplay()
     );
 
-    // Handle clicks on featured content
-    this.container.addEventListener('click', (e) => {
-      const featuredContent = e.target.closest('.featured-content');
-      if (featuredContent) {
-        const url = featuredContent.getAttribute('data-url');
-        if (url) window.location.href = url;
-      }
-    });
-
     this.setupKeyboardNavigation();
     this.setupTouchNavigation();
   }
@@ -189,7 +169,14 @@ export class Carousel {
    */
   setupKeyboardNavigation() {
     this.container.addEventListener('keydown', (e) => {
-      // No need to check for input fields anymore, as the listener is on the container
+      // Only handle keyboard navigation when the carousel has focus and the event is directly on the container
+      if (
+        document.activeElement !== this.container ||
+        e.target !== this.container
+      ) {
+        return;
+      }
+
       if (e.key === 'ArrowLeft') {
         e.preventDefault();
         this.previousSlide();
@@ -299,7 +286,16 @@ export class Carousel {
    */
   startAutoplay() {
     if (this.featuredTools.length <= 1) return;
-    this.autoplayInterval = setInterval(() => this.nextSlide(), 6000);
+    if (!this.autoplayInterval && this.autoplayEnabled) {
+      this.autoplayInterval = setInterval(() => this.nextSlide(), 6000);
+    }
+  }
+
+  /**
+   * Store a reference to the carousel instance on the element
+   */
+  attachToElement() {
+    this.container.__carousel = this;
   }
 
   /**

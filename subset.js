@@ -2,7 +2,7 @@ const { fontawesomeSubset } = require('fontawesome-subset');
 const fs = require('fs');
 const path = require('path');
 
-const outputDir = path.join('dist', 'webfonts');
+const outputDir = path.join('dist', 'assets', 'fonts');
 fs.mkdirSync(outputDir, { recursive: true });
 
 fontawesomeSubset(
