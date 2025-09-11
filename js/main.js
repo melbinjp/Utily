@@ -63,7 +63,7 @@ const fetchGitHubRepos = async () => {
 
     reposGrid.innerHTML = ''; // Clear placeholder
 
-    repos.slice(0, 6).forEach(repo => {
+    repos.slice(0, 6).forEach((repo) => {
       const repoCard = document.createElement('div');
       repoCard.className = 'tool-card';
       repoCard.innerHTML = `

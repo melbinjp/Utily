@@ -127,15 +127,22 @@ test.describe('UI Tests for AI Tools Portal', () => {
         const prevButton = carousel.locator('.carousel-control.prev');
 
         const initialActiveSlide = carousel.locator('.carousel-item.active');
-        const initialToolId = await initialActiveSlide.getAttribute('data-tool-id');
+        const initialToolId =
+          await initialActiveSlide.getAttribute('data-tool-id');
 
         await nextButton.click();
         const activeSlideAfterNext = carousel.locator('.carousel-item.active');
-        await expect(activeSlideAfterNext).not.toHaveAttribute('data-tool-id', initialToolId);
+        await expect(activeSlideAfterNext).not.toHaveAttribute(
+          'data-tool-id',
+          initialToolId
+        );
 
         await prevButton.click();
         const activeSlideAfterPrev = carousel.locator('.carousel-item.active');
-        await expect(activeSlideAfterPrev).toHaveAttribute('data-tool-id', initialToolId);
+        await expect(activeSlideAfterPrev).toHaveAttribute(
+          'data-tool-id',
+          initialToolId
+        );
       });
 
       test('should navigate to a specific slide by clicking an indicator', async ({

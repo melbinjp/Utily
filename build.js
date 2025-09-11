@@ -155,7 +155,9 @@ async function build() {
   });
 
   // Compress all text-based files
-  const filesToCompress = await glob('dist/**/*.{html,css,js,json,svg,webmanifest}');
+  const filesToCompress = await glob(
+    'dist/**/*.{html,css,js,json,svg,webmanifest}'
+  );
   for (const file of filesToCompress) {
     await compressFile(file);
   }
