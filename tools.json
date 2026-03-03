@@ -65,10 +65,10 @@
   {
     "title": "Image Classification",
     "description": "Zero-shot image classification using advanced AI models for instant object recognition.",
-    "url": "#",
+    "url": "https://imageclassification.wecanuseai.com",
     "icon": "fas fa-image",
     "category": "ai",
-    "show": false
+    "show": true
   },
   {
     "title": "Device Analyzer",
