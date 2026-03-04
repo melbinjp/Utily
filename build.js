@@ -1,53 +1,6 @@
 const fs = require('fs');
 const { execSync } = require('child_process');
-const util = require('util');
 const { glob } = require('glob');
-const zlib = require('zlib');
-const brotli = require('brotli');
-const imagemin = require('imagemin');
-const imageminMozjpeg = require('imagemin-mozjpeg');
-const imageminPngquant = require('imagemin-pngquant');
-const imageminSvgo = require('imagemin-svgo');
-
-const writeFile = util.promisify(fs.writeFile);
-const gzip = util.promisify(zlib.gzip);
-
-async function compressFile(filePath) {
-  if (!fs.existsSync(filePath)) return;
-  try {
-    const content = fs.readFileSync(filePath);
-    const gzipped = await gzip(content);
-    const brotliCompressed = brotli.compress(content);
-    await writeFile(`${filePath}.gz`, gzipped);
-    await writeFile(`${filePath}.br`, brotliCompressed);
-    console.log(`🔧 Compressed ${filePath}`);
-  } catch (err) {
-    console.warn(`⚠️  Failed to compress ${filePath}:`, err.message);
-  }
-}
-
-async function optimizeImages() {
-  try {
-    const files = await imagemin(['assets/**/*.{jpg,png,svg}'], {
-      destination: 'dist/assets/images',
-      plugins: [
-        imageminMozjpeg({ quality: 80 }),
-        imageminPngquant({ quality: [0.6, 0.8] }),
-        imageminSvgo({
-          plugins: [
-            {
-              name: 'preset-default',
-              params: { overrides: { removeViewBox: false } },
-            },
-          ],
-        }),
-      ],
-    });
-    console.log('✨ Images optimized:', files.length || 0);
-  } catch (err) {
-    console.warn('⚠️  Image optimization failed:', err.message);
-  }
-}
 
 async function build() {
   console.log('🧹 Cleaning dist directory');
@@ -116,9 +69,6 @@ async function build() {
     console.error('❌ Icon or font subsetting failed:', error.message);
   }
 
-  // Optimize images (best-effort)
-  await optimizeImages();
-
   // Copy static files
   const filesToCopy = [
     { src: 'index.html', dest: 'dist/index.html' },
@@ -154,12 +104,12 @@ async function build() {
     }
   });
 
-  // Compress all text-based files
-  const filesToCompress = await glob(
-    'dist/**/*.{html,css,js,json,svg,webmanifest}'
-  );
-  for (const file of filesToCompress) {
-    await compressFile(file);
+  // Copy font files from assets/fonts to dist/assets/fonts
+  const fontFiles = await glob('assets/fonts/*.{woff2,woff,ttf,eot}');
+  for (const file of fontFiles) {
+    const destPath = `dist/${file}`;
+    fs.copyFileSync(file, destPath);
+    console.log(`📄 Copied ${file} → ${destPath}`);
   }
 
   console.log('🎉 Build completed successfully!');

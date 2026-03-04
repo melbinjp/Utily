@@ -4,6 +4,8 @@ import playwright from 'eslint-plugin-playwright';
 import prettierConfig from 'eslint-config-prettier';
 
 export default [
+  js.configs.recommended,
+  prettierConfig,
   {
     ignores: [
       '**/dist/**',
@@ -107,8 +109,5 @@ export default [
       'no-extra-boolean-cast': 'off',
     },
   },
-  // Add base configurations
-  js.configs.recommended,
   playwright.configs['flat/recommended'],
-  prettierConfig,
 ];
