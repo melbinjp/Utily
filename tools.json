@@ -71,6 +71,14 @@
     "show": true
   },
   {
+    "title": "Audio Editor",
+    "description": "Professional browser-based audio editor with marker-based selection, effects, and WAV export.",
+    "url": "https://melbinjp.github.io/audio-editor/",
+    "icon": "fas fa-headphones",
+    "category": "media",
+    "show": true
+  },
+  {
     "title": "Device Analyzer",
     "description": "Comprehensive system and performance analysis tool for your device capabilities.",
     "url": "#",
