@@ -79,6 +79,14 @@
     "show": true
   },
   {
+    "title": "Make a Call",
+    "description": "WebRTC-based voice calling system for instant peer-to-peer calls worldwide.",
+    "url": "https://call.wecanuseai.com",
+    "icon": "fas fa-phone",
+    "category": "utility",
+    "show": true
+  },
+  {
     "title": "Device Analyzer",
     "description": "Comprehensive system and performance analysis tool for your device capabilities.",
     "url": "#",
