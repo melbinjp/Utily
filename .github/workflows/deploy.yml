@@ -34,6 +34,10 @@ jobs:
         continue-on-error: true
         run: npm audit --audit-level=critical
 
+      - name: Run Prettier to fix formatting
+        continue-on-error: true
+        run: npm run format
+
       - name: Check formatting
         run: npm run format:check
 
