@@ -90,9 +90,9 @@ export class AIToolsPortal {
       if (!Array.isArray(allTools)) {
         throw new Error('Invalid tools data format');
       }
-      // Show all tools in development
-      this.tools =
-        process.env.NODE_ENV === 'development'
+      // Show all tools in development by checking if we are on localhost
+      const isDev = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+      this.tools = isDev
           ? allTools
           : allTools.filter((tool) => tool.show);
       if (this.tools.length === 0) {
