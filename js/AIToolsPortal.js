@@ -93,10 +93,10 @@ export class AIToolsPortal {
         throw new Error('Invalid tools data format');
       }
       // Show all tools in development by checking if we are on localhost
-      const isDev = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-      this.tools = isDev
-          ? allTools
-          : allTools.filter((tool) => tool.show);
+      const isDev =
+        window.location.hostname === 'localhost' ||
+        window.location.hostname === '127.0.0.1';
+      this.tools = isDev ? allTools : allTools.filter((tool) => tool.show);
       if (this.tools.length === 0) {
         throw new Error('No tools available');
       }
@@ -261,13 +261,17 @@ export class AIToolsPortal {
    * Applies the active category filter AND the current search query together.
    */
   applyFilters() {
-    const query = this.searchInput ? this.searchInput.value.trim().toLowerCase() : '';
+    const query = this.searchInput
+      ? this.searchInput.value.trim().toLowerCase()
+      : '';
     document.querySelectorAll('.tool-card').forEach((card) => {
       const category = card.dataset.category;
-      const matchesFilter = this.currentFilter === 'all' || category === this.currentFilter;
+      const matchesFilter =
+        this.currentFilter === 'all' || category === this.currentFilter;
       const title = card.querySelector('h2')?.textContent.toLowerCase() || '';
       const desc = card.querySelector('p')?.textContent.toLowerCase() || '';
-      const matchesSearch = !query || title.includes(query) || desc.includes(query);
+      const matchesSearch =
+        !query || title.includes(query) || desc.includes(query);
       card.classList.toggle('hidden', !(matchesFilter && matchesSearch));
     });
   }

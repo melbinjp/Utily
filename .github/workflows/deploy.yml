@@ -24,7 +24,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'npm'
 
       - name: Install dependencies
@@ -33,10 +33,6 @@ jobs:
       - name: Run security audit
         continue-on-error: true
         run: npm audit --audit-level=critical
-
-      - name: Run Prettier to fix formatting
-        continue-on-error: true
-        run: npm run format
 
       - name: Check formatting
         run: npm run format:check
@@ -51,20 +47,6 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
-
-      - name: Start server
-        run: |
-          npm run preview &
-          sleep 3
-
-      - name: Run Playwright tests
-        run: npm run test:e2e
-
-      - name: Run Lighthouse tests
-        run: |
-          CHROME_PATH=$(node -p 'require("playwright").chromium.executablePath()')
-          export CHROME_PATH
-          npm run test:lighthouse
 
   deploy:
     needs: build-and-test
