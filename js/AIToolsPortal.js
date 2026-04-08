@@ -298,20 +298,6 @@ export class AIToolsPortal {
   }
 
   /**
-   * Filters the displayed tool cards based on the selected category.
-   * @param {string} filter - The category to show ('all', 'ai', 'media', 'utility').
-   */
-  filterTools(filter) {
-    document.querySelectorAll('.tool-card').forEach((card) => {
-      const category = card.dataset.category;
-      card.classList.toggle(
-        'hidden',
-        !(filter === 'all' || category === filter)
-      );
-    });
-  }
-
-  /**
    * Sets up an Intersection Observer to apply animations to tool cards as they scroll into view.
    */
   setupIntersectionObserver() {
