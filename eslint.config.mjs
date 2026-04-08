@@ -1,6 +1,5 @@
 import js from '@eslint/js';
-import * as globals from 'globals';
-import playwright from 'eslint-plugin-playwright';
+import globals from 'globals';
 import prettierConfig from 'eslint-config-prettier';
 
 export default [
@@ -70,14 +69,7 @@ export default [
   },
   {
     // Configuration for other Node.js files
-    files: [
-      '*.js',
-      'scripts/**/*.js',
-      'tests/**/*.js',
-      'tailwind.config.js',
-      '.stylelintrc.js',
-      'lighthouserc.js',
-    ],
+    files: ['*.js', 'scripts/**/*.js', 'tailwind.config.js', '.stylelintrc.js'],
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'commonjs',
@@ -109,5 +101,4 @@ export default [
       'no-extra-boolean-cast': 'off',
     },
   },
-  playwright.configs['flat/recommended'],
 ];
