@@ -87,6 +87,26 @@
     "show": true
   },
   {
+    "title": "Linearity",
+    "description": "AI-powered creative design tool for intuitive vector and motion design.",
+    "url": "https://linearty.wecanuseai.com/",
+    "icon": "fas fa-pen-nib",
+    "category": "utility",
+    "show": true,
+    "featured": true,
+    "featured_description": "AI-powered vector and motion design tool that streamlines your creative workflow."
+  },
+  {
+    "title": "Jules Prompts",
+    "description": "A curated library of high-quality AI prompts to supercharge your workflow with Jules and other AI assistants.",
+    "url": "https://jules-prompts.wecanuseai.com/",
+    "icon": "fas fa-lightbulb",
+    "category": "ai",
+    "show": true,
+    "featured": true,
+    "featured_description": "Curated, high-quality AI prompts to get the best results from Jules and other AI assistants."
+  },
+  {
     "title": "Device Analyzer",
     "description": "Comprehensive system and performance analysis tool for your device capabilities.",
     "url": "#",
