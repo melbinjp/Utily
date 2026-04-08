@@ -50,6 +50,7 @@ export class AIToolsPortal {
     this.toolGrid = document.getElementById('tool-grid');
     this.filterButtons = document.querySelectorAll('.filter-btn');
     this.heroCarousel = document.querySelector('.hero-carousel');
+    this.searchInput = document.getElementById('tool-search');
   }
 
   /**
@@ -65,6 +66,7 @@ export class AIToolsPortal {
 
       // Load secondary content after hiding the loader
       this.setupFilters();
+      this.setupSearch();
       this.setupIntersectionObserver();
       await this.lazyLoadCarousel();
     } catch (error) {
@@ -246,6 +248,31 @@ export class AIToolsPortal {
   }
 
   /**
+   * Sets up the event listener for the live search input.
+   */
+  setupSearch() {
+    if (!this.searchInput) return;
+    this.searchInput.addEventListener('input', () => {
+      this.applyFilters();
+    });
+  }
+
+  /**
+   * Applies the active category filter AND the current search query together.
+   */
+  applyFilters() {
+    const query = this.searchInput ? this.searchInput.value.trim().toLowerCase() : '';
+    document.querySelectorAll('.tool-card').forEach((card) => {
+      const category = card.dataset.category;
+      const matchesFilter = this.currentFilter === 'all' || category === this.currentFilter;
+      const title = card.querySelector('h2')?.textContent.toLowerCase() || '';
+      const desc = card.querySelector('p')?.textContent.toLowerCase() || '';
+      const matchesSearch = !query || title.includes(query) || desc.includes(query);
+      card.classList.toggle('hidden', !(matchesFilter && matchesSearch));
+    });
+  }
+
+  /**
    * Sets up the event listeners for the category filter buttons.
    */
   setupFilters() {
@@ -253,7 +280,7 @@ export class AIToolsPortal {
       button.addEventListener('click', () => {
         const filter = button.dataset.filter;
         this.setActiveFilter(filter);
-        this.filterTools(filter);
+        this.applyFilters();
       });
     });
   }
