@@ -222,20 +222,20 @@
           </div>
         </div>
       </section>
-      <section id="github-repos-section" class="hidden tools-section">
-        <div class="section-header">
-          <h2>My GitHub Repositories</h2>
-          <p>A collection of my open-source projects.</p>
+      <div
+        id="quote-modal"
+        class="hidden"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="quote-text"
+        tabindex="-1"
+      >
+        <div class="quote-modal-inner">
+          <blockquote id="quote-text" class="quote-modal-text"></blockquote>
+          <cite id="quote-author" class="quote-modal-author"></cite>
+          <button id="quote-close" class="quote-modal-close" aria-label="Close">✕</button>
         </div>
-        <div
-          id="github-repos-grid"
-          class="tool-grid tool-grid-style"
-          role="region"
-          aria-label="GitHub repositories collection"
-        >
-          <!-- Repositories will be dynamically inserted here -->
-        </div>
-      </section>
+      </div>
     </main>
 
     <footer role="contentinfo">

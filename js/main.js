@@ -31,7 +31,7 @@ document.addEventListener(
   { passive: true }
 );
 
-// Konami code to reveal GitHub repos
+// Konami code easter egg — shows a random lighthearted quote
 const konamiCode = [
   'ArrowUp',
   'ArrowUp',
@@ -46,46 +46,30 @@ const konamiCode = [
 ];
 let konamiIndex = 0;
 
-const fetchGitHubRepos = async () => {
-  const username = 'melbinjp';
-  const url = `https://api.github.com/users/${username}/repos?sort=updated&direction=desc`;
-  const reposGrid = document.getElementById('github-repos-grid');
-  const reposSection = document.getElementById('github-repos-section');
+const quotes = [
+  { text: 'The secret of getting ahead is getting started.', author: 'Mark Twain' },
+  { text: "I have not failed. I've just found 10,000 ways that won't work.", author: 'Thomas Edison' },
+  { text: "It always seems impossible until it's done.", author: 'Nelson Mandela' },
+  { text: 'The only way to do great work is to love what you do.', author: 'Steve Jobs' },
+  { text: 'In the middle of every difficulty lies opportunity.', author: 'Albert Einstein' },
+  { text: "You miss 100% of the shots you don't take.", author: '— Wayne Gretzky  — Michael Scott' },
+  { text: "Life is what happens when you're busy making other plans.", author: 'John Lennon' },
+  { text: 'The best time to plant a tree was 20 years ago. The second best time is now.', author: 'Chinese Proverb' },
+  { text: 'Do one thing every day that scares you.', author: 'Eleanor Roosevelt' },
+  { text: "Whether you think you can, or you think you can't — you're right.", author: 'Henry Ford' },
+];
 
-  if (!reposGrid || !reposSection) return;
+const showRandomQuote = () => {
+  const modal = document.getElementById('quote-modal');
+  const textEl = document.getElementById('quote-text');
+  const authorEl = document.getElementById('quote-author');
+  if (!modal || !textEl || !authorEl) return;
 
-  try {
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error(`GitHub API returned status ${response.status}`);
-    }
-    const repos = await response.json();
-
-    reposGrid.innerHTML = ''; // Clear placeholder
-
-    repos.slice(0, 6).forEach((repo) => {
-      const repoCard = document.createElement('div');
-      repoCard.className = 'tool-card';
-      repoCard.innerHTML = `
-        <h3 class="tool-card-title">${repo.name}</h3>
-        <p class="tool-card-description">${repo.description || 'No description available.'}</p>
-        <div class="tool-card-footer">
-          <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer" class="tool-card-link">View on GitHub</a>
-          <div class="tool-card-stats">
-            <span>⭐ ${repo.stargazers_count}</span>
-            <span> Forks: ${repo.forks_count}</span>
-          </div>
-        </div>
-      `;
-      reposGrid.appendChild(repoCard);
-    });
-
-    reposSection.classList.remove('hidden');
-  } catch (error) {
-    console.error('Error fetching GitHub repos:', error);
-    reposGrid.innerHTML = '<p>Could not load GitHub repositories.</p>';
-    reposSection.classList.remove('hidden');
-  }
+  const quote = quotes[Math.floor(Math.random() * quotes.length)];
+  textEl.textContent = `"${quote.text}"`;
+  authorEl.textContent = `— ${quote.author}`;
+  modal.classList.remove('hidden');
+  modal.focus();
 };
 
 document.addEventListener('keydown', (e) => {
@@ -93,9 +77,24 @@ document.addEventListener('keydown', (e) => {
     konamiIndex++;
     if (konamiIndex === konamiCode.length) {
       konamiIndex = 0;
-      fetchGitHubRepos();
+      showRandomQuote();
     }
   } else {
     konamiIndex = 0;
+  }
+});
+
+document.addEventListener('click', (e) => {
+  const modal = document.getElementById('quote-modal');
+  if (!modal) return;
+  if (e.target.id === 'quote-close' || e.target.id === 'quote-modal') {
+    modal.classList.add('hidden');
+  }
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    const modal = document.getElementById('quote-modal');
+    modal?.classList.add('hidden');
   }
 });

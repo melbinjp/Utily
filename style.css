@@ -1482,3 +1482,71 @@ footer {
     padding: 0 var(--space-2xl);
   }
 }
+
+/* Quote Modal (Konami Easter Egg) */
+#quote-modal {
+  position: fixed;
+  inset: 0;
+  background: rgb(0 0 0 / 55%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1100;
+  backdrop-filter: blur(4px);
+  animation: fade-in var(--transition-normal) ease;
+}
+
+#quote-modal.hidden {
+  display: none;
+}
+
+.quote-modal-inner {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  padding: var(--space-2xl);
+  max-width: 480px;
+  width: 90%;
+  position: relative;
+  text-align: center;
+}
+
+.quote-modal-text {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: var(--text-primary);
+  font-style: italic;
+  margin: 0 0 var(--space-md);
+}
+
+.quote-modal-author {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-style: normal;
+  font-weight: 600;
+}
+
+.quote-modal-close {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  transition: color var(--transition-fast), background var(--transition-fast);
+}
+
+.quote-modal-close:hover {
+  color: var(--text-primary);
+  background: var(--bg-tertiary);
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
