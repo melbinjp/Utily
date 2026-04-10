@@ -47,16 +47,46 @@ const konamiCode = [
 let konamiIndex = 0;
 
 const quotes = [
-  { text: 'The secret of getting ahead is getting started.', author: 'Mark Twain' },
-  { text: "I have not failed. I've just found 10,000 ways that won't work.", author: 'Thomas Edison' },
-  { text: "It always seems impossible until it's done.", author: 'Nelson Mandela' },
-  { text: 'The only way to do great work is to love what you do.', author: 'Steve Jobs' },
-  { text: 'In the middle of every difficulty lies opportunity.', author: 'Albert Einstein' },
-  { text: "You miss 100% of the shots you don't take.", author: '— Wayne Gretzky  — Michael Scott' },
-  { text: "Life is what happens when you're busy making other plans.", author: 'John Lennon' },
-  { text: 'The best time to plant a tree was 20 years ago. The second best time is now.', author: 'Chinese Proverb' },
-  { text: 'Do one thing every day that scares you.', author: 'Eleanor Roosevelt' },
-  { text: "Whether you think you can, or you think you can't — you're right.", author: 'Henry Ford' },
+  {
+    text: 'The secret of getting ahead is getting started.',
+    author: 'Mark Twain',
+  },
+  {
+    text: "I have not failed. I've just found 10,000 ways that won't work.",
+    author: 'Thomas Edison',
+  },
+  {
+    text: "It always seems impossible until it's done.",
+    author: 'Nelson Mandela',
+  },
+  {
+    text: 'The only way to do great work is to love what you do.',
+    author: 'Steve Jobs',
+  },
+  {
+    text: 'In the middle of every difficulty lies opportunity.',
+    author: 'Albert Einstein',
+  },
+  {
+    text: "You miss 100% of the shots you don't take.",
+    author: '— Wayne Gretzky  — Michael Scott',
+  },
+  {
+    text: "Life is what happens when you're busy making other plans.",
+    author: 'John Lennon',
+  },
+  {
+    text: 'The best time to plant a tree was 20 years ago. The second best time is now.',
+    author: 'Chinese Proverb',
+  },
+  {
+    text: 'Do one thing every day that scares you.',
+    author: 'Eleanor Roosevelt',
+  },
+  {
+    text: "Whether you think you can, or you think you can't — you're right.",
+    author: 'Henry Ford',
+  },
 ];
 
 const showRandomQuote = () => {
