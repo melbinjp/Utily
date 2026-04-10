@@ -108,9 +108,9 @@
   },
   {
     "title": "AudioSen",
-    "description": "Real-time audio sensing and analysis in your browser — visualize sound levels, detect frequencies, and explore your audio environment.",
+    "description": "Send and receive data between devices using audio — transfer information wirelessly by encoding it into sound waves, with dedicated send and receive modes.",
     "url": "https://audiosen.wecanuseai.com/",
-    "icon": "fas fa-wave-square",
+    "icon": "fas fa-broadcast-tower",
     "category": "media",
     "show": true,
     "featured": false
