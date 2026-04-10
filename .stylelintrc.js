@@ -9,5 +9,6 @@ module.exports = {
         ignoreAtRules: ['tailwind'],
       },
     ],
+    'rule-empty-line-before': null,
   },
 };
