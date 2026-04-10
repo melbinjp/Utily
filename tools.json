@@ -107,6 +107,15 @@
     "featured_description": "Curated, high-quality AI prompts to get the best results from Jules and other AI assistants."
   },
   {
+    "title": "AudioSen",
+    "description": "Real-time audio sensing and analysis in your browser — visualize sound levels, detect frequencies, and explore your audio environment.",
+    "url": "https://audiosen.wecanuseai.com/",
+    "icon": "fas fa-wave-square",
+    "category": "media",
+    "show": true,
+    "featured": false
+  },
+  {
     "title": "Device Analyzer",
     "description": "Comprehensive system and performance analysis tool for your device capabilities.",
     "url": "#",
